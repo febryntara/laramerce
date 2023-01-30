@@ -205,11 +205,6 @@
                 </tr>
             </tbody>
         </table>
-        <table align='center' border='0' cellpadding='0' cellspacing='0' role='presentation' style='background:#f7f7f7;background-color:#f7f7f7;width:100%;'>
-            <tbody>
-                <tr>
-                    <td>
-                        <div style='margin:0px auto;max-width:600px;'>
                             <table align='center' border='0' cellpadding='0' cellspacing='0' role='presentation' style='width:100%;'>
                                 <tbody>
                                     <tr>
@@ -375,11 +370,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        
     <!--[if mso | IE]>
 <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:600px;" width="600"><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
 <![endif]-->
