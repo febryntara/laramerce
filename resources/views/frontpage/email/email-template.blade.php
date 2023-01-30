@@ -65,20 +65,6 @@
             }
         }
     </style>
-    <!--<![endif]-->
-    <!--[if mso]>
-  <xml>
-   <o:OfficeDocumentSettings>
-    <o:AllowPNG/>
-    <o:PixelsPerInch>96</o:PixelsPerInch>
-   </o:OfficeDocumentSettings>
-  </xml>
-  <![endif]-->
-    <!--[if lte mso 11]>
-  <style type="text/css">
-   .outlook-group-fix{width:100% !important;}
-  </style>
-  <![endif]-->
     <style type="text/css">
         @media only screen and (min-width:480px) {
             .dys-column-per-100 {
@@ -206,9 +192,6 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <!--[if mso | IE]>
-</td></tr></table>
-<![endif]-->
                                             </td>
                                         </tr>
                                     </tbody>
@@ -232,12 +215,7 @@
                                 style='width:100%;'>
                                 <tbody>
                                     <tr>
-                                        <td
-                                            style='direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;'>
-                                            <!--[if mso | IE]>
-<table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:top;width:270px;">
-<![endif]-->
-
+                                        <td style='direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;'>
                                             <div class='dys-column-per-45 outlook-group-fix'
                                                 style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
                                                 <table border='0' cellpadding='0' cellspacing='0'
@@ -249,159 +227,163 @@
                                                                 <table border='0' cellpadding='0' cellspacing='0'
                                                                     role='presentation' style=''
                                                                     width='100%'>
+                                                                    <tr>
+                                                                        <td align='left'
+                                                                            style='font-size:0px;padding:0px ;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
+                                                                                Nama
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:23px;text-align:left;'>
+                                                                                {{ $order->name }}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
+                                                                                No. Handphone
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:23px;text-align:left;'>
+                                                                                {{ $order->phone }}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
+                                                                                Address
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:23px;text-align:left;'>
+                                                                                {{ $order->address }}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
                                                         </tr>
-                                                        <td align='left'
-                                                            style='font-size:0px;padding:0px ;word-break:break-word;'>
-                                                            <div
-                                                                style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
-                                                                Nama
-                                                            </div>
-                                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
-                                            <div
-                                                style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:23px;text-align:left;'>
-                                                {{ $order->name }}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class='dys-column-per-5 outlook-group-fix'
+                                                style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
+                                                <table border='0' cellpadding='0' cellspacing='0' role='presentation' width='100%'>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style='background-color:#FFFFFF;padding:0;vertical-align:top;'>
+                                                                <table border='0' cellpadding='0' cellspacing='0' role='presentation' style=''
+                                                                    width='100%'>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            
+                                            <div class='dys-column-per-45 outlook-group-fix'
+                                                style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
+                                                <table border='0' cellpadding='0' cellspacing='0' role='presentation' width='100%'>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style='background-color:#ffffff;border:1px solid #e5e5e5;padding:15px;vertical-align:top;'>
+                                                                <table border='0' cellpadding='0' cellspacing='0' role='presentation' style=''
+                                                                    width='100%'>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
+                                                                                Email
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:22px;text-align:left;'>
+                                                                                {{ $order->email }}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
+                                                                                Date Ordered
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:22px;text-align:left;'>
+                                                                                {{ $order->created_at }}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
+                                                                                Order
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:22px;text-align:left;'>
+                                                                                {{ $order->id }}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
+                                                                                Status
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
+                                                                            <div
+                                                                                style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:22px;text-align:left;'>
+                                                                                {{ $order->id }}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </td>
                                     </tr>
-                </tr>
-                <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
-                    <div
-                        style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
-                        No. Handphone
-                    </div>
-                </td>
-                </tr>
-                <tr>
-                    <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
-                        <div
-                            style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:23px;text-align:left;'>
-                            {{ $order->phone }}
+                                </tbody>
+                            </table>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
-                        <div
-                            style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
-                            Address
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
-                        <div
-                            style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:23px;text-align:left;'>
-                            {{ $order->address }}
-                        </div>
-                    </td>
-                </tr>
-        </table>
-        </td>
-        </tr>
-        </tbody>
-        </table>
-    </div>
-    <!--[if mso | IE]>
-</td>
-<![endif]-->
-    <!-- empty column to create gap -->
-    <!--[if mso | IE]>
-<td style="vertical-align:top;width:30px;">
-<![endif]-->
-    <div class='dys-column-per-5 outlook-group-fix'
-        style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
-        <table border='0' cellpadding='0' cellspacing='0' role='presentation' width='100%'>
-            <tbody>
-                <tr>
-                    <td style='background-color:#FFFFFF;padding:0;vertical-align:top;'>
-                        <table border='0' cellpadding='0' cellspacing='0' role='presentation' style=''
-                            width='100%'>
-                        </table>
                     </td>
                 </tr>
             </tbody>
         </table>
-    </div>
-    <!--[if mso | IE]>
-</td><td style="vertical-align:top;width:270px;">
-<![endif]-->
-    <div class='dys-column-per-45 outlook-group-fix'
-        style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
-        <table border='0' cellpadding='0' cellspacing='0' role='presentation' width='100%'>
-            <tbody>
-                <tr>
-                    <td style='background-color:#ffffff;border:1px solid #e5e5e5;padding:15px;vertical-align:top;'>
-                        <table border='0' cellpadding='0' cellspacing='0' role='presentation' style=''
-                            width='100%'>
-                            <tr>
-                                <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
-                                    <div
-                                        style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
-                                        Email
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
-                                    <div
-                                        style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:22px;text-align:left;'>
-                                        {{ $order->email }}
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
-                                    <div
-                                        style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
-                                        Date Ordered
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
-                                    <div
-                                        style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:22px;text-align:left;'>
-                                        {{ $order->created_at }}
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
-                                    <div
-                                        style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:18px;font-weight:700;line-height:25px;text-align:left;'>
-                                        Order
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align='left' style='font-size:0px;padding:0px;word-break:break-word;'>
-                                    <div
-                                        style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:22px;text-align:left;'>
-                                        {{ $order->id }}
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <!--[if mso | IE]>
-</td></tr></table>
-<![endif]-->
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    </div>
-    </td>
-    </tr>
-    </tbody>
-    </table>
     <!--[if mso | IE]>
 <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:600px;" width="600"><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
 <![endif]-->
