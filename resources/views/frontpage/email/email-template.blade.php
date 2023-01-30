@@ -266,36 +266,6 @@
                                                                             </div>
                                                                         </td>
                                                                     </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            
-                                            <div class='dys-column-per-5 outlook-group-fix'
-                                                style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
-                                                <table border='0' cellpadding='0' cellspacing='0' role='presentation' width='100%'>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style='background-color:#FFFFFF;padding:0;vertical-align:top;'>
-                                                                <table border='0' cellpadding='0' cellspacing='0' role='presentation' style=''
-                                                                    width='100%'>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            
-                                            <div class='dys-column-per-45 outlook-group-fix'
-                                                style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
-                                                <table border='0' cellpadding='0' cellspacing='0' role='presentation' width='100%'>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style='background-color:#ffffff;border:1px solid #e5e5e5;padding:15px;vertical-align:top;'>
-                                                                <table border='0' cellpadding='0' cellspacing='0' role='presentation' style=''
-                                                                    width='100%'>
                                                                     <tr>
                                                                         <td align='left' style='font-size:0px;padding:0px ;word-break:break-word;'>
                                                                             <div
