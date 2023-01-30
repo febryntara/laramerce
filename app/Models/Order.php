@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Mail\OrderMail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class Order extends Model
@@ -57,6 +59,8 @@ class Order extends Model
                 'quantity' => $product['quantity'],
             ]);
         }
+
+        Mail::to($customer['email'])->send(new OrderMail($order));
 
         return $order;
     }

@@ -8,7 +8,9 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewTemplateController;
+use App\Mail\OrderMail;
 use App\Models\Brand;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\SnapToken;
 use Illuminate\Support\Facades\Route;
@@ -62,8 +64,8 @@ Route::get('/token', function () {
     return SnapToken::claim($transaction_details, $customer_details, $item_details, $shipping_address);
 });
 
-Route::get('/email', function(){
-    return view('frontpage.email.email-template');
+Route::get('/email', function () {
+    return new OrderMail(Order::all()->first());
 });
 Route::get('/', function () {
     return view('frontpage.main.main', ['title' => 'Homepage | Urban Adventure']);
