@@ -273,6 +273,7 @@ class GeneralController extends Controller
     public function my_account()
     {
         $data = [
+            'brands' => Brand::with(['products'])->latest()->get(),
             'title' => 'Profile | Urban Adventure',
             'categories' => Category::first()->get(),
         ];
