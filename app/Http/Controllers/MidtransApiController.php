@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderMail;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -13,16 +14,17 @@ class MidtransApiController extends Controller
         $json = json_decode($request->getContent());
         $signatureKey = hash('SHA512', $json->order_id . $json->status_code . $json->gross_amount . config('midtrans.server_key'));
         if ($signatureKey == $json->signature_key) {
-            $updated = Order::find($json->order_id)->update([
+            $order = Order::find($json->order_id);
+            $updated = $order->update([
                 'transaction_status' => $json->transaction_status
             ]);
 
-            // if ($updated) {
-            //     Mail::to(Order::find($json->order_id)->email)->send(new OrderNotify(Order::find($json->order_id)));
-            // }
+            if ($updated) {
+                Mail::to($order->email)->send(new OrderMail($order));
+            }
 
-            return 'same';
+            // return 'same';
         }
-        return 'not same';
+        // return 'not same';
     }
 }
