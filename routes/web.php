@@ -84,8 +84,8 @@ Route::controller(GeneralController::class)->group(function () {
     Route::get('/order/{order}', 'order_detail')->name('order_detail')->middleware('auth');
     Route::get('/blog-detail', 'blog_detail')->name('blog-detail');
     Route::get('/blog-page', 'blog')->name('blog');
-    Route::get('/order-history', 'order_history')->name('order-history');
-    Route::get('/my-account', 'my_account')->name('my-account');
+    Route::get('/order-history', 'order_history')->name('order-history')->middleware('auth');
+    Route::get('/my-account', 'my_account')->name('my-account')->middleware('auth');
     Route::get('/wishlist', 'wishlist')->name('wishlist')->middleware('auth');
 });
 
@@ -96,52 +96,56 @@ Route::get('/test', function () {
 Route::controller(ViewTemplateController::class)->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard.admin.main-dashboard', ['title' => 'Dashboard | Urban Adventure']);
-    })->name('dashboard')->middleware('auth');
+    })->name('dashboard')->middleware(['auth', 'admin']);
 });
 
-Route::controller(CategoryController::class)->group(function () {
-    Route::get('/dashboard/categories', 'allCategory')->name('manage_category.all')->middleware('can:isAdmin');
-    Route::get('/dashboard/category/create', 'createCategory')->name('manage_category.create')->middleware('can:isAdmin');
-    Route::post('/dashboard/category/create', 'storeCategory')->name('manage_category.store')->middleware('can:isAdmin');
-    Route::get('/dashboard/category/{category:id}', 'detailCategory')->name('manage_category.detail')->middleware('can:isAdmin');
-    Route::get('/dashboard/category/{category:id}/update', 'updateCategory')->name('manage_category.update')->middleware('can:isAdmin');
-    Route::patch('/dashboard/category/{category:id}', 'patchCategory')->name('manage_category.patch')->middleware('can:isAdmin');
-    Route::delete('/dashboard/category/{category:id}/delete', 'deleteCategory')->name('manage_category.delete')->middleware('can:isAdmin');
+Route::middleware(['auth', 'admin'])->controller(CategoryController::class)->group(function () {
+    Route::get('/dashboard/categories', 'allCategory')->name('manage_category.all');
+    Route::get('/dashboard/category/create', 'createCategory')->name('manage_category.create');
+    Route::post('/dashboard/category/create', 'storeCategory')->name('manage_category.store');
+    Route::get('/dashboard/category/{category:id}', 'detailCategory')->name('manage_category.detail');
+    Route::get('/dashboard/category/{category:id}/update', 'updateCategory')->name('manage_category.update');
+    Route::patch('/dashboard/category/{category:id}', 'patchCategory')->name('manage_category.patch');
+    Route::delete('/dashboard/category/{category:id}/delete', 'deleteCategory')->name('manage_category.delete');
 });
-Route::controller(OrderController::class)->group(function () {
+
+Route::middleware('auth')->controller(OrderController::class)->group(function () {
     Route::get('/dashboard/orders', 'allOrder')->name('manage_order.all');
     Route::get('/dashboard/order/create', 'createOrder')->name('manage_order.create');
 });
-Route::controller(ProductController::class)->group(function () {
-    Route::get('/dashboard/products', 'allProduct')->name('manage_product.all')->middleware('can:isAdmin');
-    Route::get('/dashboard/product/create', 'createProduct')->name('manage_product.create')->middleware('can:isAdmin');
-    Route::post('/dashboard/product/create', 'storeProduct')->name('manage_product.store')->middleware('can:isAdmin');
-    Route::get('/dashboard/product/{product:product_code}', 'detailProduct')->name('manage_product.detail')->middleware('can:isAdmin');
-    Route::get('/dashboard/product/{product:product_code}/update', 'updateProduct')->name('manage_product.update')->middleware('can:isAdmin');
-    Route::patch('/dashboard/product/{product:product_code}', 'patchProduct')->name('manage_product.patch')->middleware('can:isAdmin');
-    Route::delete('/dashboard/product/{product:product_code}', 'deleteProduct')->name('manage_product.delete')->middleware('can:isAdmin');
+
+Route::middleware(['auth', 'admin'])->controller(ProductController::class)->group(function () {
+    Route::get('/dashboard/products', 'allProduct')->name('manage_product.all');
+    Route::get('/dashboard/product/create', 'createProduct')->name('manage_product.create');
+    Route::post('/dashboard/product/create', 'storeProduct')->name('manage_product.store');
+    Route::get('/dashboard/product/{product:product_code}', 'detailProduct')->name('manage_product.detail');
+    Route::get('/dashboard/product/{product:product_code}/update', 'updateProduct')->name('manage_product.update');
+    Route::patch('/dashboard/product/{product:product_code}', 'patchProduct')->name('manage_product.patch');
+    Route::delete('/dashboard/product/{product:product_code}', 'deleteProduct')->name('manage_product.delete');
 });
+
 Route::controller(UserController::class)->group(function () {
-    Route::get('/dashboard/users', 'allUser')->name('manage_user.all')->middleware('can:isAdmin');
-    Route::get('/login', 'login')->name('login');
-    Route::post('/login', 'attemptLogin')->name('attempt_login');
-    Route::get('/register', 'register')->name('register');
-    Route::post('/register', 'attemptRegister')->name('attempt_register');
-    Route::get('/logout', 'logout')->name('logout');
-    Route::get('/dashboard/profile/detail/{user:email}', 'detailProfile')->name('profile.detail')->middleware('auth');
-    Route::get('/dashboard/profile/update/{user:email}', 'updateProfile')->name('profile.update')->middleware('auth');
-    Route::patch('/dashboard/profile/{user:email}', 'patchProfile')->name('profile.patch')->middleware('auth');
-    Route::delete('/dashboard/user/{user:email}', 'deleteUser')->name('manage_user.delete')->middleware('can:isAdmin');
+    Route::get('/dashboard/users', 'allUser')->name('manage_user.all')->middleware(['auth', 'admin']);
+    Route::get('/login', 'login')->name('login')->middleware('guest');
+    Route::post('/login', 'attemptLogin')->name('attempt_login')->middleware('guest');
+    Route::get('/register', 'register')->name('register')->middleware('guest');
+    Route::post('/register', 'attemptRegister')->name('attempt_register')->middleware('guest');
+    Route::get('/logout', 'logout')->name('logout')->middleware('auth');
+    Route::get('/dashboard/profile/detail/{user:email}', 'detailProfile')->name('profile.detail')->middleware(['auth', 'admin']);
+    Route::get('/dashboard/profile/update/{user:email}', 'updateProfile')->name('profile.update')->middleware(['auth', 'admin']);
+    Route::patch('/dashboard/profile/{user:email}', 'patchProfile')->name('profile.patch')->middleware(['auth', 'admin']);
+    Route::delete('/dashboard/user/{user:email}', 'deleteUser')->name('manage_user.delete')->middleware(['auth', 'admin']);
 });
 Route::controller(BrandController::class)->group(function () {
-    Route::get('/dashboard/brand', 'allBrand')->name('manage_brand.all')->middleware(['can:isAdmin', 'auth']);
-    Route::get('/dashboard/brand/create', 'createBrand')->name('manage_brand.create')->middleware(['can:isAdmin', 'auth']);
-    Route::post('/dashboard/brand/create', 'storebrand')->name('manage_brand.store')->middleware(['can:isAdmin', 'auth']);
-    Route::get('/dashboard/brand/{brand:brand_code}', 'detailBrand')->name('manage_brand.detail')->middleware(['can:isAdmin', 'auth']);
-    Route::get('/dashboard/brand/{brand:brand_code}/update', 'updateBrand')->name('manage_brand.update')->middleware(['can:isAdmin', 'auth']);
-    Route::patch('/dashboard/brand/{brand:brand_code}/update', 'patchBrand')->name('manage_brand.patch')->middleware(['can:isAdmin', 'auth']);
-    Route::delete('/dashboard/brand/{brand:brand_code}/delete', 'deleteBrand')->name('manage_brand.delete')->middleware(['can:isAdmin', 'auth']);
+    Route::get('/dashboard/brand', 'allBrand')->name('manage_brand.all')->middleware(['auth', 'admin']);
+    Route::get('/dashboard/brand/create', 'createBrand')->name('manage_brand.create')->middleware(['auth', 'admin']);
+    Route::post('/dashboard/brand/create', 'storebrand')->name('manage_brand.store')->middleware(['auth', 'admin']);
+    Route::get('/dashboard/brand/{brand:brand_code}', 'detailBrand')->name('manage_brand.detail')->middleware(['auth', 'admin']);
+    Route::get('/dashboard/brand/{brand:brand_code}/update', 'updateBrand')->name('manage_brand.update')->middleware(['auth', 'admin']);
+    Route::patch('/dashboard/brand/{brand:brand_code}/update', 'patchBrand')->name('manage_brand.patch')->middleware(['auth', 'admin']);
+    Route::delete('/dashboard/brand/{brand:brand_code}/delete', 'deleteBrand')->name('manage_brand.delete')->middleware(['auth', 'admin']);
 });
+
 Route::controller(CartController::class)->group(function () {
-    Route::get('/dashboard/carts', 'allCart')->name('manage_cart.all')->middleware('can:isUser');
+    Route::get('/dashboard/carts', 'allCart')->name('manage_cart.all')->middleware(['auth', 'admin']);
 });
