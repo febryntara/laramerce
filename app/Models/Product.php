@@ -31,13 +31,28 @@ class Product extends Model
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%');
+            return $query->where('name', 'like', '%' . $search . '%')->orWhereHas('category', function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%');
+            })->orWhereHas('brand', function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%');
+            });
         });
 
         $query->when($filters['category'] ?? false, function ($query, $category) {
             return $query->whereHas('category', function ($query) use ($category) {
                 $query->where('name', 'like', '%' . $category . '%');
             });
+        });
+    }
+
+    public function scopeRange($query, $from = 0, $to = 0)
+    {
+        $query->when($from == 0 && $to == 0, function ($query) {
+            return $query;
+        });
+
+        $query->when($from < $to, function ($query) use ($from, $to) {
+            return $query->whereBetween('price', [$from, $to]);
         });
     }
 

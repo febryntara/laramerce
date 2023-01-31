@@ -15,8 +15,8 @@ class UserController extends Controller
     public function allUser()
     {
         $data = [
-            'title' => 'Users | Urban Adventure',
-            'users' => User::where('level', 'user')->latest()->get()
+           'title' => 'Users | Urban Adventure',
+           'users' => User::where('level', 'user')->latest()->filter(request(['search']))->paginate(10),
         ];
         return view('dashboard.admin.users.user-all', $data);
     }

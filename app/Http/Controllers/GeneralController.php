@@ -288,6 +288,7 @@ class GeneralController extends Controller
         ];
         return view('frontpage.wishlist.wishlist', $data);
     }
+
     public function thankyou()
     {
         $data = [
