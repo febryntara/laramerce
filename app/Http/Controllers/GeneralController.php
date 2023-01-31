@@ -288,4 +288,14 @@ class GeneralController extends Controller
         ];
         return view('frontpage.wishlist.wishlist', $data);
     }
+
+    public function sitemap()
+    {
+        $data = [
+            'title' => 'Site Map | Urban Adventure',
+            'categories' => Category::first()->get(),
+            'brands' => Brand::with(['products'])->latest()->get(),
+        ];
+        return view('frontpage.sitemap.sitemap', $data);
+    }
 }
