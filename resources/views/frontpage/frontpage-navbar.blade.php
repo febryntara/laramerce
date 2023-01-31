@@ -165,7 +165,7 @@
         <div class="container">
             <div class="header-bottom-inner">
                 <div class="row">
-                    <div class="header-bottom-left menu-vertical col-md-3 col-sm-2 col-xs-2">
+                    {{-- <div class="header-bottom-left menu-vertical col-md-3 col-sm-2 col-xs-2">
                         <div class="responsive so-megamenu megamenu-style-dev ">
                             <div class="so-vertical-menu ">
                                 <nav class="navbar-default">
@@ -218,10 +218,87 @@
                             </div>
                         </div>
 
+                    </div> --}}
+                    <div class="header-bottom-left col-md-6 col-sm-2 col-xs-2">
+                        <div class="megamenu-style-dev megamenu-dev">
+                            <div class="responsive so-megamenu megamenu-style-dev">
+                                <nav class="navbar-default">
+                                    <div class=" container-megamenu  horizontal open ">
+                                        <div class="navbar-header">
+                                            <button type="button" id="show-megamenu" data-toggle="collapse"
+                                                class="navbar-toggle">
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                        </div>
+
+                                        <div class="megamenu-wrapper">
+                                            <span id="remove-megamenu" class="fa fa-times"></span>
+                                            <div class="megamenu-pattern">
+                                                <div class="container-mega">
+                                                    <ul class="megamenu" data-transition="slide"
+                                                        data-animationtime="250">
+                                                        <li class="with-sub-menu hover">
+                                                            <p class="close-menu"></p>
+                                                            <a href="#" class="clearfix">
+                                                                <strong>Categories</strong>
+                                                                <b class="caret"></b>
+                                                            </a>
+                                                            <div class="sub-menu" style=" display: none;">
+                                                                <div class="content">
+                                                                    <div class="row">
+                                                                        <div class="menu">
+                                                                            <ul>
+                                                                                @foreach ($categories as $item)
+                                                                                    <li><a href="{{ route('category', ['category' => $item]) }}"
+                                                                                            class="main-menu"><strong>{{ $item->name }}</strong></a>
+                                                                                    </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="with-sub-menu hover">
+                                                            <p class="close-menu"></p>
+                                                            <a href="#" class="clearfix">
+                                                                <strong>Our Brands</strong>
+                                                                <b class="caret"></b>
+                                                            </a>
+                                                            <div class="sub-menu" style=" display: none;">
+                                                                <div class="content">
+                                                                    <div class="row">
+                                                                        <div class="menu">
+                                                                            <ul>
+                                                                                @foreach ($brands as $item)
+                                                                                    <li><a href="{{ route('brand', ['brand' => $item]) }}"
+                                                                                            class="main-menu"><strong>{{ $item->name }}</strong></a>
+                                                                                    </li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
-                    <div class="header-bottom-right col-md-9 col-sm-10 col-xs-10">
+                    <div class="header-bottom-right col-md-6 col-sm-10 col-xs-10">
+
                         <!-- Search -->
-                        <div class="header_search col-lg-6 col-md-8 col-sm-9 col-xs-4">
+                        <div class="header_search col-lg-3 col-md-8 col-sm-9 col-xs-4">
 
                             <button id="dropdownSearch" class="dropdown-toggle bt-search hidden"><i class="fa fa-search"
                                     aria-hidden="true"></i></button>
@@ -229,9 +306,9 @@
                                 <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
                                     <form method="GET" action="index.html">
                                         <div id="search0" class="search input-group form-group">
-                                            <input class="autosearch-input form-control" type="text" value=""
-                                                size="50" autocomplete="off" placeholder="Keyword here..."
-                                                name="search">
+                                            <input class="autosearch-input form-control" type="text"
+                                                value="" size="25" autocomplete="off"
+                                                placeholder="Keyword here..." name="search">
                                             <span class="input-group-btn">
                                                 <button type="submit" class="button-search btn btn-primary"
                                                     style="border-top-right-radius: 4px!important;
