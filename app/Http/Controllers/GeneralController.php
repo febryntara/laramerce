@@ -48,10 +48,10 @@ class GeneralController extends Controller
     }
     public function quickview(Product $product)
     {
+        // return dd($product->brand);
         $data = [
             'title' => 'Quickview | Urban Adventure',
             'product' => $product,
-            'brands' => Brand::with(['products'])->latest()->get(),
             // 'products' => Product::latest()->get()->random(Product::all()->count() > 6 ? 6 : Product::all()->count()),
             'categories' => Category::first()->get(),
         ];
