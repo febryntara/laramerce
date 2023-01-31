@@ -73,6 +73,7 @@ Route::get('/', function () {
 
 Route::controller(GeneralController::class)->group(function () {
     Route::get('/', 'main')->name('main');
+    Route::get('/thankyou', 'thankyou')->name('thankyou')->middleware('auth');
     Route::get('/cart', 'cart')->name('cart')->middleware('auth');
     // Route::get('/category', 'category')->name('category');
     Route::get('/category/{category:name}', 'category')->name('category');

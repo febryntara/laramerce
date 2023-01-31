@@ -288,4 +288,14 @@ class GeneralController extends Controller
         ];
         return view('frontpage.wishlist.wishlist', $data);
     }
+    public function thankyou()
+    {
+        $data = [
+            'title' => 'Thanks For Purchasing! | Urban Adventure',
+            'products' => Product::get(),
+            'categories' => Category::first()->get(),
+            'brands' => Brand::with(['products'])->latest()->get()
+        ];
+        return view('frontpage.thankyou.thankyou', $data);
+    }
 }
