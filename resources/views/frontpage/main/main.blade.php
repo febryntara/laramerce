@@ -1,6 +1,6 @@
 @extends('layouts.front-layout')
 @section('body')
-    <div class="common-home res layout-1">
+    <div class="res layout-1">
         <div id="wrapper" class="wrapper-fluid banners-effect-7">
             @include('frontpage.frontpage-navbar')
             <!-- Main Container  -->
