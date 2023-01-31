@@ -45,6 +45,17 @@ class Product extends Model
         });
     }
 
+    public function scopeRange($query, $from = 0, $to = 0)
+    {
+        $query->when($from == 0 && $to == 0, function ($query) {
+            return $query;
+        });
+
+        $query->when($from < $to, function ($query) use ($from, $to) {
+            return $query->whereBetween('price', [$from, $to]);
+        });
+    }
+
     public function scopeCategory($query, $category_id = null)
     {
         if (!is_null($category_id)) {
