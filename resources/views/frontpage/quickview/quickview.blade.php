@@ -94,25 +94,27 @@
                         <div class="left-content-product">
 
                             <div class="content-product-left class-honizol col-md-6 col-sm-12 col-xs-12">
-                                @foreach ($product->images->take(1) as $index => $img)
-                                    <div class="large-image">
-                                        <img itemprop="image" class="" src="{{ asset('storage/' . $img->src) }}"
-                                            alt="product_pic_{{ $loop->iteration }}">
-                                    </div>
-                                @endforeach
-                                {{-- <a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=I3Lo4ysUf80"><i
-                                        class="fa fa-youtube-play"></i></a> --}}
+                                <div class="large-image" style="width: 100%;">
+                                    <img itemprop="image" class="product-image-zoom"
+                                        style="width: 300px; height: 250px; object-fit: cover; object-position: center;"
+                                        src="{{ asset('storage/' . $product->images->first()->src) }}"
+                                        data-zoom-image="{{ asset('storage/' . $product->images->first()->src) }}"
+                                        title="{{ $product->name }}" alt="{{ $product->name }}">
+                                </div>
 
                                 <div id="thumb-slider" class="yt-content-slider full_slider owl-drag" data-rtl="yes"
                                     data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6"
                                     data-margin="10" data-items_column0="4" data-items_column1="3"
                                     data-items_column2="4" data-items_column3="1" data-items_column4="1"
                                     data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no"
-                                    data-hoverpause="yes">
-                                    @foreach ($product->images as $index => $img)
-                                        <a data-index="{{ $loop->iteration }}" class="img thumbnail ">
-                                            <img src="{{ asset('storage/' . $img->src) }}"
-                                                alt="product_pic_{{ $loop->iteration }}">
+                                    data-hoverpause="yes" style="width: 100%;">
+                                    @foreach ($product->images as $image)
+                                        <a data-index="{{ $loop->index }}" class="img thumbnail "
+                                            data-image="{{ asset('storage/' . $image->src) }}"
+                                            title="{{ $product->name }}">
+                                            <img src="{{ asset('storage/' . $image->src) }}"
+                                                title="{{ $product->name }}" alt="{{ $product->name }}"
+                                                style="width: 250px; height: 50px; object-fit: cover; object-position: center;">
                                         </a>
                                     @endforeach
                                 </div>
@@ -158,7 +160,8 @@
                                 <div class="product-box-desc">
                                     <div class="inner-box-desc">
 
-                                        <div class="brand"><span>Brand:</span><a href="#"> SamSung</a> </div>
+                                        <div class="brand"><span>Brand:</span><a href="#">
+                                                {{ $product->brand->name }}</a> </div>
                                         <div class="model"><span>Product Code:</span>{{ $product->product_code }}
                                         </div>
                                         <div class="stock"><span>Availability:</span> <i
