@@ -56,6 +56,13 @@ class Product extends Model
         });
     }
 
+    public function scopeRegular($query)
+    {
+        return $query->whereNotIn('product_code', BestDeal::products()->get()->map(function ($item) {
+            return $item->product_code;
+        }));
+    }
+
     public function scopeCategory($query, $category_id = null)
     {
         if (!is_null($category_id)) {
@@ -154,6 +161,14 @@ class Product extends Model
             foreach (Cart::where('product_id', $model->id)->get() as $cart) {
                 $cart->delete();
             }
+
+            foreach (OrderDetail::where('product_id', $model->product_code)->get() as $key => $product) {
+                $product->update([
+                    'product_id' => null
+                ]);
+            }
+
+            BestDeal::where('product_code', $model->product_code)->delete();
         });
     }
 }
