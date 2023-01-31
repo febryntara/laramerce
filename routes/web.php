@@ -90,7 +90,7 @@ Route::controller(GeneralController::class)->group(function () {
 });
 
 Route::get('/test', function () {
-    return Product::popular();
+    return Product::range()->get();
 });
 
 Route::controller(ViewTemplateController::class)->group(function () {
@@ -115,6 +115,7 @@ Route::middleware('auth')->controller(OrderController::class)->group(function ()
 });
 
 Route::middleware(['auth', 'admin'])->controller(ProductController::class)->group(function () {
+    // products
     Route::get('/dashboard/products', 'allProduct')->name('manage_product.all');
     Route::get('/dashboard/product/create', 'createProduct')->name('manage_product.create');
     Route::post('/dashboard/product/create', 'storeProduct')->name('manage_product.store');
@@ -122,6 +123,12 @@ Route::middleware(['auth', 'admin'])->controller(ProductController::class)->grou
     Route::get('/dashboard/product/{product:product_code}/update', 'updateProduct')->name('manage_product.update');
     Route::patch('/dashboard/product/{product:product_code}', 'patchProduct')->name('manage_product.patch');
     Route::delete('/dashboard/product/{product:product_code}', 'deleteProduct')->name('manage_product.delete');
+
+    // best deals
+    Route::get("/dashboard/best-deals", 'allBestDeal')->name("manage_best_deal.all");
+    Route::get("/dashboard/best-deals/create", 'createBestDeal')->name("manage_best_deal.create");
+    Route::post("/dashboard/best-deals/create", 'storeBestDeal')->name("manage_best_deal.store");
+    Route::delete("/dashboard/best-deals/{product:product_code}/delete", 'deleteBestDeal')->name("manage_best_deal.delete");
 });
 
 Route::controller(UserController::class)->group(function () {

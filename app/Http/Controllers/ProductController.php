@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BestDeal;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -15,7 +16,7 @@ class ProductController extends Controller
     {
         $data = [
             'title' => 'Products | Urban Adventure',
-            'products' => Product::latest()->filter(request(['search', 'category']))->get(),
+            'products' => Product::latest()->filter(request(['search', 'category']))->paginate(10),
             'categories' => Category::latest()->get(),
         ];
         return view('dashboard.admin.products.product-all', $data);
@@ -136,5 +137,57 @@ class ProductController extends Controller
             return redirect()->route('manage_product.all')->with('success', 'This Product Successfully Deleted');
         }
         return redirect()->back()->with('error', 'Error Occured, Please Try Again!');
+    }
+
+    // best deal
+    public function allBestDeal()
+    {
+        $data = [
+            'title' => 'Best Deals | Urban Adventure',
+            'products' => BestDeal::products()->filter(request(['search', 'category']))->get(),
+            'categories' => Category::latest()->get(),
+        ];
+
+        return $data;
+    }
+
+    public function createBestDeal()
+    {
+        $data = [
+            'title' => 'Add Best Deals | Urban Adventure',
+            'products' => Product::regular()->get(),
+        ];
+
+        return $data;
+    }
+
+    public function storeBestDeal(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'product_code' => 'required|string'
+        ]);
+
+        if ($validator->fails() || BestDeal::where('product_code', $request->product_code)->exists()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with('error', "Something Error!");
+        }
+
+        $best_deal = BestDeal::create([
+            'product_code' => $request->product_code
+        ]);
+
+        if ($best_deal) {
+            return redirect()->route('manage_best_deal.all')->with('success', $best_deal->product->name . " Added To Best Deals");
+        }
+        return redirect()->back()->withInput()->with('error', $best_deal->product->name . " Can't Add To Best Deals");
+    }
+
+    public function deleteBestDeal(BestDeal $product)
+    {
+        $best_deal = $product->delete();
+
+        if ($best_deal) {
+            return redirect()->route('manage_best_deal.all')->with('success', $product->name . " Removed From Best Deals");
+        }
+        return redirect()->back()->withInput()->with('error', $product->name . " Can't Remove From Best Deals");
     }
 }
