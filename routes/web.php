@@ -91,7 +91,7 @@ Route::controller(GeneralController::class)->group(function () {
 });
 
 Route::get('/test', function () {
-    return Product::popular();
+    return Product::range()->get();
 });
 
 Route::controller(ViewTemplateController::class)->group(function () {
