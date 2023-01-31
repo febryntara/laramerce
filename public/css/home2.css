@@ -2587,7 +2587,7 @@ div.required .control-label:before {
 }
 .container-megamenu.horizontal ul.megamenu > li.active > a,
 .container-megamenu.horizontal ul.megamenu > li.active_menu > a {
-    color: #00a2e9;
+    color: #fff !important;
 }
 
 .container-megamenu.horizontal {
