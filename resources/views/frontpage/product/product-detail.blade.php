@@ -218,7 +218,7 @@
                                             <div class="form-group box-info-product">
                                                 <div class="option quantity">
                                                     <div class="input-group d-flex quantity-control" unselectable="on"
-                                                        style="-webkit-user-select: none; width: 10%;">
+                                                        style="-webkit-user-select: none; width: 30%;">
                                                         <input class="form-control" style="padding: 0 8px;"
                                                             type="text" name="quantity" value="1"
                                                             id="product_amount_to_order">
