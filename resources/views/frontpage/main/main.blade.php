@@ -34,7 +34,7 @@
                     </div>
                     <div class="main-content">
                         <div class="container">
-                            <div class="block block_0">
+                            {{-- <div class="block block_0">
                                 <div class="block-categories module">
                                     <h3 class="modtitle"><span>Featured Brands</span></h3>
                                     <div class="yt-content-slider cate-content" data-rtl="yes" data-autoplay="no"
@@ -64,12 +64,12 @@
                                         @endforelse
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="block block_1">
                                 <div class="row products-listing grid">
                                     <div class="column small-11 small-centered product-layout col-md-9">
                                         <div class="custom_deals_featured">
-                                            <h2 class="modtitle font-ct"><span>Today Deals</span></h2>
+                                            <h2 class="modtitle font-ct"><span>Best Deals</span></h2>
                                             <div class="modcontent">
                                                 <div class="slider slider-img slider-single">
                                                     @forelse ($products as $item)
@@ -83,7 +83,7 @@
                                                                                 target="_self" title="{{ $item->name }}">
                                                                                 <img src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
                                                                                     class="img-1 img-responsive img-mobile"
-                                                                                    style="width: 400px; height: 400px; object-fit: cover; object-position: center;"
+                                                                                    style="width: 400px; height: 250px; object-fit: cover; object-position: center;"
                                                                                     alt="{{ $item->name }}">
                                                                             </a>
                                                                         </div>
@@ -116,7 +116,7 @@
                                                                                         class="fa fa-star-o fa-stack-2x"></i></span>
                                                                             </div>
                                                                             <p class="des_deal">
-                                                                                {!! Str::limit(html_entity_decode(strip_tags($item->description)), 100, '...') !!}</p>
+                                                                                {!! Str::words(html_entity_decode(strip_tags($item->description)), 30, '...') !!}</p>
                                                                             <p class="price font-ct">
                                                                                 <span
                                                                                     class="price-new">{{ ch_currency($item->price) }}</span>
@@ -228,7 +228,7 @@
                                                         data-lazyload="yes" data-loop="no" data-buttonpage="top">
                                                         @foreach ($products->take(2) as $item)
                                                             <div class="item">
-                                                                @foreach ($products->random($products->count() > 5 ? 5 : $products->count()) as $ip => $product)
+                                                                @foreach ($products->random($products->count() > 4 ? 4 : $products->count()) as $ip => $product)
                                                                     @if ($products[$loop->index + 1])
                                                                         <div class="item-wrap style1">
                                                                             <div class="item-wrap-inner">
@@ -972,7 +972,7 @@
         </div>
     </div>
 </div> --}}
-            {{-- @include('frontpage.frontpage-footer') --}}
+            @include('frontpage.frontpage-footer')
         </div>
     </div>
 @endsection

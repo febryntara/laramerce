@@ -911,7 +911,7 @@
             </div>
             <!--Middle Part End-->
             <!-- //Main Container -->
-            {{-- @include('frontpage.frontpage-footer') --}}
+            @include('frontpage.frontpage-footer')
         </div>
     </div>
 @endsection
