@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -159,4 +160,12 @@ Route::controller(BrandController::class)->group(function () {
 
 Route::controller(CartController::class)->group(function () {
     Route::get('/dashboard/carts', 'allCart')->name('manage_cart.all')->middleware(['auth', 'admin']);
+});
+
+Route::controller(BannerController::class)->group(function () {
+    Route::get('/dashboard/banners', 'allBanner')->name('manage_banner.all')->middleware(['auth', 'admin']);
+    Route::get('/dashboard/banner/create', 'createBanner')->name('manage_banner.create')->middleware(['auth', 'admin']);
+    Route::post('/dashboard/banner/create', 'storeBanner')->name('manage_banner.store')->middleware(['auth', 'admin']);
+    Route::get('/dashboard/banner/{banner:id}/detail', 'detailBanner')->name('manage_banner.detail')->middleware(['auth', 'admin']);
+    Route::delete('/dashboard/banner/{banner:id}/delete', 'deleteBanner')->name('manage_banner.delete')->middleware(['auth', 'admin']);
 });
