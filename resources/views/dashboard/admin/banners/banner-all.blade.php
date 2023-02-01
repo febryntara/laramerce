@@ -1,15 +1,15 @@
 @extends('layouts.dashboard-layout')
 @section('dashboard-content')
     <h2 class="intro-y text-lg font-medium mt-10">
-        All Brand
+        All banner
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('manage_brand.create') }}" class="btn btn-primary shadow-md mr-2">Add New Banner</a>
+            <a href="{{ route('manage_banner.create') }}" class="btn btn-primary shadow-md mr-2">Add New Banner</a>
             <div class="hidden md:block mx-auto text-slate-500"></div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                   <form action="{{ route('manage_brand.all') }}" method="get" id="form-search-brand">
+                   <form action="{{ route('manage_banner.all') }}" method="get" id="form-search-banner">
                         <div class="flex justify-between align-center">
                             <input type="text" name="search" class="form-control w-56 box pr-10" style="border-top-right-radius: 0!important;
                              border-bottom-right-radius: 0!important;" placeholder="Search...">
@@ -33,26 +33,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($brand as $index => $item)
+                    @forelse ($banner as $index => $item)
                         <tr class="intro-x">
                             <td class="text-center w-40"> {{ $loop->iteration }} </td>
                             <td class="text-center">{{ $item->name }}
                             </td>
-                            <td class="text-center">{!! $item->brand_code !!}</td>
+                            <td class="text-center">{!! $item->banner_code !!}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
                                     <a class="flex items-center mr-3"
-                                        href="{{ route('manage_brand.detail', ['brand' => $item]) }}"> <i data-lucide="eye"
-                                            class="w-4 h-4 mr-1"></i> Detail </a>
-                                    <a class="flex items-center mr-3"
-                                        href="{{ route('manage_brand.update', ['brand' => $item]) }}"> <i
+                                        href="{{ route('manage_banner.update', ['banner' => $item]) }}"> <i
                                             data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                    <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
+                                    <!-- <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
                                         data-tw-target="#delete-confirmation-modal"
                                         onclick="deleteModalHandler({{ $index }})"> <i data-lucide="trash-2"
                                             class="w-4 h-4 mr-1"></i> Delete </a>
                                     <input type="hidden" id="delete_route_{{ $index }}"
-                                        value="{{ route('manage_brand.delete', ['brand' => $item]) }}">
+                                        value="{{ route('manage_banner.delete', ['banner' => $item]) }}"> -->
                                 </div>
                             </td>
                         </tr>
@@ -70,7 +67,7 @@
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
-                {{ $brand->links('fragments.pagination') }}
+                {{ $banner->links('fragments.pagination') }}
             </nav>
         </div>
         <!-- END: Pagination -->
@@ -105,5 +102,5 @@
     </div>
 @endsection
 @section('script')
-    <script src="{{ asset('dist/js/view/manage-brand/brand.js') }}"></script>
+    <script src="{{ asset('dist/js/view/manage-banner/banner.js') }}"></script>
 @endsection

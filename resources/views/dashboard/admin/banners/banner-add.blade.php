@@ -5,7 +5,7 @@
         <!-- END: Top Bar -->
         <div class="intro-y flex items-center mt-8">
             <h2 class="text-lg font-medium mr-auto">
-                Add Brand
+                Add Banner
             </h2>
         </div>
         <div class="grid grid-cols-12 gap-6 mt-5">
@@ -15,27 +15,12 @@
                     @csrf
                     <div class="intro-y box p-5">
                         <div class="mt-3">
-                            <label for="name" class="form-label">Brand Name</label>
+                            <label for="name" class="form-label">Name</label>
                             @error('name')
                                 <small class="text-xs text-red-500 ml-1">{{ '*' . $message }}</small>
                             @enderror
-                            <input type="text" name="name" id="brand_name" class="form-control"
-                                placeholder="Input Brand Name" value="{{ old('name') ?? '' }}">
-                        </div>
-                        <div class="mt-3">
-                            <label for="name" class="form-label">Brand Code</label>
-                            @error('brand_code')
-                                <small class="text-xs text-red-500 ml-1">{{ '*' . $message }}</small>
-                            @enderror
-                            <input type="text" name="brand_code" id="brand_code" class="form-control"
-                                placeholder="Input Brand Code" value="{{ old('brand_code') ?? '' }}">
-                        </div>
-                        <div class="mt-3">
-                            <label for="description" class="form-label">Description</label>
-                            @error('description')
-                                <small class="text-xs text-red-500 ml-1">{{ '*' . $message }}</small>
-                            @enderror
-                            <textarea id="description" name="description" placeholder="Input Brand Description">{{ old('description') ?? '' }}</textarea>
+                            <input type="text" name="name" id="banner_name" class="form-control"
+                                placeholder="Input Banner Name" value="">
                         </div>
                         <div class="upload__box mt-3">
                             @error('image')
