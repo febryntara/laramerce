@@ -34,7 +34,7 @@
                     </div>
                     <div class="main-content">
                         <div class="container">
-                            <div class="block block_0">
+                            {{-- <div class="block block_0">
                                 <div class="block-categories module">
                                     <h3 class="modtitle"><span>Featured Brands</span></h3>
                                     <div class="yt-content-slider cate-content" data-rtl="yes" data-autoplay="no"
@@ -64,15 +64,15 @@
                                         @endforelse
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="block block_1">
                                 <div class="row products-listing grid">
                                     <div class="column small-11 small-centered product-layout col-md-9">
                                         <div class="custom_deals_featured">
-                                            <h2 class="modtitle font-ct"><span>Today Deals</span></h2>
+                                            <h2 class="modtitle font-ct"><span>Best Deals</span></h2>
                                             <div class="modcontent">
                                                 <div class="slider slider-img slider-single">
-                                                    @forelse ($products as $item)
+                                                    @forelse ($best_deals as $item)
                                                         <div class="slick-slide" data-slick-index="{{ $loop->iteration }}">
                                                             <div class="product-item">
                                                                 <div class="product-item-container">
@@ -83,14 +83,14 @@
                                                                                 target="_self" title="{{ $item->name }}">
                                                                                 <img src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
                                                                                     class="img-1 img-responsive img-mobile"
-                                                                                    style="width: 400px; height: 400px; object-fit: cover; object-position: center;"
+                                                                                    style="width: 400px; height: 250px; object-fit: cover; object-position: center;"
                                                                                     alt="{{ $item->name }}">
                                                                             </a>
                                                                         </div>
-                                                                        <div class="box-label">
+                                                                        {{-- <div class="box-label">
                                                                             <span
                                                                                 class="label-product label-sale">-20%</span>
-                                                                        </div>
+                                                                        </div> --}}
                                                                     </div>
                                                                     <div class="right-block">
                                                                         <div class="caption">
@@ -116,7 +116,7 @@
                                                                                         class="fa fa-star-o fa-stack-2x"></i></span>
                                                                             </div>
                                                                             <p class="des_deal">
-                                                                                {!! Str::limit(html_entity_decode(strip_tags($item->description)), 100, '...') !!}</p>
+                                                                                {!! Str::words(html_entity_decode(strip_tags($item->description)), 30, '...') !!}</p>
                                                                             <p class="price font-ct">
                                                                                 <span
                                                                                     class="price-new">{{ ch_currency($item->price) }}</span>
@@ -191,7 +191,7 @@
 
                                                 </div>
                                                 <div class="slider slider-item slider-nav">
-                                                    @foreach ($products as $item)
+                                                    @foreach ($best_deals as $item)
                                                         <div class="item-slick"
                                                             data-slick-index="{{ $loop->iteration }}">
                                                             <div class="item-img" style="width: 100%;">
@@ -199,9 +199,9 @@
                                                                     class="img-1 img-responsive img-mobile"
                                                                     alt="{{ $item->name }}"
                                                                     style="width: 100px; height: 100px; object-fit: cover; object-position: center;">
-                                                                <div class="box-label">
+                                                                {{-- <div class="box-label">
                                                                     <span class="label-product label-sale">-20%</span>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
                                                             <span
                                                                 class="title">{{ Str::words($item->name, 2, '...') }}</span>
@@ -224,68 +224,68 @@
                                                         data-pagination="no" data-autoplay="no" data-delay="4"
                                                         data-speed="0.6" data-margin="0" data-items_column0="1"
                                                         data-items_column1="1" data-items_column2="1"
-                                                        data-items_column3="1" data-items_column4="1" data-arrows="yes"
-                                                        data-lazyload="yes" data-loop="no" data-buttonpage="top">
-                                                        @foreach ($products->take(2) as $item)
-                                                            <div class="item">
-                                                                @foreach ($products->random($products->count() > 5 ? 5 : $products->count()) as $ip => $product)
-                                                                    @if ($products[$loop->index + 1])
-                                                                        <div class="item-wrap style1">
-                                                                            <div class="item-wrap-inner">
-                                                                                <div class="media-left">
-                                                                                    <div class="item-image">
-                                                                                        <div class="item-img-info">
-                                                                                            <a href="{{ route('product-detail', ['product' => $product]) }}"
-                                                                                                target="_self"
-                                                                                                title="{{ $product->name }} "
-                                                                                                style="width: 100%;">
-                                                                                                <img src="{{ asset($product->images->count() ? 'storage/' . $product->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
-                                                                                                    alt="{{ $product->name }}"
-                                                                                                    class="img-mobile"
-                                                                                                    style="width: 90px; height: 90px; object-fit: cover; object-position: center;">
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </div>
+                                                        data-items_column3="1" data-items_column4="1" data-arrows="no"
+                                                        data-lazyload="yes" data-loop="no">
+                                                        {{-- @foreach ($best_sellers->take(2) as $item) --}}
+                                                        <div class="item">
+                                                            @foreach ($best_sellers->random($best_sellers->count() > 4 ? 4 : $best_sellers->count()) as $ip => $product)
+                                                                {{-- @if (isset($best_sellers[$loop->index + 1])) --}}
+                                                                <div class="item-wrap style1">
+                                                                    <div class="item-wrap-inner">
+                                                                        <div class="media-left">
+                                                                            <div class="item-image">
+                                                                                <div class="item-img-info">
+                                                                                    <a href="{{ route('product-detail', ['product' => $product]) }}"
+                                                                                        target="_self"
+                                                                                        title="{{ $product->name }} "
+                                                                                        style="width: 100%;">
+                                                                                        <img src="{{ asset($product->images->count() ? 'storage/' . $product->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
+                                                                                            alt="{{ $product->name }}"
+                                                                                            class="img-mobile"
+                                                                                            style="width: 90px; height: 90px; object-fit: cover; object-position: center;">
+                                                                                    </a>
                                                                                 </div>
-                                                                                <div class="media-body">
-                                                                                    <div class="item-info">
-                                                                                        <div class="item-title">
-                                                                                            <a href="{{ route('product-detail', ['product' => $product]) }}"
-                                                                                                target="_self"
-                                                                                                title="Mandouille short">{{ Str::words($product->name, 3, '...') }}</a>
-                                                                                        </div>
-                                                                                        <div class="rating">
-                                                                                            <span class="fa fa-stack"><i
-                                                                                                    class="fa fa-star fa-stack-2x"></i></span>
-                                                                                            <span class="fa fa-stack"><i
-                                                                                                    class="fa fa-star fa-stack-2x"></i></span>
-                                                                                            <span class="fa fa-stack"><i
-                                                                                                    class="fa fa-star fa-stack-2x"></i></span>
-                                                                                            <span class="fa fa-stack"><i
-                                                                                                    class="fa fa-star fa-stack-2x"></i></span>
-                                                                                            <span class="fa fa-stack"><i
-                                                                                                    class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                                        </div>
-                                                                                        <div class="content_price price">
-                                                                                            <span
-                                                                                                class="price-new product-price">{{ ch_currency($product->price) }}
-                                                                                            </span>&nbsp;&nbsp;
-
-                                                                                            {{-- <span class="price-old">$76.00
-                                                                                            </span>&nbsp; --}}
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!-- End item-info -->
-                                                                                <!-- End item-wrap-inner -->
                                                                             </div>
                                                                         </div>
-                                                                    @endif
-                                                                @endforeach
-                                                                <!-- End item-wrap -->
-                                                            </div>
-                                                        @endforeach
+                                                                        <div class="media-body">
+                                                                            <div class="item-info">
+                                                                                <div class="item-title">
+                                                                                    <a href="{{ route('product-detail', ['product' => $product]) }}"
+                                                                                        target="_self"
+                                                                                        title="Mandouille short">{{ Str::words($product->name, 3, '...') }}</a>
+                                                                                </div>
+                                                                                <div class="rating">
+                                                                                    <span class="fa fa-stack"><i
+                                                                                            class="fa fa-star fa-stack-2x"></i></span>
+                                                                                    <span class="fa fa-stack"><i
+                                                                                            class="fa fa-star fa-stack-2x"></i></span>
+                                                                                    <span class="fa fa-stack"><i
+                                                                                            class="fa fa-star fa-stack-2x"></i></span>
+                                                                                    <span class="fa fa-stack"><i
+                                                                                            class="fa fa-star fa-stack-2x"></i></span>
+                                                                                    <span class="fa fa-stack"><i
+                                                                                            class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                                </div>
+                                                                                <div class="content_price price">
+                                                                                    <span
+                                                                                        class="price-new product-price">{{ ch_currency($product->price) }}
+                                                                                    </span>&nbsp;&nbsp;
+
+                                                                                    {{-- <span class="price-old">$76.00
+                                                                                            </span>&nbsp; --}}
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End item-info -->
+                                                                        <!-- End item-wrap-inner -->
+                                                                    </div>
+                                                                </div>
+                                                                {{-- @endif --}}
+                                                            @endforeach
+                                                            <!-- End item-wrap -->
+                                                        </div>
+                                                        {{-- @endforeach --}}
                                                         {{-- <div class="item ">
                                                             <div class="item-wrap style1">
                                                                 <div class="item-wrap-inner">
@@ -972,7 +972,7 @@
         </div>
     </div>
 </div> --}}
-            {{-- @include('frontpage.frontpage-footer') --}}
+            @include('frontpage.frontpage-footer')
         </div>
     </div>
 @endsection

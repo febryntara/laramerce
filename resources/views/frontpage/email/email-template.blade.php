@@ -31,8 +31,6 @@
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
         }
-
-        
     </style>
     <style type="text/css">
         @media only screen and (max-width:480px) {
@@ -108,7 +106,7 @@
                                         <tr>
                                             <td
                                                 style='direction:ltr;font-size:0px;padding:20px 0px 30px 0px;text-align:center;vertical-align:top;'>
-                                                
+
                                                 <div class='dys-column-per-100 outlook-group-fix'
                                                     style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
                                                     <table border='0' cellpadding='0' cellspacing='0'
@@ -177,16 +175,30 @@
                 </tr>
             </tbody>
         </table>
-        <table style="font-family:'Oxygen', 'Helvetica Neue', helvetica, sans-serif;max-width:670px;margin:10px auto 10px;background-color:#fff;padding:10px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);-moz-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);">
+        <table
+            style="font-family:'Oxygen', 'Helvetica Neue', helvetica, sans-serif;max-width:670px;margin:10px auto 10px;background-color:#fff;padding:10px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);-moz-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);">
             <tbody>
                 <tr>
                     <td style="height:35px;"></td>
                 </tr>
                 <tr>
                     <td colspan="2" style="border: solid 1px #ddd; padding:10px 20px;">
-                    <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:150px">Order status</span><b style="color:green;font-weight:normal;margin:0">Success</b></p>
-                    <p style="font-size:14px;margin:0 0 6px 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Transaction ID</span> abcd1234567890</p>
-                    <p style="font-size:14px;margin:0 0 0 0;"><span style="font-weight:bold;display:inline-block;min-width:146px">Order amount</span> Rs. 6000.00</p>
+                        <p style="font-size:14px;margin:0 0 6px 0;"><span
+                                style="font-weight:bold;display:inline-block;min-width:150px">Order status</span>
+                            @if ($order->transaction_status == 'settlement')
+                                <b style="color:green;font-weight:normal;margin:0">Success</b>
+                            @elseif ($order->transaction_status == 'pending')
+                                <b style="color:black;font-weight:normal;margin:0">Unpaid</b>
+                            @else
+                                <b style="color:Red;font-weight:normal;margin:0">Failed</b>
+                            @endif
+                        </p>
+                        <p style="font-size:14px;margin:0 0 6px 0;"><span
+                                style="font-weight:bold;display:inline-block;min-width:146px">Transaction ID</span>
+                            {{ $order->transaction_id }}</p>
+                        <p style="font-size:14px;margin:0 0 0 0;"><span
+                                style="font-weight:bold;display:inline-block;min-width:146px">Order amount</span>
+                            {{ ch_currency($order->gross_amount) }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -194,15 +206,23 @@
                 </tr>
                 <tr>
                     <td style="width:50%;padding:20px;vertical-align:top">
-                    <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px">Name</span> Palash Basak</p>
-                    <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Email</span> palash@gmail.com</p>
-                    <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Phone</span> +91-1234567890</p>
-                    <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">ID No.</span> 2556-1259-9842</p>
+                        <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span
+                                style="display:block;font-weight:bold;font-size:13px">Name</span> {{ $order->name }}
+                        </p>
+                        <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span
+                                style="display:block;font-weight:bold;font-size:13px;">Email</span> {{ $order->email }}
+                        </p>
+                        <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span
+                                style="display:block;font-weight:bold;font-size:13px;">Phone</span> {{ $order->phone }}
+                        </p>
                     </td>
                     <td style="width:50%;padding:20px;vertical-align:top">
-                    <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Address</span> Khudiram Pally, Malbazar, West Bengal, India, 735221</p>
-                    <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Number of gusets</span> 2</p>
-                    <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span style="display:block;font-weight:bold;font-size:13px;">Duration of your vacation</span> 25/04/2017 to 28/04/2017 (3 Days)</p>
+                        <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span
+                                style="display:block;font-weight:bold;font-size:13px;">Address</span>
+                            {{ $order->address }}</p>
+                        <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span
+                                style="display:block;font-weight:bold;font-size:13px;">Order Created</span>
+                            {{ $order->created_at }}</p>
                     </td>
                 </tr>
             </tbody>
@@ -218,7 +238,8 @@
                                 <table border='0' cellpadding='0' cellspacing='0' role='presentation'
                                     style='vertical-align:top;' width='100%'>
                                     <tr>
-                                        <td align='left' style='font-size:0px;padding:10px 25px;word-break:break-word;'>
+                                        <td align='left'
+                                            style='font-size:0px;padding:10px 25px;word-break:break-word;'>
                                             <table border='0' cellpadding='0' cellspacing='0'
                                                 style="cellpadding:0;cellspacing:0;color:#777777;font-family:'Oxygen', 'Helvetica Neue', helvetica, sans-serif;font-size:14px;line-height:21px;table-layout:auto;width:100%;"
                                                 width='100%'>
@@ -240,7 +261,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td align='left' style='font-size:0px;padding:10px 25px;word-break:break-word;'>
+                                        <td align='left'
+                                            style='font-size:0px;padding:10px 25px;word-break:break-word;'>
                                             <table border='0' cellpadding='0' cellspacing='0'
                                                 style='cellpadding:0;cellspacing:0;color:#000000;font-family:Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;'
                                                 width='100%'>
@@ -278,7 +300,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td align='left' style='font-size:0px;padding:10px 25px;word-break:break-word;'>
+                                        <td align='left'
+                                            style='font-size:0px;padding:10px 25px;word-break:break-word;'>
                                             <table border='0' cellpadding='0' cellspacing='0'
                                                 style='cellpadding:0;cellspacing:0;color:#000000;font-family:Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;'
                                                 width='100%'>
@@ -340,8 +363,8 @@
                 <tr>
                     <td>
                         <div style='margin:0px auto;max-width:600px;'>
-                            <table align='center' border='0' cellpadding='0' cellspacing='0' role='presentation'
-                                style='width:100%;'>
+                            <table align='center' border='0' cellpadding='0' cellspacing='0'
+                                role='presentation' style='width:100%;'>
                                 <tbody>
                                     <tr>
                                         <td

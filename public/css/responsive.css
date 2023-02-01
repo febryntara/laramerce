@@ -2980,7 +2980,7 @@
         ul.megamenu
         > li
         > a:hover {
-        color: #00a2e9 !important;
+        color: #fff !important;
     }
     .megamenu-style-dev
         .navbar-default

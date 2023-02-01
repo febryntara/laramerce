@@ -16,12 +16,16 @@ class GeneralController extends Controller
 {
     public function main()
     {
+        $products = Product::all();
         $data = [
             'title' => 'Homepage | Urban Adventure',
-            'products' => Product::get(),
+            'products' => $products,
+            'best_deals' => Product::bestDeal($products)->all(),
+            'best_sellers' => Product::bestSeller($products),
             'categories' => Category::first()->get(),
             'brands' => Brand::with(['products'])->latest()->get()
         ];
+
         return view('frontpage.main.main', $data);
     }
     public function category(Category $category)

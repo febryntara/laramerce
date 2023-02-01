@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Mail\OrderMail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
@@ -30,11 +31,17 @@ class Order extends Model
 
     public function scopeFilter($query, array $filters)
     {
+        $query->when($filters['period'] ?? false, function ($query, $period) {
+            $periods = explode("-", $period);
+            $year = $periods[0];
+            $month = $periods[1];
+            return $query->whereMonth('created_at', $month)->whereYear('created_at',$year);
+        });
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%')->orWhereHas('details', function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')->orWhere('product_id', '=', $search);
-            })->orWhereHas('user', function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')->orWhere('phone', 'like', '%' . $search . '%');
+            return $query->where('name', 'like', '%' . $search . '%')->WhereHas('details', function ($query) use ($search) {
+                $query->orWhere('name', 'like', '%' . $search . '%')->orWhere('product_id', '=', $search);
+            })->WhereHas('user', function ($query) use ($search) {
+                $query->orWhere('name', 'like', '%' . $search . '%')->orWhere('phone', 'like', '%' . $search . '%');
             });
         });
     }
