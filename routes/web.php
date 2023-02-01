@@ -166,5 +166,5 @@ Route::controller(BannerController::class)->group(function () {
     Route::get('/dashboard/banner/create', 'createBanner')->name('manage_banner.create')->middleware(['auth', 'admin']);
     Route::post('/dashboard/banner/create', 'storeBanner')->name('manage_banner.store')->middleware(['auth', 'admin']);
     Route::get('/dashboard/banner/{banner:id}/detail', 'detailBanner')->name('manage_banner.detail')->middleware(['auth', 'admin']);
-    Route::delete('/dashboard/banner/{banner:id}/delete', 'deleteBanner')->name('manage_banner.create')->middleware(['auth', 'admin']);
+    Route::delete('/dashboard/banner/{banner:id}/delete', 'deleteBanner')->name('manage_banner.delete')->middleware(['auth', 'admin']);
 });

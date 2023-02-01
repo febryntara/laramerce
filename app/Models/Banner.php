@@ -29,12 +29,12 @@ class Banner extends Model
                 'src' => 'images/' . $uploaded['src']->basename,
                 'alt' => Image::getAlt($image),
                 'imageable_id' => $banner->id,
-                'imageable_type' => "App\Models\Brand"
+                'imageable_type' => "App\Models\Banner"
             ]);
         });
 
         self::deleting(function ($banner) {
-            $image = $banner->logo;
+            $image = $banner->image;
             $image->delete();
         });
     }

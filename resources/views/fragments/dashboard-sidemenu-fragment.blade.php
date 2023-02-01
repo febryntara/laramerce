@@ -50,6 +50,12 @@
                 <div class="side-menu__title"> Bestdeal </div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('manage_banner.all') }}" class="side-menu {{ Request::is('dashboard/banner') ? 'side-menu--active' : '' }}">
+                <div class="side-menu__icon"><i data-lucide="image"></i></div>
+                <div class="side-menu__title"> Banner </div>
+            </a>
+        </li>
         @endcan
         <li>
             <a href="{{ route('manage_order.all') }}" class="side-menu {{ Request::is('dashboard/orders') ? 'side-menu--active' : '' }}">
