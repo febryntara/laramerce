@@ -11,7 +11,7 @@
                     <input type="month" name="period" class="border-gray-300 rounded-md drop-shadow-sm w-40" style="border-top-right-radius: 0!important;
                     border-bottom-right-radius: 0!important;" placeholder="YYYY-MM" value="{{request('period')}}">
                     <button type="submit" class="bg-[#2d2d2d] mr-2" style="border-top-right-radius: 0.25rem!important;
-                                    border-bottom-right-radius: 0.25rem!important;"><i class="w-4 h-4 mx-3 text-white rounded-sm"  data-lucide="search"></i>
+                                    border-bottom-right-radius: 0.25rem!important;"><i class="w-4 h-4 mx-3 text-white rounded-sm"  data-lucide="filter"></i>
                     </button>
                 </div>
             </form>
