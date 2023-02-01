@@ -8,7 +8,7 @@
                 <div id="content">
                     <div class="slider-full">
                         <div class="module sohomepage-slider ">
-                            <div class="yt-content-slider" data-rtl="yes" data-autoplay="no" data-autoheight="no"
+                            <div class="yt-content-slider" data-rtl="yes" data-autoplay="yes" data-autoheight="no"
                                 data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1"
                                 data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1"
                                 data-arrows="no" data-pagination="yes" data-lazyload="yes" data-loop="no"
@@ -172,16 +172,6 @@
                                                                                 <span class="price-new">$0</span>
                                                                                 {{-- <span class="price-old">$122.00</span> --}}
                                                                             </p>
-                                                                            <!--countdown box-->
-                                                                            <div class="item-time-w">
-                                                                                <div class="item-time">
-                                                                                    <div class="item-timer">
-                                                                                        <div class="defaultCountdown-30">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!--end countdown box-->
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -192,8 +182,8 @@
                                                 </div>
                                                 <div class="slider slider-item slider-nav">
                                                     @foreach ($best_deals as $item)
-                                                        <div class="item-slick"
-                                                            data-slick-index="{{ $loop->iteration }}">
+                                                        <div class="item-slick" data-slick-index="{{ $loop->iteration }}"
+                                                            style="margin: 0 5px;">
                                                             <div class="item-img" style="width: 100%;">
                                                                 <img src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
                                                                     class="img-1 img-responsive img-mobile"
