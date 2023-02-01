@@ -2587,7 +2587,7 @@ div.required .control-label:before {
 }
 .container-megamenu.horizontal ul.megamenu > li.active > a,
 .container-megamenu.horizontal ul.megamenu > li.active_menu > a {
-    color: #fff !important;
+    color: #00a2e9;
 }
 
 .container-megamenu.horizontal {
@@ -12533,9 +12533,8 @@ footer.typefooter-10 .footer-block .links-footer li a:hover {
     bottom: 25px;
     width: 100%;
     line-height: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    transform: translateY(-50%);
+    left: 25px;
+    right: auto;
 }
 .module.sohomepage-slider .owl2-dots .owl2-dot {
     display: inline-block;
