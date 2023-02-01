@@ -28,6 +28,7 @@ class Product extends Model
         return OrderDetail::where('product_id', $this->id)->count();
     }
 
+    // filter
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
