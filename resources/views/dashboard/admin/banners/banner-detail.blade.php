@@ -4,30 +4,20 @@
     <!-- END: Top Bar -->
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Detail Brand
+            Detail Product
         </h2>
     </div>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 lg:col-span-12">
             <div class="intro-y box p-8">
-                <div class="md:flex md:flex-row gap-5">
-                    <div class="md:flex-shrink-0 basis-1/3 justify-center">              
-                        <img class="featured-img" src="{{ asset($brand->logo->count() ? 'storage/' . $brand->logo->src : 'dist/images/default.jpg')}}" alt="">
-                    </div>
-                    <div class="md:flex-shrink-0 basis-2/3">
-                        <h2 class="text-xl font-bold">{{ $brand->name }}</h2>
-                        <p>Code: {{ $brand->brand_code }}</p>
-                        <p class="text-sm mt-6">{!! $brand->description !!}</p>
-
-                    </div>
-
+                <p class="font-medium text-lg capitalize mb-2" >{{ $banner->title }}</p>
+                <div class="md:flex-shrink-0 basis-1/3 justify-center">              
+                        <img class="w-3/4 object-cover rounded-lg cursor-pointer border-black border border-solid" src="{{ asset($banner->image->count() ? 'storage/' . $banner->image->src : 'dist/images/default.jpg')}}" alt="">
                 </div>
-                <div class="flex justify-end mt-5">
-                    <a class="flex items-center btn btn-primary mr-3" href="{{ route('manage_brand.update', ['brand' => $brand]) }}"> 
-                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+                <div class="flex justify-start mt-5">
                     <a class="flex items-center btn btn-danger" href="javascript:;" data-tw-toggle="modal"
                         data-tw-target="#delete-confirmation-modal" onclick="deleteModalHandler(0)"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
-                   <input type="hidden" id="delete_route_0" value="{{ route('manage_brand.delete', ['brand' => $brand]) }}">
+                   <input type="hidden" id="delete_route_0" value="{{ route('manage_banner.delete', ['banner' => $banner]) }}">
                 </div>
             </div>
         </div>
@@ -63,5 +53,5 @@
     </div>
 @endsection
 @section('script')
-    <script src="{{ asset('dist/js/view/manage-brand/brand.js') }}"></script>
+    <script src="{{ asset('dist/js/view/manage-banner/banner.js') }}"></script>
 @endsection

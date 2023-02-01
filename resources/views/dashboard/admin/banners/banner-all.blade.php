@@ -27,30 +27,31 @@
                 <thead>
                     <tr>
                         <th class="text-center whitespace-nowrap">No.</th>
-                        <th class="text-center whitespace-nowrap">NAME</th>
+                        <th class="text-center whitespace-nowrap">Title</th>
                         <th class="text-center whitespace-nowrap">BANNER</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($banner as $index => $item)
+                    @forelse ($banners as $index => $item)
                         <tr class="intro-x">
                             <td class="text-center w-40"> {{ $loop->iteration }} </td>
-                            <td class="text-center">{{ $item->name }}
+                            <td class="text-center">{{ $item->title }}
                             </td>
-                            <td class="text-center">{!! $item->banner_code !!}</td>
+                            <td class="flex justify-center"><img class="w-56" src="{{ asset($item->image->count() ? 'storage/' . $item->image->src : 'dist/images/default.jpg') }}" alt="{{ $item->title }}" srcset=""></td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
                                     <a class="flex items-center mr-3"
-                                        href="{{ route('manage_banner.update', ['banner' => $item]) }}"> <i
-                                            data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                    <!-- <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
+                                        href="{{ route('manage_banner.detail', ['banner' => $item]) }}"> <i data-lucide="eye"
+                                            class="w-4 h-4 mr-1"></i> Detail </a>
+                                    <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
                                         data-tw-target="#delete-confirmation-modal"
                                         onclick="deleteModalHandler({{ $index }})"> <i data-lucide="trash-2"
                                             class="w-4 h-4 mr-1"></i> Delete </a>
                                     <input type="hidden" id="delete_route_{{ $index }}"
-                                        value="{{ route('manage_banner.delete', ['banner' => $item]) }}"> -->
+                                        value="{{ route('manage_banner.delete', ['banner' => $item]) }}">
                                 </div>
+                                    
                             </td>
                         </tr>
                     @empty
@@ -67,7 +68,7 @@
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
-                {{ $banner->links('fragments.pagination') }}
+                {{ $banners->links('fragments.pagination') }}
             </nav>
         </div>
         <!-- END: Pagination -->

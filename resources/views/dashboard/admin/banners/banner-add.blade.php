@@ -15,12 +15,12 @@
                     @csrf
                     <div class="intro-y box p-5">
                         <div class="mt-3">
-                            <label for="name" class="form-label">Name</label>
-                            @error('name')
+                            <label for="title" class="form-label">Title</label>
+                            @error('title')
                                 <small class="text-xs text-red-500 ml-1">{{ '*' . $message }}</small>
                             @enderror
-                            <input type="text" name="name" id="banner_name" class="form-control"
-                                placeholder="Input Banner Name" value="">
+                            <input type="text" name="title" id="banner_title" class="form-control"
+                                placeholder="Input Banner Name" value="{{ old('title')??'' }}">
                         </div>
                         <div class="upload__box mt-3">
                             @error('image')
@@ -29,7 +29,7 @@
                             <div class="upload__btn-box">
                                 <label class="upload__btn btn btn-primary">
                                     <p>Choose An Image</p>
-                                    <input type="file" name="image" id="img_upload" class="upload__inputfile" onchange="logoPreview()">
+                                    <input type="file" name="image" id="img_upload" class="upload__inputfile" onchange="imagePreview()">
                                 </label>
                             </div>
                             <div class="upload__img-wrap">

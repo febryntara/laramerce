@@ -1401,6 +1401,10 @@ input:checked + .toggle-bg {
   width: 16rem;
 }
 
+.w-3\/4 {
+  width: 75%;
+}
+
 .flex-none {
   flex: none;
 }
@@ -1714,6 +1718,11 @@ input:checked + .toggle-bg {
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
 }
 
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1783,6 +1792,11 @@ input:checked + .toggle-bg {
 
 .fill-current {
   fill: currentColor;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .p-5 {
