@@ -28,6 +28,29 @@ class Product extends Model
         return OrderDetail::where('product_id', $this->id)->count();
     }
 
+    public static function bestDeal($products)
+    {
+        return $products->whereIn('product_code', BestDeal::all()->map(function ($item) {
+            return $item->product_code;
+        }));
+    }
+
+    public static function bestSeller($products, $items = 5)
+    {
+        $product = OrderDetail::get()->groupBy('product_id')->map(function ($products, $index) {
+            if ($index != "JNE") {
+                $quantity = 0;
+                foreach ($products as $item) {
+                    $quantity += $item->quantity;
+                }
+                return ["product_code" => $index, "quantity" => $quantity];
+            }
+        })->filter()->sortBy([['quantity', 'desc']])->values()->take($items)->map(fn ($item) => $item['product_code']);
+
+        return $products->whereIn('product_code', $product);
+    }
+
+    // filter
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
