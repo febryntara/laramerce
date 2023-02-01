@@ -35,8 +35,8 @@
                         @endif
                         <input type="text" name="search" class="form-control w-56 box pr-10" style="border-top-right-radius: 0!important;
                              border-bottom-right-radius: 0!important;" placeholder="Search...">
-                        <button type="submit" class="bg-[#2d2d2d]"><i class="w-4 h-4 mx-3 text-white rounded-sm" style="border-top-right-radius: 0.25rem!important;
-                             border-bottom-right-radius: 0.25rem!important;" data-lucide="search"></i>
+                        <button type="submit" class="bg-[#2d2d2d]" style="border-top-right-radius: 0.25rem!important;
+                             border-bottom-right-radius: 0.25rem!important;"><i class="w-4 h-4 mx-3 text-white rounded-sm"  data-lucide="search"></i>
                         </button>
                     </div>
                     </form>

@@ -31,7 +31,7 @@ class Product extends Model
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%')->orWhereHas('category', function ($query) use ($search) {
+            return $query->where('name', 'like', '%' . $search . '%')->orWhere('product_code','like','%'.$search.'%')->orWhereHas('category', function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%');
             })->orWhereHas('brand', function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%');
