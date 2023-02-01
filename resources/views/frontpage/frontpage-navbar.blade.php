@@ -14,6 +14,10 @@
                         </li>
                     </ul>
                 </div> --}}
+                <div class="header-top-left  col-lg-6 col-sm-5 col-md-6 hidden-xs">
+                    <span><i class="fa fa-map-marker" aria-hidden="true"></i> Jl. Bypass Ngurah Rai No.90, Sanur,
+                        Denpasar Selatan, Kota Denpasar, Bali 80228</span>
+                </div>
                 <div class="header-top-right collapsed-block col-lg-6 col-md-6 col-sm-7 col-xs-12"
                     style="background-color: white!important;">
                     <ul class="top-link list-inline">
@@ -32,11 +36,23 @@
                                 </ul>
                             </li>
                         @else
-                            <li class="log login"><a class="link-lg" href="{{ route('login') }}">Login </a></li>
+                            <li class="log login"><a class="link-lg"
+                                    href="{{ route('login') }}"><strong>Login</strong></a></li>
                         @endif
 
 
-
+                        <li>
+                            <a href="https://www.instagram.com/urbanadventure.co.id/"><i class="fa fa-instagram"
+                                    aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/urbanadventure.co.id/"><i class="fa fa-facebook"
+                                    aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/urbanadventure.co.id/"><i class="fa fa-whatsapp"
+                                    aria-hidden="true"></i></a>
+                        </li>
                     </ul>
 
 
@@ -251,7 +267,9 @@
                                                                         <div class="menu">
                                                                             <ul>
                                                                                 @foreach ($categories as $item)
-                                                                                    <li><a href="{{ route('category', ['category' => $item]) }}"
+                                                                                    <li
+                                                                                        style="border-bottom: 1px solid #464646; width: 100%; padding-top: 10px;">
+                                                                                        <a href="{{ route('category', ['category' => $item]) }}"
                                                                                             class="main-menu"><strong>{{ $item->name }}</strong></a>
                                                                                     </li>
                                                                                 @endforeach
@@ -273,7 +291,9 @@
                                                                         <div class="menu">
                                                                             <ul>
                                                                                 @foreach ($brands as $item)
-                                                                                    <li><a href="{{ route('brand', ['brand' => $item]) }}"
+                                                                                    <li
+                                                                                        style="border-bottom: 1px solid #464646; width: 100%; padding-top: 10px;">
+                                                                                        <a href="{{ route('brand', ['brand' => $item]) }}"
                                                                                             class="main-menu"><strong>{{ $item->name }}</strong></a>
                                                                                     </li>
                                                                                 @endforeach
@@ -300,8 +320,8 @@
                         <!-- Search -->
                         <div class="header_search col-lg-3 col-md-8 col-sm-9 col-xs-4">
 
-                            <button id="dropdownSearch" class="dropdown-toggle bt-search hidden"><i class="fa fa-search"
-                                    aria-hidden="true"></i></button>
+                            <button id="dropdownSearch" class="dropdown-toggle bt-search hidden"><i
+                                    class="fa fa-search" aria-hidden="true"></i></button>
                             <div class="dropdown-menu dropdown-menu-search">
                                 <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
                                     <form method="GET" action="index.html">

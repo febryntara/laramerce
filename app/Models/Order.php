@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Mail\OrderMail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
@@ -36,6 +37,12 @@ class Order extends Model
             })->orWhereHas('user', function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%')->orWhere('phone', 'like', '%' . $search . '%');
             });
+        });
+        $query->when($filters['period'] ?? false, function ($query, $period) {
+            $periods = explode("-", $period);
+            $year = $periods[0];
+            $month = $periods[1];
+            return $query->whereMonth('created_at', $month)->whereYear('created_at',$year);
         });
     }
 
