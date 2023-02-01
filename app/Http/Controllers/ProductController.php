@@ -148,7 +148,7 @@ class ProductController extends Controller
             'categories' => Category::latest()->get(),
         ];
 
-        return $data;
+        return view('dashboard.admin.bestdeals.bestdeal-all', $data);
     }
 
     public function createBestDeal()
@@ -158,7 +158,7 @@ class ProductController extends Controller
             'products' => Product::regular()->get(),
         ];
 
-        return $data;
+        return view('dashboard.admin.bestdeals.bestdeal-add', $data);
     }
 
     public function storeBestDeal(Request $request)
