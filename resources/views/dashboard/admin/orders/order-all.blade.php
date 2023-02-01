@@ -6,6 +6,15 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <a href="{{ route('manage_order.create') }}" class="btn btn-primary shadow-md mr-2">Add New Order</a>
+            <form action="{{ route('manage_order.all') }}" method="get" id="form-search-order">
+                <div class="flex align-center">
+                    <input type="month" name="period" class="border-gray-300 rounded-md drop-shadow-sm w-40" style="border-top-right-radius: 0!important;
+                    border-bottom-right-radius: 0!important;" placeholder="YYYY-MM" value="{{request('period')}}">
+                    <button type="submit" class="bg-[#2d2d2d] mr-2" style="border-top-right-radius: 0.25rem!important;
+                                    border-bottom-right-radius: 0.25rem!important;"><i class="w-4 h-4 mx-3 text-white rounded-sm"  data-lucide="search"></i>
+                    </button>
+                </div>
+            </form>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -13,13 +22,10 @@
                 <div class="dropdown-menu w-40">
                     <ul class="dropdown-content">
                         <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print </a>
+                            <a href="{{ route('manage_order.excel',['period'=>request('period')??''])}}" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </a>
                         </li>
                         <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF </a>
+                            <a href="{{ route('manage_order.pdf',['period'=>request('period')??''])}}" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF </a>
                         </li>
                     </ul>
                 </div>
@@ -27,12 +33,15 @@
             <div class="hidden md:block mx-auto text-slate-500"></div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                    <form action="{{ route('manage_order.all') }}" method="get" id="form-search-product">
+                    <form action="{{ route('manage_order.all') }}" method="get" id="form-search-order">
+                        @if (request('period'))
+                        <input type="hidden" name="period" value="{{ request('period') }}"> 
+                        @endif
                         <div class="flex justify-between align-center">
                             <input type="text" name="search" class="form-control w-56 box pr-10" style="border-top-right-radius: 0!important;
                              border-bottom-right-radius: 0!important;" placeholder="Search...">
-                            <button type="submit" class="bg-[#2d2d2d]"><i class="w-4 h-4 mx-3 text-white rounded-sm" style="border-top-right-radius: 0.25rem!important;
-                             border-bottom-right-radius: 0.25rem!important;" data-lucide="search"></i>
+                            <button type="submit" class="bg-[#2d2d2d]" style="border-top-right-radius: 0.25rem!important;
+                             border-bottom-right-radius: 0.25rem!important;"><i class="w-4 h-4 mx-3 text-white rounded-sm"  data-lucide="search"></i>
                             </button>
                         </div>
                     </form>
@@ -71,7 +80,7 @@
                     </tr>   
                     @empty
                     <tr>
-                        <td class="text-center text-muted" colspan="5">No Data</td>
+                        <td class="text-center text-muted" colspan="6">No Data</td>
                     </tr>
                     @endforelse
                     

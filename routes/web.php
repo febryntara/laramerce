@@ -111,8 +111,10 @@ Route::middleware(['auth', 'admin'])->controller(CategoryController::class)->gro
 });
 
 Route::middleware('auth')->controller(OrderController::class)->group(function () {
-    Route::get('/dashboard/orders', 'allOrder')->name('manage_order.all');
-    Route::get('/dashboard/order/create', 'createOrder')->name('manage_order.create');
+    Route::get('/dashboard/orders', 'allOrder')->name('manage_order.all')->middleware(['auth', 'admin']);
+    Route::get('/dashboard/order/create', 'createOrder')->name('manage_order.create')->middleware(['auth', 'admin']);
+    Route::get('/dashboard/order/report-pdf', 'reportPDF')->name('manage_order.pdf')->middleware(['auth', 'admin']);
+    Route::get('/dashboard/order/report-excel', 'reportExcel')->name('manage_order.excel')->middleware(['auth', 'admin']);
 });
 
 Route::middleware(['auth', 'admin'])->controller(ProductController::class)->group(function () {

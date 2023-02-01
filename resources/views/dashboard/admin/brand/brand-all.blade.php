@@ -9,12 +9,12 @@
             <div class="hidden md:block mx-auto text-slate-500"></div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                   <form action="{{ route('manage_brand.all') }}" method="get" id="form-search-product">
+                   <form action="{{ route('manage_brand.all') }}" method="get" id="form-search-brand">
                         <div class="flex justify-between align-center">
                             <input type="text" name="search" class="form-control w-56 box pr-10" style="border-top-right-radius: 0!important;
                              border-bottom-right-radius: 0!important;" placeholder="Search...">
-                            <button type="submit" class="bg-[#2d2d2d]"><i class="w-4 h-4 mx-3 text-white rounded-sm" style="border-top-right-radius: 0.25rem!important;
-                             border-bottom-right-radius: 0.25rem!important;" data-lucide="search"></i>
+                            <button type="submit" class="bg-[#2d2d2d]" style="border-top-right-radius: 0.25rem!important;
+                             border-bottom-right-radius: 0.25rem!important;"><i class="w-4 h-4 mx-3 text-white rounded-sm"  data-lucide="search"></i>
                             </button>
                         </div>
                     </form>
