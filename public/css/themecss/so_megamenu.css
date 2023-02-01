@@ -1,8 +1,15 @@
 /* MegaMenu
 ------------------*/
-.so-megamenu .container .container {width: auto !important;}
-.so-megamenu  .navbar-header{margin:0px;display:none;}
-.so-megamenu .navbar-default{background: transparent;}
+.so-megamenu .container .container {
+    width: auto !important;
+}
+.so-megamenu .navbar-header {
+    margin: 0px;
+    display: none;
+}
+.so-megamenu .navbar-default {
+    background: transparent;
+}
 #menu {
     position: relative;
     overflow: visible;
@@ -23,19 +30,16 @@
 
 .container-megamenu,
 .container-megamenu .container {
-    padding-left: 0px ;
-    padding-right: 0px ;
-	width:auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: auto;
 }
-
-
 
 .megamenu-wrapper {
     position: relative;
 }
 
 .megamenu-pattern {
-   
 }
 
 ul.megamenu {
@@ -47,10 +51,8 @@ ul.megamenu {
 
 ul.megamenu > li {
     float: left;
-	margin-right:1px;
+    margin-right: 1px;
 }
-
-
 
 ul.megamenu > li.pull-right {
     float: right;
@@ -66,12 +68,14 @@ ul.megamenu > li.search {
     background: none;
 }
 
-#top ul.megamenu > li.search .search_form, ul.megamenu > li.search .search_form {
+#top ul.megamenu > li.search .search_form,
+ul.megamenu > li.search .search_form {
     padding: 0px;
     margin: 8px;
 }
 
-#top ul.megamenu > li.search .search_form input, ul.megamenu > li.search .search_form input {
+#top ul.megamenu > li.search .search_form input,
+ul.megamenu > li.search .search_form input {
     height: 29px;
     min-height: 29px;
     border: none;
@@ -82,16 +86,13 @@ ul.megamenu > li.search .button-search2 {
     right: 8px;
 }
 
-
 ul.megamenu > li > a {
     display: block;
     position: relative;
     color: #fff;
     font-size: 14px;
-    padding: 15px 18px ;
-    
+    padding: 15px 18px;
 }
-
 
 ul.megamenu > li > a > .icon-home {
     display: block;
@@ -101,7 +102,6 @@ ul.megamenu > li > a > .icon-home {
 
 ul.megamenu > li > a img {
     margin-right: 5px;
-
 }
 
 ul.megamenu > li > a.description {
@@ -126,15 +126,14 @@ ul.megamenu > li > a.description .description-left {
 
 /* Submenu */
 ul.megamenu li .sub-menu .content .static-menu a.main-menu,
-ul.megamenu .title-submenu{
+ul.megamenu .title-submenu {
     display: block;
     font-weight: bold;
     font-size: 13px;
-	color: #222;
-	padding-bottom:10px;
-	text-transform:uppercase;
+    color: #222;
+    padding-bottom: 10px;
+    text-transform: uppercase;
 }
-
 
 ul.megamenu > li > .sub-menu {
     position: absolute;
@@ -142,25 +141,21 @@ ul.megamenu > li > .sub-menu {
     display: none;
 }
 
-
 .horizontal ul.megamenu > li > .sub-menu {
     max-width: 100%;
 }
 
-
-
 ul.megamenu .sub-menu .content {
     display: none;
-    padding: 20px;
+    padding: 10px 20px;
     background: #fff;
     border: 1px solid #e6e6e6;
-    border-radius:         2px;
-    -moz-border-radius:    2px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
-    box-shadow:            0px 0px 25px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow:       0px 0px 25px rgba(0, 0, 0, 0.15);
-    -webkit-box-shadow:    0px 0px 25px rgba(0, 0, 0, 0.15);
-   
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
 
 ul.megamenu .sub-menu .content > .row {
@@ -174,7 +169,11 @@ ul.megamenu .sub-menu .content > .border {
 ul.megamenu .sub-menu .content > .row:first-child {
     padding: 0px;
 }
-ul.megamenu .sub-menu .content ul.row-list{margin:0; padding:0; list-style: none;}
+ul.megamenu .sub-menu .content ul.row-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 /* Product */
 ul.megamenu li .product {
     text-align: center;
@@ -188,8 +187,8 @@ ul.megamenu li .product .image {
 
 ul.megamenu li .product .image img {
     border: 1px solid #e6e6e6;
-    border-radius:         2px;
-    -moz-border-radius:    2px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
 }
 
@@ -205,7 +204,7 @@ ul.megamenu li .product .price {
 
 ul.manufacturer {
     list-style: none;
-    margin: -10px 0px 0px 0px ;
+    margin: -10px 0px 0px 0px;
     padding: 0px;
     position: relative;
 }
@@ -220,17 +219,14 @@ ul.manufacturer li a {
     font-size: 14px;
     padding: 2px 8px;
     border: 1px solid #e6e6e6;
-    
 }
 
 /* Static Menu */
 
-
-
 ul.megamenu li .sub-menu .content .static-menu .menu ul {
     list-style: none;
     margin: 0px 0 15px;
-    padding:0;
+    padding: 0;
 }
 
 ul.megamenu li .sub-menu .content .static-menu > .menu > ul > li {
@@ -240,7 +236,6 @@ ul.megamenu li .sub-menu .content .static-menu > .menu > ul > li {
 ul.megamenu li .sub-menu .content .static-menu > .menu > ul > li:first-child {
     padding-top: 0px;
 }
-
 
 /* Hover Menu */
 
@@ -265,12 +260,12 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul {
     left: 100%;
     background: #fff;
     border: 1px solid #e6e6e6;
-    border-radius:         2px;
-    -moz-border-radius:    2px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
-    box-shadow:            0px 0px 25px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow:       0px 0px 25px rgba(0, 0, 0, 0.15);
-    -webkit-box-shadow:    0px 0px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
 
 ul.megamenu li .sub-menu .content .hover-menu .menu ul ul:before {
@@ -311,17 +306,14 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
 }
 
 .megamenuToogle-wrapper {
-  
     background: #444;
 }
-
-
 
 .megamenuToogle-wrapper .container {
     color: #fff;
     font-size: 16px;
-    padding:15px ;
-	width:auto;
+    padding: 15px;
+    width: auto;
 }
 
 .megamenuToogle-wrapper .container > div {
@@ -348,30 +340,31 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
     z-index: 650;
     border-left: 1px solid #ddd;
 }
-@media (max-width: 991px){
-.so-vertical-menu .vertical-wrapper{
-	position:fixed; width:280px;
-}
+@media (max-width: 991px) {
+    .so-vertical-menu .vertical-wrapper {
+        position: fixed;
+        width: 280px;
+    }
 }
 
 .vertical #menuHeading {
     margin: 0px;
 }
-.vertical li.loadmore{
+.vertical li.loadmore {
     border-top: 1px solid #ddd;
     padding: 13px 10px;
 }
-.vertical li.loadmore i{
-    padding-left:  10px;
-	font-size:15px;
+.vertical li.loadmore i {
+    padding-left: 10px;
+    font-size: 15px;
 }
 .vertical span.more-view {
     cursor: pointer;
     font-size: 14px;
-  
 }
 .vertical .megamenuToogle-wrapper {
-    z-index: 3; cursor: pointer;
+    z-index: 3;
+    cursor: pointer;
 }
 
 .vertical .megamenu-wrapper {
@@ -393,13 +386,14 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
     margin: 0px -1px;
 }
 
-.vertical ul.megamenu > li.home, .vertical ul.megamenu > li.search {
+.vertical ul.megamenu > li.home,
+.vertical ul.megamenu > li.search {
     display: none;
 }
 
 .vertical ul.megamenu > li > a {
-    padding: 10px 15px ;
-	color: #666;
+    padding: 10px 15px;
+    color: #666;
 }
 
 .vertical ul.megamenu > li.active > a {
@@ -412,7 +406,6 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
 
 .vertical ul.megamenu > li.click:before,
 .vertical ul.megamenu > li.hover:before {
-
     font-weight: normal;
     font-style: normal;
     text-decoration: inherit;
@@ -435,7 +428,6 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
 }
 
 .vertical ul.megamenu > li > .sub-menu > .content {
-
 }
 
 .megamenu .label {
@@ -447,9 +439,8 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
     position: absolute;
     text-transform: none;
     top: -5px;
-	right:0;
+    right: 0;
 }
-
 
 .megamenu i {
     padding-right: 12px;
@@ -460,16 +451,25 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
 
 @media (max-width: 991px) {
     /* MegaMenu Vertical */
-	.so-megamenu .navbar-header {display:block;}
-	.so-megamenu .navbar-default .navbar-toggle .icon-bar {    background-color: #B1B1B1;}
-	.navbar-header .navbar-toggle {
-		display: inline-block;
-	}
-	.navbar-header .fa-list-alt{
-		font-size:42px;color:#eee;vertical-align: middle;padding:0;
-		border:none;
-	}
-	.navbar-header .fa-list-alt:hover{background:none; ;}
+    .so-megamenu .navbar-header {
+        display: block;
+    }
+    .so-megamenu .navbar-default .navbar-toggle .icon-bar {
+        background-color: #b1b1b1;
+    }
+    .navbar-header .navbar-toggle {
+        display: inline-block;
+    }
+    .navbar-header .fa-list-alt {
+        font-size: 42px;
+        color: #eee;
+        vertical-align: middle;
+        padding: 0;
+        border: none;
+    }
+    .navbar-header .fa-list-alt:hover {
+        background: none;
+    }
     .responsive .vertical #menuHeading {
         margin: 20px 0px 0px 0px;
     }
@@ -477,7 +477,7 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
     .responsive .vertical ul.megamenu > li > .sub-menu {
         left: 0;
         top: auto;
-        width: 100% ;
+        width: 100%;
     }
 
     .responsive .vertical ul.megamenu > li > .sub-menu > .content {
@@ -485,13 +485,22 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
     }
 
     /* Submenu */
-	ul.megamenu li .sub-menu .content {
-		border: none;
-		border-radius: none;
-		box-shadow: none;
-	}
-    .responsive .vertical ul.megamenu li .sub-menu .content .hover-menu .menu ul ul {
-        display: block ;
+    ul.megamenu li .sub-menu .content {
+        border: none;
+        border-radius: none;
+        box-shadow: none;
+    }
+    .responsive
+        .vertical
+        ul.megamenu
+        li
+        .sub-menu
+        .content
+        .hover-menu
+        .menu
+        ul
+        ul {
+        display: block;
         margin: 5px 10px;
         width: auto;
         padding: 0px;
@@ -499,38 +508,61 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
         left: 0;
         background: none;
         border: none;
-        border-radius:         0px;
-        -moz-border-radius:    0px;
+        border-radius: 0px;
+        -moz-border-radius: 0px;
         -webkit-border-radius: 0px;
-        box-shadow:            none;
-        -moz-box-shadow:       none;
-        -webkit-box-shadow:    none;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
     }
 
-    .responsive .vertical ul.megamenu li .sub-menu .content .hover-menu .menu ul ul:before {
+    .responsive
+        .vertical
+        ul.megamenu
+        li
+        .sub-menu
+        .content
+        .hover-menu
+        .menu
+        ul
+        ul:before {
         display: none;
     }
 
-    .responsive .vertical ul.megamenu li .sub-menu .content .hover-menu .menu ul ul:after {
+    .responsive
+        .vertical
+        ul.megamenu
+        li
+        .sub-menu
+        .content
+        .hover-menu
+        .menu
+        ul
+        ul:after {
         display: none;
     }
 
-
-    .responsive .vertical ul.megamenu li .sub-menu .content .hover-menu a.main-menu:before {
+    .responsive
+        .vertical
+        ul.megamenu
+        li
+        .sub-menu
+        .content
+        .hover-menu
+        a.main-menu:before {
         display: none;
     }
 
     .responsive .vertical .visible {
-        padding: 5px 0px 5px 0px ;
+        padding: 5px 0px 5px 0px;
     }
 
     .responsive .vertical .visible > div {
         margin: 0px !important;
         border: none !important;
         padding: 0px !important;
-        padding-left: 20px ;
+        padding-left: 20px;
     }
-
 
     /* MegaMenu Submenu */
 
@@ -539,19 +571,23 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
     }
 
     .responsive ul.megamenu .sub-menu .content {
-        padding: 10px ;
+        padding: 10px;
     }
 
     .responsive ul.megamenu .sub-menu .content .row > div {
         margin-top: 10px;
     }
 
-    .responsive ul.megamenu .sub-menu .content .row:first-child > div:first-child {
+    .responsive
+        ul.megamenu
+        .sub-menu
+        .content
+        .row:first-child
+        > div:first-child {
         margin-top: 0px;
         border-top: none;
         padding-top: 0px;
     }
-
 }
 
 @media (max-width: 991px) {
@@ -560,7 +596,7 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
     }
     .responsive ul.megamenu > li {
         display: block;
-        float: none ;
+        float: none;
         width: auto;
         background: none;
         border-top: 1px solid #e6e6e6;
@@ -568,23 +604,24 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
         margin: 0px -1px;
     }
 
-    ul.megamenu > li.search ,.fa-angle-right,.caret {
+    ul.megamenu > li.search,
+    .fa-angle-right,
+    .caret {
         display: none;
     }
 
     .responsive ul.megamenu > li > a {
-      
         text-shadow: none;
-		color:#666 ;
-		padding:10px;
+        color: #666;
+        padding: 10px;
         height: auto;
     }
 
-	.responsive ul.megamenu > li.active > a,
-	.responsive ul.megamenu > li.home > a,
-	.responsive ul.megamenu > li.hover > a{
-		background: #eee ;
-	}
+    .responsive ul.megamenu > li.active > a,
+    .responsive ul.megamenu > li.home > a,
+    .responsive ul.megamenu > li.hover > a {
+        background: #eee;
+    }
     .responsive ul.megamenu > li.hover > a {
         background: none;
     }
@@ -609,13 +646,12 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
         z-index: 10;
         top: 0;
         right: 1px;
-        margin:0;
-        
-        padding: 10px 14px ;
+        margin: 0;
+
+        padding: 10px 14px;
         background: #f6f6f6;
         text-align: center;
         cursor: pointer;
-
     }
 
     .responsive ul.megamenu > li.active .close-menu:before {
@@ -632,10 +668,18 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
         width: 100% !important;
     }
 
-
     /* Hover Menu */
 
-    .responsive .horizontal ul.megamenu li .sub-menu .content .hover-menu .menu ul ul {
+    .responsive
+        .horizontal
+        ul.megamenu
+        li
+        .sub-menu
+        .content
+        .hover-menu
+        .menu
+        ul
+        ul {
         display: block !important;
         margin: 5px 10px;
         width: auto;
@@ -644,24 +688,48 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
         left: 0;
         background: none;
         border: none;
-        border-radius:         0px;
-        -moz-border-radius:    0px;
+        border-radius: 0px;
+        -moz-border-radius: 0px;
         -webkit-border-radius: 0px;
-        box-shadow:            none;
-        -moz-box-shadow:       none;
-        -webkit-box-shadow:    none;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
     }
 
-    .responsive .horizontal ul.megamenu li .sub-menu .content .hover-menu .menu ul ul:before {
+    .responsive
+        .horizontal
+        ul.megamenu
+        li
+        .sub-menu
+        .content
+        .hover-menu
+        .menu
+        ul
+        ul:before {
         display: none;
     }
 
-    .responsive .horizontal ul.megamenu li .sub-menu .content .hover-menu .menu ul ul:after {
+    .responsive
+        .horizontal
+        ul.megamenu
+        li
+        .sub-menu
+        .content
+        .hover-menu
+        .menu
+        ul
+        ul:after {
         display: none;
     }
 
-
-    .responsive .horizontal ul.megamenu li .sub-menu .content .hover-menu a.main-menu:before {
+    .responsive
+        .horizontal
+        ul.megamenu
+        li
+        .sub-menu
+        .content
+        .hover-menu
+        a.main-menu:before {
         display: none;
     }
     .responsive .horizontal .visible {
@@ -669,119 +737,118 @@ ul.megamenu li .sub-menu .content .hover-menu .menu ul ul li {
     }
 
     .responsive .horizontal .visible > div {
-        margin: 0px ;
-        border: none ;
-        padding: 0px 0px 0px 10px ;
+        margin: 0px;
+        border: none;
+        padding: 0px 0px 0px 10px;
     }
-
 }
 
 @media (min-width: 961px) {
-
     .megamenu-wrapper {
-        display: block ;
+        display: block;
     }
-
 }
 @media (max-width: 991px) {
-	.megamenu .label {
-		display:none;
-	}
-	ul.megamenu > li > .sub-menu {
-		position: relative;
-	}
-	.megamenu-wrapper {
-    position: fixed;
-    top: 0px;
-    left: 0;
-    background-color: #fff;
-   height:100%;
-    width: 280px;
-    padding: 10px;
-    z-index: 999;
-    overflow-x: hidden;
-    overflow-y: auto;
-    visibility: hidden;
-    -webkit-transform: translate3d(-280px, 0, 0);
-    transform: translate3d(-280px, 0, 0);
-    -webkit-transition: all 0.5s ease-in-out 0s;
-    transition: all 0.5s ease-in-out 0s;
+    .megamenu .label {
+        display: none;
+    }
+    ul.megamenu > li > .sub-menu {
+        position: relative;
+    }
+    .megamenu-wrapper {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        background-color: #fff;
+        height: 100%;
+        width: 280px;
+        padding: 10px;
+        z-index: 999;
+        overflow-x: hidden;
+        overflow-y: auto;
+        visibility: hidden;
+        -webkit-transform: translate3d(-280px, 0, 0);
+        transform: translate3d(-280px, 0, 0);
+        -webkit-transition: all 0.5s ease-in-out 0s;
+        transition: all 0.5s ease-in-out 0s;
 
-	 border: 1px solid #e6e6e6;
-	}
-	
-	.vertical-wrapper {
-    position: fixed;
-    top: 0px;
-    left: 0;
-    background-color: #fff;
-    bottom: 0px;
-    width: 280px;
-    padding: 10px;
-    z-index: 999999;
-    overflow-x: hidden;
-    overflow-y: auto;
-    visibility: hidden;
-    -webkit-transform: translate3d(-280px, 0, 0);
-    transform: translate3d(-280px, 0, 0);
-    -webkit-transition: all 0.5s ease-in-out 0s;
-    transition: all 0.5s ease-in-out 0s;
-	
-	 border: 1px solid #e6e6e6;
-	}
-	
-	.vertical  #menuHeading{
-		display:none;
-	}
+        border: 1px solid #e6e6e6;
+    }
+
+    .vertical-wrapper {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        background-color: #fff;
+        bottom: 0px;
+        width: 280px;
+        padding: 10px;
+        z-index: 999999;
+        overflow-x: hidden;
+        overflow-y: auto;
+        visibility: hidden;
+        -webkit-transform: translate3d(-280px, 0, 0);
+        transform: translate3d(-280px, 0, 0);
+        -webkit-transition: all 0.5s ease-in-out 0s;
+        transition: all 0.5s ease-in-out 0s;
+
+        border: 1px solid #e6e6e6;
+    }
+
+    .vertical #menuHeading {
+        display: none;
+    }
 }
 
-  .so-megamenu-active {
+.so-megamenu-active {
     visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-  }
-  
-   #remove-megamenu {
+}
+
+#remove-megamenu {
     padding: 10px 0;
     z-index: 10;
     cursor: pointer;
     visibility: hidden;
-	font-size:16px;
+    font-size: 16px;
     text-align: right;
-	display:none;
-  }
-  
-  .so-megamenu-active #remove-megamenu {
-    visibility: visible; display:block;
-  }
-  
-    .so-vertical-active {
+    display: none;
+}
+
+.so-megamenu-active #remove-megamenu {
+    visibility: visible;
+    display: block;
+}
+
+.so-vertical-active {
     visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-  }
-  
-   #remove-verticalmenu {
+}
+
+#remove-verticalmenu {
     padding: 0 0 15px 0;
     z-index: 10;
     cursor: pointer;
     display: none;
-	font-size:16px;
+    font-size: 16px;
     text-align: right;
-  }
-  
-  .so-vertical-active #remove-verticalmenu {
+}
+
+.so-vertical-active #remove-verticalmenu {
     display: block;
-  }
- 
-  
-  .navbar-header .navbar-toggle{float:none;}
-  .subcategory li{
-	list-style-type: none;
-	list-style:none;
-  }
-  .subcategory li a{
-	float:left;
-	width:100%;
-	text-align:left;
-  }
+}
+
+.navbar-header .navbar-toggle {
+    float: none;
+}
+.subcategory li {
+    list-style-type: none;
+    list-style: none;
+}
+.subcategory li a {
+    float: left;
+    width: 100%;
+    text-align: left;
+}
