@@ -6,56 +6,35 @@
             <!-- Main Container  -->
             <div class="main-container">
                 <div id="content">
-                    <div class="slider-full" style="background-color:white!important; ">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 col-md-offset-3 block-slide">
-                                    <div class="row">
-                                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 block-left">
-                                            <div class="module sohomepage-slider ">
-                                                <div class="yt-content-slider" data-rtl="yes" data-autoplay="no"
-                                                    data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0"
-                                                    data-items_column0="1" data-items_column1="1" data-items_column2="1"
-                                                    data-items_column3="1" data-items_column4="1" data-arrows="no"
-                                                    data-pagination="yes" data-lazyload="yes" data-loop="no"
-                                                    data-hoverpause="yes">
-                                                    @foreach ($products->shuffle()->take(3) as $item)
-                                                        <div class="yt-content-slide" style="width: 100%;">
-                                                            <a title="{{ $item->name }}"
-                                                                href="{{ route('product-detail', ['product' => $item]) }}"><img
-                                                                    src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
-                                                                    alt="{{ $item->name }}" class="responsive img-mobile"
-                                                                    style="width: 650px; height: 510px; object-fit: cover; object-position: center;"></a>
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                                <div class="loadeding"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 block-right">
-                                            <div class="module">
-                                                <div class="block-image-1" style="width: 100%;">
-                                                    <ul class="static-image">
-                                                        @foreach ($products->shuffle()->take(3) as $item)
-                                                            <li><a title="{{ $item->name }}"
-                                                                    href="{{ route('product-detail', ['product' => $item]) }}"><img
-                                                                        src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
-                                                                        alt="{{ $item->name }}" class="img-mobile"
-                                                                        style="width: 250px; height: 170px; object-fit: cover; object-position: center;"></a>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="slider-full">
+                        <div class="module sohomepage-slider ">
+                            <div class="yt-content-slider" data-rtl="yes" data-autoplay="no" data-autoheight="no"
+                                data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1"
+                                data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1"
+                                data-arrows="no" data-pagination="yes" data-lazyload="yes" data-loop="no"
+                                data-hoverpause="yes">
+                                <div class="yt-content-slide">
+                                    <a title="slide1" href="#"><img
+                                            src="image/catalog/demo/slideshow/home2/id2-slide1.jpg" alt="slide img"
+                                            class="responsive"></a>
+                                </div>
+                                <div class="yt-content-slide">
+                                    <a title="slide2" href="#"><img
+                                            src="image/catalog/demo/slideshow/home2/id2-slide2.jpg" alt="slide img"
+                                            class="responsive"></a>
+                                </div>
+                                <div class="yt-content-slide">
+                                    <a title="slide3" href="#"><img
+                                            src="image/catalog/demo/slideshow/home2/id2-slide3.jpg" alt="slide img"
+                                            class="responsive"></a>
                                 </div>
                             </div>
+                            <div class="loadeding"></div>
                         </div>
                     </div>
                     <div class="main-content">
                         <div class="container">
-                            <div class="block block_0">
+                            {{-- <div class="block block_0">
                                 <div class="block-categories module">
                                     <h3 class="modtitle"><span>Featured Brands</span></h3>
                                     <div class="yt-content-slider cate-content" data-rtl="yes" data-autoplay="no"
@@ -85,12 +64,12 @@
                                         @endforelse
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="block block_1">
                                 <div class="row products-listing grid">
                                     <div class="column small-11 small-centered product-layout col-md-9">
                                         <div class="custom_deals_featured">
-                                            <h2 class="modtitle font-ct"><span>Today Deals</span></h2>
+                                            <h2 class="modtitle font-ct"><span>Best Deals</span></h2>
                                             <div class="modcontent">
                                                 <div class="slider slider-img slider-single">
                                                     @forelse ($products as $item)
@@ -101,11 +80,10 @@
                                                                         <div class="product-image-container second_img"
                                                                             style="width: 100%;">
                                                                             <a href="{{ route('product-detail', ['product' => $item]) }}"
-                                                                                target="_self"
-                                                                                title="{{ $item->name }}">
+                                                                                target="_self" title="{{ $item->name }}">
                                                                                 <img src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
                                                                                     class="img-1 img-responsive img-mobile"
-                                                                                    style="width: 400px; height: 400px; object-fit: cover; object-position: center;"
+                                                                                    style="width: 400px; height: 250px; object-fit: cover; object-position: center;"
                                                                                     alt="{{ $item->name }}">
                                                                             </a>
                                                                         </div>
@@ -138,7 +116,7 @@
                                                                                         class="fa fa-star-o fa-stack-2x"></i></span>
                                                                             </div>
                                                                             <p class="des_deal">
-                                                                                {!! Str::limit(html_entity_decode(strip_tags($item->description)), 100, '...') !!}</p>
+                                                                                {!! Str::words(html_entity_decode(strip_tags($item->description)), 30, '...') !!}</p>
                                                                             <p class="price font-ct">
                                                                                 <span
                                                                                     class="price-new">{{ ch_currency($item->price) }}</span>
@@ -250,7 +228,7 @@
                                                         data-lazyload="yes" data-loop="no" data-buttonpage="top">
                                                         @foreach ($products->take(2) as $item)
                                                             <div class="item">
-                                                                @foreach ($products->random($products->count() > 5 ? 5 : $products->count()) as $ip => $product)
+                                                                @foreach ($products->random($products->count() > 4 ? 4 : $products->count()) as $ip => $product)
                                                                     @if ($products[$loop->index + 1])
                                                                         <div class="item-wrap style1">
                                                                             <div class="item-wrap-inner">

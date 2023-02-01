@@ -59,28 +59,20 @@
     <div class="footer-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xxs-6 col-xs-12 col-style">
+                <div class="col-lg-3 col-md-2 col-sm-4 col-xxs-6 col-xs-12 col-style">
                     <div class="module custom_link ">
                         <div class="module clearfix">
-                            <h3 class="footertitle">Our Shops</h3>
+                            <h3 class="footertitle">Our Brands</h3>
                             <ul id="menu-our-shops" class="menu">
-                                <li class="menu-product-support"><a class="item-link" href="#"><span
-                                            class="menu-title">Product Support</span></a></li>
-                                <li class="menu-pc-setup-support"><a class="item-link" href="#"><span
-                                            class="menu-title">Setup &amp;
-                                            Support</span></a></li>
-                                <li class="menu-services"><a class="item-link" href="#"><span
-                                            class="menu-title">Services</span></a></li>
-                                <li class="menu-extended-service-plans"><a class="item-link" href="#"><span
-                                            class="menu-title">Extended Plans</span></a>
-                                </li>
-                                <li class="menu-community"><a class="item-link" href="#"><span
-                                            class="menu-title">Community</span></a></li>
+                                @foreach ($brands as $item)
+                                    <li class="menu-product-support"><a class="item-link" href="#"><span
+                                                class="menu-title">{{ $item->name }}</span></a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xxs-6 col-xs-12 col_q1wn  col-style">
+                <div class="col-lg-3 col-md-2 col-sm-4 col-xxs-6 col-xs-12 col_q1wn  col-style">
                     <div class="module  ">
                         <div class="footer-block">
                             <div class="footer-block-title">
@@ -98,22 +90,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xxs-6 col-xs-12 col-style">
-                    <div class="box-information box-footer">
-                        <div class="module clearfix">
-                            <h3 class="footertitle">Support</h3>
-                            <div class="modcontent">
-                                <ul class="menu">
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="#">Forums</a></li>
-                                    <li><a href="#">Faqs Center</a></li>
-                                    <li><a href="#">24/7 support</a></li>
-                                    <li><a href="#">Free tools</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xxs-6 col-xs-12 col-style">
                     <div class="box-service box-footer">
@@ -122,10 +98,8 @@
                             <div class="modcontent">
                                 <ul class="menu">
                                     <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="gift-voucher.html">Gift Voucher</a></li>
-                                    <li><a href="order-history.html">Order History</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
                                     <li><a href="sitemap.html">Sitemap</a></li>
-                                    <li><a href="return.html">Return</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -136,12 +110,12 @@
                         <div class="module footer-contact clearfix">
                             <h3 class="footertitle">Contact Us</h3>
                             <ul>
-                                <li><i class="fa fa-map-marker"></i><span>Address : No 40 Baria Sreet 133/2
-                                        NewYork City,NY, United States</span></li>
-                                <li class="email"><i class="fa fa-envelope-o"></i>Email : contact@revo.com
+                                <li><i class="fa fa-map-marker"></i><span>Address : Jl. Bypass Ngurah Rai No.90, Sanur,
+                                        Denpasar Selatan, Kota Denpasar, Bali 80228</span></li>
+                                <li class="email"><i class="fa fa-envelope-o"></i>Email : info@urbanadventure.com
                                 </li>
                                 <li><i class="fa fa-mobile"></i><span>Phone 1 :
-                                        (+0123456789)</span><span>Phone 2 : (+0123456789)</span></li>
+                                        (+6287820020035)</span><span>Phone 2 : (+6287820020035)</span></li>
                             </ul>
                         </div>
                     </div>
@@ -149,20 +123,8 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-style">
                     <div class="module custom_categories ">
                         <div class="categories-footer">
-                            <div class="footer-cates-w">
-                                <nav>
-                                    <a href="#">Home</a>
-                                    <a href="#">Categories</a>
-                                    <a href="#">Mobiles</a>
-                                    <a href="#">Electronics</a>
-                                    <a href="#">Accessories</a>
-                                    <a href="#">Laptop</a>
-                                    <a href="#">About us</a>
-                                    <a href="#">Help</a>
-                                </nav>
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has
-                                    roots in a piece of classical Latin literature from 45 BC, making it over
-                                    2000 years old.</p>
+                            <div class="col-sm-12 copyright">
+                                Urban Adventure © 2022 - 2018. All Rights Reserved.
                             </div>
                         </div>
                     </div>
@@ -170,102 +132,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-center-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12 col-style footer-newsletter">
-                    <div class="module news-letter">
-                        <div class="so-custom-default newsletter">
-                            <div class="btn-group title-block">
-                                <div class="popup-title page-heading">
-                                    SIGN UP FOR NEWSLETTER
-                                </div>
-                                <div class="newsletter_promo">Duis at ante non massa consectetur iaculis id
-                                    non tellus</div>
-                            </div>
-                            <div class="modcontent block_content">
-                                <form method="post" id="signup" name="signup"
-                                    class="form-group form-inline signup send-mail">
-                                    <div class="input-group ">
-                                        <div class="input-box">
-                                            <input type="email" placeholder="Your email address..." value=""
-                                                class="form-control" id="txtemail2" name="txtemail2" size="55">
-                                        </div>
-                                        <div class="input-group-btn subcribe">
-                                            <button class="btn btn-primary" type="submit"
-                                                onclick="return subscribe_newsletter();" name="submit">
-                                                Subscribe
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!--/.modcontent-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 col-style footer-socials-wrap">
-                    <div class="module">
-                        <div class="socials-wrap">
-                            <h3 class="title-follow footertitle">Follow Us</h3>
-                            <ul>
-                                <li class="li-social facebook-social">
-                                    <a title="Facebook" href="http://www.facebook.com/MagenTech" target="_blank">
-                                        <span class="fa fa-facebook icon-social"></span><span
-                                            class="name-social">Facebook</span>
-                                    </a>
-                                </li>
 
-                                <li class="li-social twitter-social">
-                                    <a title="Twitter" href="https://twitter.com/magentech" target="_blank">
-                                        <span class="fa fa-twitter icon-social"></span> <span
-                                            class="name-social">Twitter</span>
-                                    </a>
-                                </li>
-
-                                <li class="li-social google-social">
-                                    <a title="Google+" href="https://plus.google.com/u/0/+Smartaddons"
-                                        target="_blank">
-                                        <span class="fa fa-google-plus icon-social"></span> <span
-                                            class="name-social">Google+</span>
-                                    </a>
-                                </li>
-
-                                <li class="li-social linkedin-social">
-                                    <a title="Linkedin" href="#" target="_blank">
-                                        <span class="fa fa-linkedin icon-social"></span> <span
-                                            class="name-social">Linkedin</span>
-                                    </a>
-                                </li>
-
-                                <li class="li-social pinterest-social">
-                                    <a title="Pinterest" href="#" target="_blank">
-                                        <span class="fa fa-pinterest icon-social"></span> <span
-                                            class="name-social">Pinterest</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer Bottom Container -->
-    <div class="footer-bottom ">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 copyright">
-                    HTML Revo © 2017 - 2018. All Rights Reserved. Designed by <a href="http://www.opencartworks.com/"
-                        target="_blank">OpenCartWorks.Com </a>
-                </div>
-                <div class="col-sm-12 payment">
-                    <img src="{{ asset('image/catalog/demo/payment/payment.png') }}" alt="imgpayment">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /Footer Bottom Container -->
     <!--Back To Top-->
     <div class="back-to-top"><i class="fa fa-angle-up"></i></div>
 </footer>
