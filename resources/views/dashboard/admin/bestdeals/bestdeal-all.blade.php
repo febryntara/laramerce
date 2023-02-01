@@ -1,11 +1,11 @@
 @extends('layouts.dashboard-layout')
 @section('dashboard-content')
 <h2 class="intro-y text-lg font-medium mt-10">
-    All Bedeal
+    All Bestdeal
 </h2>
 <div class="grid grid-cols-12 gap-6 mt-5">
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-        <a href="{{ route('manage_besdeal.create') }}" class="btn btn-primary shadow-md mr-2">Add New Besdeal</a>
+        <a href="{{ route('manage_best_deal.create') }}" class="btn btn-primary shadow-md mr-2">Add New Bestdeal</a>
         <div class="dropdown">
             <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                 <span class="w-5 h-5 flex items-center justify-center"><i class="w-4 h-4" data-lucide="filter"></i>
@@ -14,11 +14,11 @@
             <div class="dropdown-menu w-52 h-64 overflow-scroll">
                 <ul class="dropdown-content">
                     <li>
-                        <a href="/dashboard/besdeal" class="dropdown-item">All</a>
+                        <a href="/dashboard/best-deals" class="dropdown-item">All</a>
                     </li>
-                    @foreach ($categories as $item)
+                    @foreach ($products as $item)
                     <li>
-                        <a href="/dashboard/besdeal?category={{$item->name}}" class="dropdown-item">{{ $item->name }} </a>
+                        <a href="/dashboard/best-deals?products={{$item->name}}" class="dropdown-item">{{ $item->name }} </a>
                     </li>
                     @endforeach
 
@@ -28,9 +28,9 @@
         <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
         <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
             <div class="w-56 relative text-slate-500">
-                <form action="{{ route('manage_besdeal.all') }}" method="get" id="form-search-besdeal">
-                    @if (request('category'))
-                    <input type="hidden" name="category" value="{{ request('category') }}">
+                <form action="{{ route('manage_best_deal.all') }}" method="get" id="form-search-bestdeal">
+                    @if (request('products'))
+                    <input type="hidden" name="products" value="{{ request('products') }}">
                     @endif
                     <input type="text" name="search" class="form-control w-56 box pr-10" placeholder="Search...">
                     <button type="submit"><i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
@@ -55,10 +55,10 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($besdeal as $index=>$item)
+                @forelse ($products as $index=>$item)
                 <tr class="intro-x">
                     <td class="text-center w-20">{{ $loop->iteration }}</td>
-                    <td class="text-center">{{ $item->besdeal_code }}</td>
+                    <td class="text-center">{{ $item->bestdeal_code }}</td>
                     <td class="text-center w-24">
                         <a href="#" class="font-medium whitespace-nowrap">{{ Str::words($item->name, 3, '...') }}</a>
                         <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
@@ -71,10 +71,10 @@
                     <td class="text-center">{{ $item->stock }}</td>
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center mr-3" href="{{ route('manage_besdeal.detail', ['besdeal' => $item]) }}"> <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail </a>
-                            <a class="flex items-center mr-3" href="{{ route('manage_besdeal.update', ['besdeal' => $item]) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+                            <a class="flex items-center mr-3" href="{{ route('manage_bestdeal.detail', ['bestdeal' => $item]) }}"> <i data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail </a>
+                            <a class="flex items-center mr-3" href="{{ route('manage_bestdeal.update', ['bestdeal' => $item]) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
                             <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" onclick="deleteModalHandler({{ $index }})"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
-                            <input type="hidden" id="delete_route_{{ $index }}" value="{{ route('manage_besdeal.delete', ['besdeal' => $item]) }}">
+                            <input type="hidden" id="delete_route_{{ $index }}" value="{{ route('manage_bestdeal.delete', ['bestdeal' => $item]) }}">
                         </div>
                     </td>
                 </tr>
@@ -149,5 +149,5 @@
 </div>
 @endsection
 @section('script')
-<script src="{{ asset('dist/js/view/manage-besdeal/besdeal.js') }}"></script>
+<script src="{{ asset('dist/js/view/manage-bestdeal/bestdeal.js') }}"></script>
 @endsection

@@ -45,9 +45,9 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('manage_user.all') }}" class="side-menu {{ Request::is('dashboard/users') ? 'side-menu--active' : '' }}">
+            <a href="{{ route('manage_best_deal.all') }}" class="side-menu {{ Request::is('dashboard/best-deals') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"><i data-lucide="list"></i></div>
-                <div class="side-menu__title"> Besdeal </div>
+                <div class="side-menu__title"> Bestdeal </div>
             </a>
         </li>
         @endcan
