@@ -53,50 +53,30 @@ class Product extends Model
     // filter
     public function scopeFilter($query, array $filters)
     {
-        $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%')->orWhere('product_code','like','%'.$search.'%')->orWhereHas('category', function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%');
-            })->orWhereHas('brand', function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%');
-            });
-        });
-
         $query->when($filters['category'] ?? false, function ($query, $category) {
             return $query->whereHas('category', function ($query) use ($category) {
-                $query->where('name', 'like', '%' . $category . '%');
+                $query->where('name',$category);
             });
         });
-    }
-
-    public function scopeRange($query, $from = 0, $to = 0)
-    {
-        $query->when($from == 0 && $to == 0, function ($query) {
-            return $query;
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('name', 'like', '%' . $search . '%')->orWhere('product_code', $search)->WhereHas('brand', function ($query) use ($search) {
+                $query->orWhere('name', 'like', '%' . $search . '%');
+            });
         });
 
-        $query->when($from < $to, function ($query) use ($from, $to) {
-            return $query->whereBetween('price', [$from, $to]);
-        });
     }
 
-    public function scopeRegular($query)
-    {
-        return $query->whereNotIn('product_code', BestDeal::products()->get()->map(function ($item) {
-            return $item->product_code;
-        }));
-    }
+    // public function scopeCategory($query, $category_id = null)
+    // {
+    //     if (!is_null($category_id)) {
+    //         $this->cats($query, $category_id);
+    //     }
+    // }
 
-    public function scopeCategory($query, $category_id = null)
-    {
-        if (!is_null($category_id)) {
-            $this->cats($query, $category_id);
-        }
-    }
-
-    public function cats($query, $category_id)
-    {
-        return $query->where('category_id', $category_id);
-    }
+    // public function cats($query, $category_id)
+    // {
+    //     return $query->where('category_id', $category_id);
+    // }
 
 
     //relations
@@ -184,14 +164,6 @@ class Product extends Model
             foreach (Cart::where('product_id', $model->id)->get() as $cart) {
                 $cart->delete();
             }
-
-            foreach (OrderDetail::where('product_id', $model->product_code)->get() as $key => $product) {
-                $product->update([
-                    'product_id' => null
-                ]);
-            }
-
-            BestDeal::where('product_code', $model->product_code)->delete();
         });
     }
 }
