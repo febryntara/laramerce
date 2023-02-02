@@ -63,6 +63,20 @@
                                     <div class="panel-body">
                                         <fieldset id="address" class="required">
                                             <div class="form-group required">
+                                                <label for="input-payment-address-1" class="control-label">Address
+                                                    1</label>
+                                                <input type="text" class="form-control" readonly
+                                                    id="input-payment-address-1" value="{{ $order->address }}"
+                                                    name="user[address]">
+                                            </div>
+                                            <div class="form-group required">
+                                                <label for="input-payment-post_code" class="control-label">Post Code
+                                                </label>
+                                                <input type="text" class="form-control" readonly
+                                                    id="input-payment-post_code" value="{{ $order->post_code }}"
+                                                    name="user[post_code]">
+                                            </div>
+                                            <div class="form-group required">
                                                 <label for="input-payment-country" class="control-label">Province</label>
                                                 <select id="input-province" class="form-control" disabled
                                                     name="destination[province_id]">
@@ -79,11 +93,10 @@
                                                 </select>
                                             </div>
                                             <div class="form-group required">
-                                                <label for="input-payment-address-1" class="control-label">Address
-                                                    1</label>
+                                                <label for="input-payment-country" class="control-label">Country</label>
                                                 <input type="text" class="form-control" readonly
-                                                    id="input-payment-address-1" value="{{ $order->address }}"
-                                                    name="user[address]">
+                                                    id="input-payment-country" value="{{ $order->country }}"
+                                                    name="user[country]">
                                             </div>
                                         </fieldset>
                                     </div>
@@ -179,6 +192,25 @@
                                                             </tr>
                                                         </tfoot>
                                                     </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title"><i class="fa fa-pencil"></i> Delivery Service</h4>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div>
+                                                    <label for="">Delivery Service</label>
+                                                    <input value="{{ $order->delivery_name }}" id="expedition"
+                                                        class="form-control" readonly>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <label for="">Service Name</label>
+                                                    <input value="{{ $order->delivery_service }}" id="expedition-type"
+                                                        class="form-control" readonly>
                                                 </div>
                                             </div>
                                         </div>

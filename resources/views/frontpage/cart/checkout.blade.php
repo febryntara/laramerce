@@ -13,6 +13,7 @@
                 <input type="hidden" id="input-shipping-cost" name="shipping[cost]" value="0">
                 <input type="hidden" id="input-shipping-destination-province" name="shipping[province]" value="">
                 <input type="hidden" id="input-shipping-destination-city" name="shipping[city]" value="">
+                <input type="hidden" id="expedition-type-hidden-text" name="expedition[service]">
                 {{-- hidden value --}}
                 <ul class="breadcrumb">
                     <li><a href="{{ route('main') }}"><i class="fa fa-home"></i></a></li>
@@ -63,10 +64,22 @@
                                     <div class="panel-body">
                                         <fieldset id="address" class="required">
                                             <div class="form-group required">
+                                                <label for="input-payment-address" class="control-label">Address
+                                                </label>
+                                                <input type="text" class="form-control" id="input-payment-address"
+                                                    placeholder="Address.." name="customer[address]">
+                                            </div>
+                                            <div class="form-group required">
+                                                <label for="input-payment-post_code" class="control-label">Post Code
+                                                </label>
+                                                <input type="text" class="form-control" id="input-payment-post_code"
+                                                    placeholder="post code.." name="customer[post_code]">
+                                            </div>
+                                            <div class="form-group required">
                                                 <label for="input-payment-country" class="control-label">Province</label>
                                                 <select id="input-province" class="form-control"
                                                     name="destination[province_id]" onchange="getCity(this.value)">
-                                                    <option value=""> --- Please Select --- </option>
+                                                    <option value="no"> --- Please Select --- </option>
 
                                                 </select>
                                             </div>
@@ -74,16 +87,15 @@
                                                 <label for="input-payment-zone" class="control-label">City</label>
                                                 <select onchange="getCost()" name="destination[city_id]" id="input-city"
                                                     class="form-control" name="city_id">
-                                                    <option value=""> --- Please Select --- </option>
+                                                    <option value="no"> --- Please Select --- </option>
 
                                                 </select>
                                             </div>
                                             <div class="form-group required">
-                                                <label for="input-payment-address-1" class="control-label">Address
-                                                    1</label>
-                                                <input onclick="getCost()" type="text" class="form-control"
-                                                    id="input-payment-address-1" placeholder="Address.."
-                                                    name="customer[address]">
+                                                <label for="input-payment-country" class="control-label">Country
+                                                </label>
+                                                <input type="text" class="form-control" id="input-payment-country"
+                                                    placeholder="country.." name="customer[country]">
                                             </div>
                                         </fieldset>
                                     </div>
@@ -201,6 +213,31 @@
                                     <div class="col-sm-12">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
+                                                <h4 class="panel-title"><i class="fa fa-pencil"></i> Delivery Service</h4>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div>
+                                                    <select id="expedition" onchange="getCost()" class="form-control"
+                                                        name="expedition[name]">
+                                                        <option value="jne"> JNE </option>
+                                                        <option value="pos"> POS Indonesia </option>
+                                                        <option value="tiki"> TIKI </option>
+                                                    </select>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <select id="expedition-type"
+                                                        onchange="chooseExpeditionService(this.value)"
+                                                        class="form-control" name="expedition[type]">
+                                                        <option value=""> --- Please Select Province & City First
+                                                            --- </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
                                                 <h4 class="panel-title"><i class="fa fa-pencil"></i> Add Comments About
                                                     Your Order</h4>
                                             </div>
@@ -232,6 +269,7 @@
 
                 </div>
             </form>
+            @dump($errors)
             <!-- //Main Container -->
             @include('frontpage.frontpage-footer')
         </div>

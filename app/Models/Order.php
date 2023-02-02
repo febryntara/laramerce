@@ -35,7 +35,7 @@ class Order extends Model
             $periods = explode("-", $period);
             $year = $periods[0];
             $month = $periods[1];
-            return $query->whereMonth('created_at', $month)->whereYear('created_at',$year);
+            return $query->whereMonth('created_at', $month)->whereYear('created_at', $year);
         });
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where('name', 'like', '%' . $search . '%')->WhereHas('details', function ($query) use ($search) {
@@ -57,9 +57,13 @@ class Order extends Model
         $order->name = $customer['name'];
         $order->phone = $customer['phone'];
         $order->email = $customer['email'];
+        $order->post_code = $customer['post_code'];
+        $order->country = $customer['country'];
         // shipping
         $order->address = $shipping['address'];
         $order->province = $shipping['province'];
+        $order->delivery_name = $shipping['delivery_name'];
+        $order->delivery_service = $shipping['delivery_service'];
         $order->city = $shipping['city'];
         $order->cost = $shipping['cost'];
         // transaction
