@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Cart;
@@ -21,6 +22,7 @@ class GeneralController extends Controller
         $data = [
             'title' => 'Homepage | Urban Adventure',
             'products' => $products,
+            'banners' => Banner::get(),
             'best_deals' => Product::bestDeal($products)->all(),
             'best_sellers' => Product::bestSeller($products),
             'categories' => Category::first()->get(),
