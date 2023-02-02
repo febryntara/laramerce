@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\SnapToken;
@@ -274,10 +275,11 @@ class GeneralController extends Controller
         ];
         return view('frontpage.order.order-history', $data);
     }
-    public function my_account()
+    public function my_account(User $user)
     {
         $data = [
             'brands' => Brand::with(['products'])->latest()->get(),
+            'user' => $user->where('id', auth()->user()->id)->first(),
             'title' => 'Profile | Urban Adventure',
             'categories' => Category::first()->get(),
         ];
@@ -292,17 +294,6 @@ class GeneralController extends Controller
         ];
         return view('frontpage.wishlist.wishlist', $data);
     }
-
-    public function sitemap()
-    {
-        $data = [
-            'title' => 'Site Map | Urban Adventure',
-            'categories' => Category::first()->get(),
-            'brands' => Brand::with(['products'])->latest()->get(),
-        ];
-        return view('frontpage.sitemap.sitemap', $data);
-    }
-
     public function thankyou()
     {
         $data = [
@@ -314,4 +305,3 @@ class GeneralController extends Controller
         return view('frontpage.thankyou.thankyou', $data);
     }
 }
-

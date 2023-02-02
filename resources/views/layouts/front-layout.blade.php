@@ -19,7 +19,7 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
     <!-- Libs CSS
-                                                                                                                                                ============================================ -->
+                                                                                                                                                                                        ============================================ -->
     <link rel="stylesheet" href="{{ asset('/css/bootstrap/css/bootstrap.min.css') }}">
     <link href="{{ asset('/css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/js/datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
@@ -27,10 +27,10 @@
     <link href="{{ asset('/css/themecss/lib.css') }}" rel="stylesheet">
     <link href="{{ asset('/js/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/js/minicolors/miniColors.css') }}" rel="stylesheet">
-     <link href="{{ asset('/dist/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('/dist/css/custom.css') }}" rel="stylesheet">
 
     <!-- Theme CSS
-                                                                                                                                                ============================================ -->
+                                                                                                                                                                                        ============================================ -->
     <link href="{{ asset('/css/themecss/so_searchpro.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/themecss/so_megamenu.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/themecss/so-categories.css') }}" rel="stylesheet">
@@ -44,7 +44,7 @@
     <link href="{{ asset('/css/responsive.css') }}" rel="stylesheet">
 
     <!-- Google web fonts
-                                                                                                                                        ============================================ -->
+                                                                                                                                                                                ============================================ -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel='stylesheet' type='text/css'>
     <style>
@@ -98,14 +98,11 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
-            loop: true,
             spaceBetween: 10,
-            slidesPerView: 2,
-            freeMode: true,
+            slidesPerView: 4,
             watchSlidesProgress: true,
         });
         var swiper2 = new Swiper(".mySwiper2", {
-            loop: true,
             spaceBetween: 10,
             navigation: {
                 nextEl: ".swiper-button-next",

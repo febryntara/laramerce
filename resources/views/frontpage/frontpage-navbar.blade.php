@@ -257,6 +257,12 @@
                                                         data-animationtime="250">
                                                         <li class="with-sub-menu hover">
                                                             <p class="close-menu"></p>
+                                                            <a href="{{ route('main') }}" class="clearfix">
+                                                                <strong>Home</strong>
+                                                            </a>
+                                                        </li>
+                                                        <li class="with-sub-menu hover">
+                                                            <p class="close-menu"></p>
                                                             <a href="#" class="clearfix">
                                                                 <strong>Categories</strong>
                                                                 <b class="caret"></b>
