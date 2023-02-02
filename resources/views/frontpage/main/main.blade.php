@@ -13,21 +13,12 @@
                                 data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1"
                                 data-arrows="no" data-pagination="yes" data-lazyload="yes" data-loop="no"
                                 data-hoverpause="yes">
-                                <div class="yt-content-slide">
-                                    <a title="slide1" href="#"><img
-                                            src="image/catalog/demo/slideshow/home2/id2-slide1.jpg" alt="slide img"
-                                            class="responsive"></a>
-                                </div>
-                                <div class="yt-content-slide">
-                                    <a title="slide2" href="#"><img
-                                            src="image/catalog/demo/slideshow/home2/id2-slide2.jpg" alt="slide img"
-                                            class="responsive"></a>
-                                </div>
-                                <div class="yt-content-slide">
-                                    <a title="slide3" href="#"><img
-                                            src="image/catalog/demo/slideshow/home2/id2-slide3.jpg" alt="slide img"
-                                            class="responsive"></a>
-                                </div>
+                                @foreach ($banners->images as $image)
+                                    <div class="yt-content-slide">
+                                        <a title="{{ $item->title }}" href=""><img
+                                                src="{{ asset('storage/' . $image->src) }}" class="responsive"></a>
+                                    </div>
+                                @endforeach
                             </div>
                             <div class="loadeding"></div>
                         </div>
