@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email');
             $table->text('comments');
+            $table->string('post_code');
+            $table->string('country');
             // transaction
             $table->integer('gross_amount');
             $table->string('transaction_id');
@@ -30,6 +32,9 @@ return new class extends Migration
             // shipping
             $table->string('province');
             $table->string('city');
+            $table->string('cost');
+            $table->string('delivery_name');
+            $table->string('delivery_service');
             $table->string('cost');
             $table->text('address');
             $table->timestamps();

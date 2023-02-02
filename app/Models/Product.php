@@ -38,7 +38,7 @@ class Product extends Model
     public static function bestSeller($products, $items = 5)
     {
         $product = OrderDetail::get()->groupBy('product_id')->map(function ($products, $index) {
-            if ($index != "JNE") {
+            if ($index != "delivery") {
                 $quantity = 0;
                 foreach ($products as $item) {
                     $quantity += $item->quantity;
@@ -55,7 +55,7 @@ class Product extends Model
     {
         $query->when($filters['category'] ?? false, function ($query, $category) {
             return $query->whereHas('category', function ($query) use ($category) {
-                $query->where('name',$category);
+                $query->where('name', $category);
             });
         });
         $query->when($filters['search'] ?? false, function ($query, $search) {
@@ -63,7 +63,6 @@ class Product extends Model
                 $query->orWhere('name', 'like', '%' . $search . '%');
             });
         });
-
     }
 
     // public function scopeCategory($query, $category_id = null)
