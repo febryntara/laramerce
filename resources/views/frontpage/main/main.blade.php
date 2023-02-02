@@ -13,10 +13,11 @@
                                 data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1"
                                 data-arrows="no" data-pagination="yes" data-lazyload="yes" data-loop="no"
                                 data-hoverpause="yes">
-                                @foreach ($banners->images as $image)
-                                    <div class="yt-content-slide">
+                                @foreach ($banners as $item)
+                                    <div class="yt-content-slide" style="width: 100%;">
                                         <a title="{{ $item->title }}" href=""><img
-                                                src="{{ asset('storage/' . $image->src) }}" class="responsive"></a>
+                                                src="{{ asset('storage/' . $item->image->src) }}" class="responsive"
+                                                style="width: 1920px; height: 500px;object-fit: cover;object-position: center;"></a>
                                     </div>
                                 @endforeach
                             </div>
