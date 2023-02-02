@@ -50,6 +50,17 @@ class Order extends Model
     // method
     public static function generate($customer, $shipping, $item, $transaction)
     {
+        $products = [];
+        foreach ($item as $index => $product) {
+            if ($product['id'] != 'delivery') {
+                $pd = Product::where('product_code', $product['id'])->first();
+                if ($pd->stock < $product['quantity']) {
+                    return false;
+                }
+                $products[] = $pd;
+            }
+        }
+
         $order = new Order();
         $order->id = $transaction['order_id'];
         // customer
@@ -74,13 +85,18 @@ class Order extends Model
         $order->comments = request()->has('comments') ? request()->comments : null;
         $order->save();
 
-        foreach ($item as $key => $product) {
+        foreach ($item as $index => $product) {
             $order->details()->create([
                 'product_id' => $product['id'],
                 'name' => $product['name'],
                 'price' => $product['price'],
                 'quantity' => $product['quantity'],
             ]);
+
+            if ($product['id'] != 'delivery') {
+                $products[$index]->stock -= $product['quantity'];
+                $product->save();
+            }
         }
 
         Mail::to($customer['email'])->send(new OrderMail($order));

@@ -216,11 +216,14 @@ class GeneralController extends Controller
 
         // create order before show the page
         $order = Order::generate($customer_details, $shipping_address, $item_details, $transaction_details);
+        if ($order) {
+            return redirect()->route('order_detail', ['order' => $order]);
+        }
+        return redirect()->back()->with('error', "Order Failed, Fix Your Product QTY");
         // create order before show the page
 
         // return $order;
 
-        return redirect()->route('order_detail', ['order' => $order]);
     }
     public function blog_detail()
     {
