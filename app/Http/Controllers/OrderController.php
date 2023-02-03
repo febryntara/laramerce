@@ -15,7 +15,7 @@ class OrderController extends Controller
     {
         $data = [
             'title' => 'Orders | Urban Adventure',
-            'order' => Order::latest()->filter(request(['search','period']))->paginate(10),
+            'order' => Order::latest()->filter(request(['search','period']))->paginate(10)->withQueryString(),
         ];
         return view('dashboard.admin.orders.order-all', $data);
     }

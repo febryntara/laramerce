@@ -11,7 +11,7 @@ class BannerController extends Controller
     public function allBanner(){
         $data = [
             'title' => 'All Banners | Urban Adventure',
-            'banners'=>Banner::latest()->paginate(10)
+            'banners'=>Banner::latest()->filter(request(['search']))->paginate(10)->withQueryString()
         ];
         return view('dashboard.admin.banners.banner-all',$data);
     }

@@ -24,11 +24,11 @@
                                     <div class="table_layout filter-shopby">
                                         <div class="table_row">
                                             <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
-                                            <div class="table_cell" style="z-index: 103;">
+                                            {{-- <div class="table_cell" style="z-index: 103;">
                                                 <legend>Search</legend>
                                                 <input class="form-control" type="text" value="" size="50"
                                                     autocomplete="off" placeholder="Search" name="search">
-                                            </div>
+                                            </div> --}}
                                             <!--/ .table_cell -->
                                             <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
                                             <!-- - - - - - - - - - - - - - SUB CATEGORY - - - - - - - - - - - - - - - - -->
@@ -38,7 +38,7 @@
                                                     <ul class="checkboxes_list">
                                                         @foreach ($categories as $item)
                                                             <li>
-                                                                <a href="{{ route('category', ['category' => $item]) }}"
+                                                                <a href="{{ route('products', ['category' => $item->name]) }}"
                                                                     class="{{ Request::is('category/' . $item->name) ? 'actives' : '' }}"
                                                                     name="category" id="category_{{ $loop->iteration }}">
                                                                     {{ $item->name }}
@@ -60,7 +60,7 @@
                                                     <ul class="checkboxes_list">
                                                         @foreach ($brands as $item)
                                                             <li>
-                                                                <a href="{{ route('brand', ['brand' => $item]) }}"
+                                                                <a href="{{ route('products', request()->all()) }}"
                                                                     name="brand"
                                                                     class="{{ Request::is('category/' . $item->name) ? 'actives' : '' }}"
                                                                     id="brand_{{ $loop->iteration }}">{{ $item->name }}
@@ -98,6 +98,10 @@
                                                     </ul>
 
                                                 </fieldset>
+
+                                            </div>
+                                             <div class="table_cell">
+                                               <a href="{{ route('products') }}" class="button_grey"> Reset</a>
 
                                             </div>
                                         </div>
@@ -257,21 +261,7 @@
                             <!-- Filters -->
                             <div class="product-filter product-filter-bottom filters-panel">
                                 <div class="row">
-                                    <div class="col-sm-6 text-left">
-                                        <ul class="pagination">
-                                            <li class="active">
-                                                <span>1</span>
-                                            </li>
-                                            <li>
-                                                <a href="#">2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">3</a>
-                                            </li>
-                                            <li><a href="#">&gt;</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-6 text-right text-show">Showing 1 to 15 of 15 (1 Pages)</div>
+                                     {{ $products->links('frontpage.fragment.pagination') }}
                                 </div>
                             </div>
                             <!-- //end Filters -->
