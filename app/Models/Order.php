@@ -35,7 +35,7 @@ class Order extends Model
             $periods = explode("-", $period);
             $year = $periods[0];
             $month = $periods[1];
-            return $query->whereMonth('created_at', $month)->whereYear('created_at',$year);
+            return $query->whereMonth('created_at', $month)->whereYear('created_at', $year);
         });
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where('name', 'like', '%' . $search . '%')->WhereHas('details', function ($query) use ($search) {
@@ -50,6 +50,17 @@ class Order extends Model
     // method
     public static function generate($customer, $shipping, $item, $transaction)
     {
+        $products = [];
+        foreach ($item as $index => $product) {
+            if ($product['id'] != 'delivery') {
+                $pd = Product::where('product_code', $product['id'])->first();
+                if ($pd->stock < $product['quantity']) {
+                    return false;
+                }
+                $products[] = $pd;
+            }
+        }
+
         $order = new Order();
         $order->id = $transaction['order_id'];
         // customer
@@ -57,9 +68,13 @@ class Order extends Model
         $order->name = $customer['name'];
         $order->phone = $customer['phone'];
         $order->email = $customer['email'];
+        $order->post_code = $customer['post_code'];
+        $order->country = $customer['country'];
         // shipping
         $order->address = $shipping['address'];
         $order->province = $shipping['province'];
+        $order->delivery_name = $shipping['delivery_name'];
+        $order->delivery_service = $shipping['delivery_service'];
         $order->city = $shipping['city'];
         $order->cost = $shipping['cost'];
         // transaction
@@ -70,13 +85,18 @@ class Order extends Model
         $order->comments = request()->has('comments') ? request()->comments : null;
         $order->save();
 
-        foreach ($item as $key => $product) {
+        foreach ($item as $index => $product) {
             $order->details()->create([
                 'product_id' => $product['id'],
                 'name' => $product['name'],
                 'price' => $product['price'],
                 'quantity' => $product['quantity'],
             ]);
+
+            if ($product['id'] != 'delivery') {
+                $products[$index]->stock -= $product['quantity'];
+                $product->save();
+            }
         }
 
         Mail::to($customer['email'])->send(new OrderMail($order));

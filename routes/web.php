@@ -36,22 +36,30 @@ Route::get('/token', function () {
 
     $item_details = [
         [
-            "id" => "a01",
-            "price" => 7000,
-            "quantity" => 1,
-            "name" => "Apple"
+            "id" => "s8",
+            "price" => 2208000,
+            "quantity" => 2,
+            "name" => "OMS TATTOO"
         ],
         [
-            "id" => "b02",
-            "price" => 3000,
-            "quantity" => 2,
-            "name" => "Orange"
-        ]
+            "id" => "s7",
+            "price" => 2208000,
+            "quantity" => 5,
+            "name" => "OMS TATTOO"
+        ],
+        [
+            "id" => "s6",
+            "price" => 2208000,
+            "quantity" => 1,
+            "name" => "OMS TATTOO"
+        ],
     ];
     $customer_details = [
         "name" => "Budi Sasono",
         "email" => "budisusanto@example.com",
         "phone" => "+628123456789",
+        'country' => 'indonesia',
+        'post_code' => '6546532',
     ];
 
     $shipping_address = [
@@ -60,9 +68,11 @@ Route::get('/token', function () {
         "phone" => "0812345678910",
         "address" => "Sudirman",
         "city" => "Jakarta",
+        "delivery_name" => "JNE",
+        "delivery_service" => "OKE",
     ];
 
-    return SnapToken::claim($transaction_details, $customer_details, $item_details, $shipping_address);
+    return dump(Order::generate($customer_details, $shipping_address, $item_details, $transaction_details));
 });
 
 Route::get('/email', function () {

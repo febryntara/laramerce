@@ -31,6 +31,9 @@ return new class extends Migration
             $table->string('province');
             $table->string('city');
             $table->string('cost');
+            $table->string('delivery_name');
+            $table->string('delivery_service');
+            $table->string('cost');
             $table->text('address');
             $table->timestamps();
         });

@@ -32,101 +32,152 @@ function total_to_html(shipping_fee = 0) {
 }
 
 function getCity(province_id) {
-    $.ajax({
-        url: "/api/city",
-        type: "GET",
-        data: {
-            province: province_id,
-        },
-        beforeSend: () => {
-            $("#input-city").append(
-                ` <option value=""> Getting Data, Please Wait </option>`
-            );
-        },
-        success: (result) => {
-            $("#input-city")
-                .children()
-                .each((index, element) => {
-                    if (index > 0) element.remove();
-                });
-
-            result.forEach((item) => {
-                $("#input-city").append(
-                    ` <option value="${item.city_id}"> ${
-                        item.type + " " + item.city_name
-                    } </option>`
-                );
+    if ($("#input-province").val() == "no") {
+        $("#expedition-type")
+            .children()
+            .each((index, element) => {
+                element.remove();
             });
-        },
-    });
+        $("#expedition-type").append(`
+            <option value=""> --- Please Select Province & City First --- </option>
+        `);
+    } else {
+        $.ajax({
+            url: "/api/city",
+            type: "GET",
+            data: {
+                province: province_id,
+            },
+            beforeSend: () => {
+                $("#input-city").append(
+                    ` <option value=""> Getting Data, Please Wait </option>`
+                );
+            },
+            success: (result) => {
+                $("#input-city")
+                    .children()
+                    .each((index, element) => {
+                        if (index > 0) element.remove();
+                    });
+
+                result.forEach((item) => {
+                    $("#input-city").append(
+                        ` <option value="${item.city_id}"> ${
+                            item.type + " " + item.city_name
+                        } </option>`
+                    );
+                });
+            },
+        });
+    }
+}
+
+var ongkir;
+
+function set_ongkir(data) {
+    ongkir = data;
 }
 
 function getCost() {
-    $.ajax({
-        url: "/api/cost",
-        type: "GET",
-        data: {
-            origin: 27,
-            destination: $("#input-city").val(),
-            weight: $("#cart-total-weight").val(),
-            courier: "jne",
-        },
-        success: (result) => {
-            $("#cart-shipping-fee").html(
-                new Intl.NumberFormat("id", {
-                    style: "currency",
-                    currency: "IDR",
-                }).format(result["results"][0].costs[0].cost[0].value)
-            );
+    if ($("#input-city").val() == "no" || $("#input-province").val() == "no") {
+        $("#expedition-type")
+            .children()
+            .each((index, element) => {
+                element.remove();
+            });
+        $("#expedition-type").append(`
+            <option value=""> --- Please Select Province & City First --- </option>
+        `);
+    } else {
+        $.ajax({
+            url: "/api/cost",
+            type: "GET",
+            data: {
+                origin: 27,
+                destination: $("#input-city").val(),
+                weight: $("#cart-total-weight").val(),
+                courier: $("#expedition").val(),
+            },
+            async: false,
+            success: (result) => {
+                set_ongkir(result);
 
-            $("#cart-shipping-fee").attr(
-                "data-cart_shipping_fee",
-                result["results"][0].costs[0].cost[0].value
-            );
-            total_to_html(result["results"][0].costs[0].cost[0].value);
+                $("#expedition-type")
+                    .children()
+                    .each((index, element) => {
+                        element.remove();
+                    });
 
-            if ($("#package-receiver").length == 1) {
-                const child = $("#package-receiver").children();
-                child[0].children[1].innerHTML =
-                    result["destination_details"].province;
-                child[1].children[1].innerHTML =
-                    result["destination_details"].type +
-                    " " +
-                    result["destination_details"].city_name;
-                child[2].children[1].innerHTML = "alamat";
-                child[3].children[1].innerHTML = "no telp";
-            }
-
-            if ($("#package-sender").length == 1) {
-                const child = $("#package-sender").children();
-                child[0].children[1].innerHTML =
-                    result["origin_details"].province;
-                child[1].children[1].innerHTML =
-                    result["origin_details"].type +
-                    " " +
-                    result["origin_details"].city_name;
-                child[2].children[1].innerHTML = "alamat";
-            }
-
-            if ($("#input-shipping-cost").length == 1) {
-                $("#input-shipping-cost").val(
-                    result["results"][0].costs[0].cost[0].value
+                $("#expedition-type").append(
+                    `<option value=""> --- Please Select Service --- </option>`
                 );
-            }
 
-            if ($("#input-shipping-destination-province").length == 1) {
-                $("#input-shipping-destination-province").val(
-                    result["destination_details"].province
-                );
-            }
+                ongkir.results[0].costs.forEach((item, index) => {
+                    $("#expedition-type").append(`
+                    <option value="${index}"> ${item.service} IDR ${item.cost[0].value} </option>
+                `);
+                });
+            },
+        });
+    }
+}
 
-            if ($("#input-shipping-destination-city").length == 1) {
-                $("#input-shipping-destination-city").val(
-                    result["destination_details"].city_name
-                );
-            }
-        },
-    });
+function chooseExpeditionService(index) {
+    $("#cart-shipping-fee").html(
+        new Intl.NumberFormat("id", {
+            style: "currency",
+            currency: "IDR",
+        }).format(ongkir.results[0].costs[index].cost[0].value)
+    );
+
+    $("#cart-shipping-fee").attr(
+        "data-cart_shipping_fee",
+        ongkir.results[0].costs[index].cost[0].value
+    );
+    total_to_html(ongkir.results[0].costs[index].cost[0].value);
+
+    if ($("#package-receiver").length == 1) {
+        const child = $("#package-receiver").children();
+        child[0].children[1].innerHTML = ongkir.destination_details.province;
+        child[1].children[1].innerHTML =
+            ongkir.destination_details.type +
+            " " +
+            ongkir.destination_details.city_name;
+        child[2].children[1].innerHTML = "alamat";
+        child[3].children[1].innerHTML = "no telp";
+    }
+
+    if ($("#package-sender").length == 1) {
+        const child = $("#package-sender").children();
+        child[0].children[1].innerHTML = result["origin_details"].province;
+        child[1].children[1].innerHTML =
+            result["origin_details"].type +
+            " " +
+            result["origin_details"].city_name;
+        child[2].children[1].innerHTML = "alamat";
+    }
+
+    if ($("#input-shipping-cost").length == 1) {
+        $("#input-shipping-cost").val(
+            ongkir.results[0].costs[index].cost[0].value
+        );
+    }
+
+    if ($("#input-shipping-destination-province").length == 1) {
+        $("#input-shipping-destination-province").val(
+            ongkir.destination_details.province
+        );
+    }
+
+    if ($("#input-shipping-destination-city").length == 1) {
+        $("#input-shipping-destination-city").val(
+            ongkir.destination_details.city_name
+        );
+    }
+
+    $("#expedition-type-hidden-text").val(
+        ongkir.results[0].costs[index].service
+    );
 }
 
 function update_quantity(product_code, user_id) {

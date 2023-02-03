@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Cart;
@@ -21,6 +22,7 @@ class GeneralController extends Controller
         $data = [
             'title' => 'Homepage | Urban Adventure',
             'products' => $products,
+            'banners' => Banner::get(),
             'best_deals' => Product::bestDeal($products)->all(),
             'best_sellers' => Product::bestSeller($products),
             'categories' => Category::first()->get(),
@@ -151,8 +153,12 @@ class GeneralController extends Controller
             'customer.email' => 'required|email:dns',
             'customer.phone' => 'required|numeric',
             'customer.address' => 'required|string',
+            'customer.post_code' => 'required|numeric',
+            'customer.country' => 'required|string',
             'destination.province_id' => 'required|numeric',
             'destination.city_id' => 'required|numeric',
+            'expedition.name' => 'required|string',
+            'expedition.service' => 'required|string',
             'cart.*.name' => 'required|string',
             'cart.*.id' => 'required|string',
             'cart.*.quantity' => 'required|numeric|min:1',
@@ -186,9 +192,9 @@ class GeneralController extends Controller
             }
         }
         array_push($item_details, [
-            'name' => 'Delivery Service JNE',
+            'name' => 'Delivery Service',
             'quantity' => 1,
-            'id' => 'JNE',
+            'id' => 'delivery',
             'price' => $validated['shipping']['cost']
         ]);
 
@@ -200,37 +206,26 @@ class GeneralController extends Controller
             "address" =>  $validated['customer']['address'],
             "province" => $validated['shipping']['province'],
             "city" => $validated['shipping']['city'],
-            "cost" => $validated['shipping']['cost']
+            "cost" => $validated['shipping']['cost'],
+            "delivery_name" => $validated['expedition']['name'],
+            "delivery_service" => $validated['expedition']['service']
         ];
         // preparing data for snaptoken
 
         // sending to view
         $cart = Cart::where('user_id', auth()->user()->id)->get();
-        $data = [
-            'title' => "Prepare To Order",
-            'isUser' => auth()->user(),
-            'weight' => 0,
-            'brands' => Brand::with(['products'])->latest()->get(),
-            'snap' => SnapToken::claim($transaction_details, $customer_details, $item_details, $shipping_address),
-            'categories' => Category::first()->get(),
-            'shipping' => $shipping_address,
-            'transaction' => $transaction_details,
-            'comments' => $validated['comments'],
-            'cart' => Product::whereIn('product_code', $cart->map(function ($item) {
-                return $item->product_id;
-            }))->get()->each(function ($item, $index) use ($cart) {
-                $item->amount = $cart->where('product_id', $item->product_code)->where('user_id', auth()->user()->id)->first()->amount;
-            })
-        ];
         // sending to view
 
         // create order before show the page
         $order = Order::generate($customer_details, $shipping_address, $item_details, $transaction_details);
+        if ($order) {
+            return redirect()->route('order_detail', ['order' => $order]);
+        }
+        return redirect()->back()->with('error', "Order Failed, Fix Your Product QTY");
         // create order before show the page
 
         // return $order;
 
-        return redirect()->route('order_detail', ['order' => $order]);
     }
     public function blog_detail()
     {
