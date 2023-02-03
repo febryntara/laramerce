@@ -87,6 +87,7 @@ Route::controller(GeneralController::class)->group(function () {
     Route::get('/thankyou', 'thankyou')->name('thankyou')->middleware('auth');
     Route::get('/cart', 'cart')->name('cart')->middleware('auth');
     // Route::get('/category', 'category')->name('category');
+    Route::get('/products', 'products')->name('products');
     Route::get('/category/{category:name}', 'category')->name('category');
     Route::get('/brand/{brand:name}', 'brand')->name('brand');
     Route::get('/quickview/{product:product_code}', 'quickview')->name('quickview');

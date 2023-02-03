@@ -14,9 +14,10 @@
                         </li>
                     </ul>
                 </div> --}}
-                <div class="header-top-left  col-lg-6 col-sm-5 col-md-6 hidden-xs">
-                    <span><i class="fa fa-map-marker" aria-hidden="true"></i> Jl. Bypass Ngurah Rai No.90, Sanur,
-                        Denpasar Selatan, Kota Denpasar, Bali 80228</span>
+                <div class="header-top-left  col-lg-6 col-sm-5 col-md-6 hidden-xs"><a
+                        href="https://goo.gl/maps/U68FA8N5Q5YsPpqw7" target="_blank">
+                        <span><i class="fa fa-map-marker" aria-hidden="true"></i> Jl. Bypass Ngurah Rai No.90, Sanur,
+                            Denpasar Selatan, Kota Denpasar, Bali 80228</span></a>
                 </div>
                 <div class="header-top-right collapsed-block col-lg-6 col-md-6 col-sm-7 col-xs-12"
                     style="background-color: white!important;">
@@ -46,12 +47,12 @@
                                     aria-hidden="true"></i></a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/urbanadventure.co.id/"><i class="fa fa-facebook"
+                            <a href="https://www.facebook.com/urbanadventure.co.id/"><i class="fa fa-facebook"
                                     aria-hidden="true"></i></a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/urbanadventure.co.id/"><i class="fa fa-whatsapp"
-                                    aria-hidden="true"></i></a>
+                            <a href="https://api.whatsapp.com/send?phone=6287820020035&text=Hello%20Urban%20Adventure%2C%20..."
+                                target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
                         </li>
                     </ul>
 
@@ -308,6 +309,12 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </li>
+                                                        <li class="with-sub-menu hover">
+                                                            <p class="close-menu"></p>
+                                                            <a href="{{ route('products') }}" class="clearfix">
+                                                                <strong>Our Products</strong>
+                                                            </a>
                                                         </li>
 
 
