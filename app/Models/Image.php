@@ -32,7 +32,7 @@ class Image extends Model
         }
 
         return [
-            'thumb' => null,
+            'thumb' => $img_response->store('images'),
             'src' => $img_response->store('images')
         ];
     }

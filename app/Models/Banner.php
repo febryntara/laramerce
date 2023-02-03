@@ -30,7 +30,7 @@ class Banner extends Model
 
         self::created(function ($banner) {
             $image = request()->file('image');
-            $uploaded = Image::uploadImage($image);
+            $uploaded = Image::uploadImage($image, false);
             Image::create([
                 'thumb' => 'thumbnails/' . $uploaded['thumb']->basename,
                 'src' => 'images/' . $uploaded['src']->basename,
