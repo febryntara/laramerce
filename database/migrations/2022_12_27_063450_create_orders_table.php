@@ -21,8 +21,6 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email');
             $table->text('comments');
-            $table->string('post_code');
-            $table->string('country');
             // transaction
             $table->integer('gross_amount');
             $table->string('transaction_id');

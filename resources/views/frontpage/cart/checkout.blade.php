@@ -126,14 +126,15 @@
                                                                 <tr data-sub_total="{{ $item->price * $item->amount }}"
                                                                     data-product="{{ $item->product_code }}"
                                                                     data-price="{{ $item->price }}">
-                                                                    <td class="text-center"><a href="product.html"><img
+                                                                    <td class="text-center"><a
+                                                                            href="{{ route('product-detail', ['product' => $item]) }}"><img
                                                                                 width="60px"
                                                                                 src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : '/image/catalog/demo/product/funiture/10.jpg') }}"
-                                                                                alt="Xitefun Causal Wear Fancy Shoes"
-                                                                                title="Xitefun Causal Wear Fancy Shoes"
+                                                                                alt="{{ $item->name }}"
+                                                                                title="{{ $item->name }}"
                                                                                 class="img-thumbnail"></a></td>
                                                                     <td class="text-left"><a
-                                                                            href="product.html">{{ $item->name }}</a>
+                                                                            href="{{ route('product-detail', ['product' => $item]) }}">{{ $item->name }}</a>
                                                                     </td>
                                                                     <td class="text-left">
                                                                         <div class="input-group btn-block"
@@ -269,7 +270,6 @@
 
                 </div>
             </form>
-            @dump($errors)
             <!-- //Main Container -->
             @include('frontpage.frontpage-footer')
         </div>

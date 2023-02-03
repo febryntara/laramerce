@@ -8,7 +8,7 @@
                 <ul class="breadcrumb">
                     <li><a href="{{ route('main') }}"><i class="fa fa-home"></i></a></li>
                     <li>
-                        <p>{{ $name->name }}</p>
+                        <p>{{ $name }}</p>
                     </li>
                 </ul>
 
@@ -53,7 +53,7 @@
                                             </div>
                                             <!--/ .table_cell -->
                                             <!-- - - - - - - - - - - - - - End SUB CATEGORY - - - - - - - - - - - - - - - - -->
-                                            <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
+                                            <!-- - - - - - - - - - - - - - Brands - - - - - - - - - - - - - - - - -->
                                             <div class="table_cell">
                                                 <fieldset>
                                                     <legend>Brand</legend>
@@ -73,15 +73,42 @@
                                                 </fieldset>
 
                                             </div>
+                                            <div class="table_cell">
+                                                <fieldset>
+                                                    <legend>Price</legend>
+                                                    <ul class="checkboxes_list">
+                                                        {{-- @foreach ($price as $item) --}}
+                                                        <li>
+                                                            <a href="#" name="price" class=""
+                                                                id="">Start IDR 500.000 - IDR 1.000.000
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" name="price" class=""
+                                                                id="">Start IDR 1.000.000 - IDR 1.500.000
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" name="price" class=""
+                                                                id="">Start IDR 1.500.000 - IDR 2.000.000
+                                                            </a>
+                                                        </li>
+                                                        {{-- @endforeach --}}
+
+                                                    </ul>
+
+                                                </fieldset>
+
+                                            </div>
                                         </div>
                                         <!--/ .table_row -->
-                                        <div class="bottom_box">
+                                        {{-- <div class="bottom_box">
                                             <div class="buttons_row">
                                                 <button type="submit" class="button_grey button_submit">Search</button>
                                                 <button type="reset" class="button_grey filter_reset">Reset</button>
                                             </div>
 
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <!--/ .table_layout -->
                                 </form>
@@ -97,7 +124,7 @@
                             style="margin-bottom: 15px;"><i class="fa fa-bars"></i>Sidebar</a>
                         <div class="sidebar-overlay "></div>
                         <div class="products-category">
-                            <h3 class="title-category ">{{ $name->name }}</h3>
+                            <h3 class="title-category ">{{ $name }}</h3>
                             <div class="category-derc">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -114,7 +141,7 @@
                             <!-- Filters -->
                             <div class="product-filter product-filter-top filters-panel">
                                 <div class="row">
-                                    <div class="col-md-5 col-sm-3 col-xs-12 view-mode">
+                                    {{-- <div class="col-md-5 col-sm-3 col-xs-12 view-mode">
 
                                         <div class="list-view">
                                             <button class="btn btn-default grid active" data-view="grid"
@@ -142,7 +169,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="input-limit">Show:</label>
-                                            <select id="input-limit" class="form-control" onchange="location = this.value;">
+                                            <select id="input-limit" class="form-control"
+                                                onchange="location = this.value;">
                                                 <option value="" selected="selected">15</option>
                                                 <option value="">25</option>
                                                 <option value="">50</option>
@@ -150,7 +178,7 @@
                                                 <option value="">100</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <!-- //end Filters -->
@@ -160,28 +188,12 @@
                                     <div class="product-layout col-lg-3 col-md-4 col-sm-4 col-xxs-6 col-xs-12">
                                         <div class="product-item-container">
                                             <div class="left-block left-b">
-                                                {{-- <div class="product-card__gallery product-card__left">
-                                                    <div class="item-img thumb-active"
-                                                        data-src="/image/catalog/demo/product/electronic/600x600/3-1.jpg">
-                                                        <img src="/image/catalog/demo/product/electronic/90x90/3-1.jpg"
-                                                            alt="image">
-                                                    </div>
-                                                    <div class="item-img"
-                                                        data-src="/image/catalog/demo/product/electronic/600x600/3-2.jpg">
-                                                        <img src="/image/catalog/demo/product/electronic/90x90/3-2.jpg"
-                                                            alt="image">
-                                                    </div>
-                                                    <div class="item-img"
-                                                        data-src="/image/catalog/demo/product/electronic/600x600/3.jpg">
-                                                        <img src="/image/catalog/demo/product/electronic/90x90/3.jpg"
-                                                            alt="image">
-                                                    </div>
-                                                </div> --}}
                                                 <div class="product-image-container">
                                                     <a href="{{ route('product-detail', ['product' => $item]) }}"
-                                                        target="_self" title="Drutick lanaeger">
+                                                        target="_self" title="{{ $item->name }}">
                                                         <img src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'dist/images/default.jpg') }}"
-                                                            class="img-1 img-responsive" alt="image">
+                                                            class="img-1 img-responsive" alt="image"
+                                                            style="width: 200px; height: 200px;object-fit: fill;object-position: center;">
                                                     </a>
                                                 </div>
 
@@ -196,8 +208,9 @@
 
                                                 <div class="caption">
                                                     <h4><a href="{{ route('product-detail', ['product' => $item]) }}"
-                                                            title="Drutick lanaeger"
-                                                            target="_self">{{ $item->name }}</a></h4>
+                                                            title="{{ $item->name }}"
+                                                            target="_self">{{ $item->name }}</a>
+                                                    </h4>
                                                     <div class="rate-history">
                                                         <div class="ratings">
                                                             <div class="rating-box">

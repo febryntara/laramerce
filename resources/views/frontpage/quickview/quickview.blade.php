@@ -96,7 +96,7 @@
                             <div class="content-product-left class-honizol col-md-6 col-sm-12 col-xs-12">
                                 <div class="large-image" style="width: 100%;">
                                     <img itemprop="image" class="product-image-zoom"
-                                        style="width: 300px; height: 250px; object-fit: cover; object-position: center;"
+                                        style="width: 300px; height: 250px; object-fit: fill; object-position: center;"
                                         src="{{ asset('storage/' . $product->images->first()->src) }}"
                                         data-zoom-image="{{ asset('storage/' . $product->images->first()->src) }}"
                                         title="{{ $product->name }}" alt="{{ $product->name }}">
@@ -114,7 +114,7 @@
                                             title="{{ $product->name }}">
                                             <img src="{{ asset('storage/' . $image->src) }}"
                                                 title="{{ $product->name }}" alt="{{ $product->name }}"
-                                                style="width: 250px; height: 50px; object-fit: cover; object-position: center;">
+                                                style="width: 250px; height: 50px; object-fit: fill; object-position: center;">
                                         </a>
                                     @endforeach
                                 </div>

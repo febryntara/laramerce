@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Cart;
@@ -21,9 +22,12 @@ class GeneralController extends Controller
         $data = [
             'title' => 'Homepage | Urban Adventure',
             'products' => $products,
+            'banners' => Banner::get(),
             'best_deals' => Product::bestDeal($products)->all(),
             'best_sellers' => Product::bestSeller($products),
-            'categories' => Category::first()->get(),
+            'categories' => collect(Category::get()->each(function ($item) {
+                $item->product_count = $item->products->count();
+            })->sortByDesc('product_count')->values()->all()),
             'brands' => Brand::with(['products'])->latest()->get()
         ];
 
@@ -34,8 +38,8 @@ class GeneralController extends Controller
         $data = [
             'title' => 'Category | Urban Adventure',
             'products' => $category->products,
-            'name' => $category,
-            'categories' => Category::first()->get(),
+            'name' => $category->name,
+            'categories' => Category::get(),
             'brands' => Brand::with(['products'])->latest()->get()
         ];
         return view('frontpage.category.category', $data);
@@ -45,12 +49,24 @@ class GeneralController extends Controller
         $data = [
             'title' => 'Category | Urban Adventure',
             'products' => $brand->products,
-            'name' => $brand,
+            'name' => $brand->name,
+            'categories' => Category::get(),
+            'brands' => Brand::with(['products'])->latest()->get()
+        ];
+        return view('frontpage.category.category', $data);
+    }
+    public function products()
+    {
+        $data = [
+            'title' => 'Products | Urban Adventure',
+            'products' => Product::all(),
+            'name' => 'All Products',
             'categories' => Category::first()->get(),
             'brands' => Brand::with(['products'])->latest()->get()
         ];
         return view('frontpage.category.category', $data);
     }
+
     public function quickview(Product $product)
     {
         // return dd($product->brand);
@@ -58,7 +74,7 @@ class GeneralController extends Controller
             'title' => 'Quickview | Urban Adventure',
             'product' => $product,
             // 'products' => Product::latest()->get()->random(Product::all()->count() > 6 ? 6 : Product::all()->count()),
-            'categories' => Category::first()->get(),
+            'categories' => Category::get(),
         ];
         return view('frontpage.quickview.quickview', $data);
     }
@@ -69,7 +85,7 @@ class GeneralController extends Controller
             'cart' => auth()->user()->cart ?? [],
             'weight' => 0,
             'title' => 'Cart | Urban Adventure',
-            'categories' => Category::first()->get(),
+            'categories' => Category::get(),
             'brands' => Brand::with(['products'])->latest()->get(),
         ];
         foreach ($data['cart'] as $item) {
@@ -84,7 +100,7 @@ class GeneralController extends Controller
             'product' => $product,
             'brands' => Brand::with(['products'])->latest()->get(),
             'products' => Product::latest()->get()->random(Product::all()->count() > 6 ? 6 : Product::all()->count()),
-            'categories' => Category::first()->get(),
+            'categories' => Category::get(),
         ];
         return view('frontpage.product.product-detail', $data);
     }
@@ -98,7 +114,7 @@ class GeneralController extends Controller
                 'isUser' => auth()->user(),
                 'weight' => 0,
                 'brands' => Brand::with(['products'])->latest()->get(),
-                'categories' => Category::first()->get(),
+                'categories' => Category::get(),
                 'cart' => Product::whereIn('product_code', $cart->map(function ($item) {
                     return $item->product_id;
                 }))->get()->each(function ($item, $index) use ($cart) {
@@ -118,7 +134,7 @@ class GeneralController extends Controller
                 'isUser' => auth()->user(),
                 'weight' => 0,
                 'brands' => Brand::with(['products'])->latest()->get(),
-                'categories' => Category::first()->get(),
+                'categories' => Category::get(),
                 'cart' => $product->each(function ($item, $index) {
                     $item->amount = (request()->cart[$index]["quantity"] > $item->stock ? $item->stock : request()->cart[$index]["quantity"]);
                 })
@@ -216,17 +232,20 @@ class GeneralController extends Controller
 
         // create order before show the page
         $order = Order::generate($customer_details, $shipping_address, $item_details, $transaction_details);
+        if ($order) {
+            return redirect()->route('order_detail', ['order' => $order]);
+        }
+        return redirect()->back()->with('error', "Order Failed, Fix Your Product QTY");
         // create order before show the page
 
         // return $order;
 
-        return redirect()->route('order_detail', ['order' => $order]);
     }
     public function blog_detail()
     {
         $data = [
             'title' => 'Detail Blog | Urban Adventure',
-            'categories' => Category::first()->get(),
+            'categories' => Category::get(),
         ];
         return view('frontpage.blog.blog-detail', $data);
     }
@@ -234,7 +253,7 @@ class GeneralController extends Controller
     {
         $data = [
             'title' => 'Blog | Urban Adventure',
-            'categories' => Category::first()->get(),
+            'categories' => Category::get(),
         ];
         return view('frontpage.blog.blog-page', $data);
     }
@@ -250,7 +269,7 @@ class GeneralController extends Controller
             'order' => $order,
             'brands' => Brand::with(['products'])->latest()->get(),
             'snap' => $order->payment_token,
-            'categories' => Category::first()->get(),
+            'categories' => Category::get(),
             'cart' => $order->details->slice(0, -1)
         ];
         return view('frontpage.cart.execute-order', $data);
@@ -260,7 +279,7 @@ class GeneralController extends Controller
         $data = [
             'brands' => Brand::with(['products'])->latest()->get(),
             'title' => 'Detail Order | Urban Adventure',
-            'categories' => Category::first()->get(),
+            'categories' => Category::get(),
             'orders' => auth()->user()->orders
         ];
         return view('frontpage.order.order-history', $data);
@@ -271,7 +290,7 @@ class GeneralController extends Controller
             'brands' => Brand::with(['products'])->latest()->get(),
             'user' => $user->where('id', auth()->user()->id)->first(),
             'title' => 'Profile | Urban Adventure',
-            'categories' => Category::first()->get(),
+            'categories' => Category::get(),
         ];
         return view('frontpage.profile.my-account', $data);
     }
@@ -279,8 +298,9 @@ class GeneralController extends Controller
     {
         $data = [
             'title' => 'Whislist | Urban Adventure',
+            'brands' => Brand::with(['products'])->latest()->get(),
             'wishlist' => auth()->user()->wishlists ?? [],
-            'categories' => Category::first()->get(),
+            'categories' => Category::get(),
         ];
         return view('frontpage.wishlist.wishlist', $data);
     }
@@ -289,9 +309,56 @@ class GeneralController extends Controller
         $data = [
             'title' => 'Thanks For Purchasing! | Urban Adventure',
             'products' => Product::get(),
-            'categories' => Category::first()->get(),
+            'categories' => Category::get(),
             'brands' => Brand::with(['products'])->latest()->get()
         ];
         return view('frontpage.thankyou.thankyou', $data);
+    }
+
+    public function sitemap()
+    {
+        $data = [
+            'title' => "Site Map | Urban Adventure",
+            'pages' => [
+                [
+                    'name' => 'Home',
+                    'route' => route('main')
+                ],
+                [
+                    'name' => 'Login',
+                    'route' => route('login')
+                ],
+                [
+                    'name' => 'Register',
+                    'route' => route('register')
+                ],
+                [
+                    'name' => 'My Account',
+                    'route' => route('my-account')
+                ],
+                [
+                    'name' => 'Wishlist',
+                    'route' => route('wishlist')
+                ],
+                [
+                    'name' => 'Order History',
+                    'route' => route('order-history')
+                ],
+                [
+                    'name' => 'Cart',
+                    'route' => route('cart')
+                ],
+                [
+                    'name' => 'Checkout',
+                    'route' => route('checkout')
+                ]
+            ],
+            'categories' => Category::get()->each(fn ($item) => $item->route = route('category', ['category' => $item])),
+            'brands' => Brand::get()->each(fn ($item) => $item->route = route('brand', ['brand' => $item])),
+            'products' => Product::get()->each(fn ($item) => $item->route = route('product-detail', ['product' => $item])),
+
+        ];
+
+        return view('frontpage.sitemap.sitemap', $data);
     }
 }
