@@ -548,7 +548,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @foreach ($brands->take(3) as $ib => $brand)
+                            @foreach ($categories->take(3) as $ib => $brand)
                                 <div class="block block_{{ $ib + 1 }}">
                                     <!-- Listing tabs -->
                                     <div class="module custom-listingtab default-nav">
