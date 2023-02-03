@@ -95,7 +95,7 @@ class Order extends Model
 
             if ($product['id'] != 'delivery') {
                 $products[$index]->stock -= $product['quantity'];
-                $product->save();
+                $products[$index]->save();
             }
         }
 

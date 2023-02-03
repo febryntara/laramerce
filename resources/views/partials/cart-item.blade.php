@@ -1,6 +1,6 @@
 <tr data-product_code="{{ $item->product_id }}">
     <td class="text-center" style="width:70px">
-        <a href="product.html">
+        <a href="{{ route('product-detail', ['product' => $item->product]) }}">
             <img src="{{ asset($item->product->images->count() ? 'storage/' . $item->product->images->first()->src : 'image/catalog/demo/product/80/1.jpg') }}"
                 style="width:70px" alt="{{ $item->product->name }}" title="{{ $item->product->name }}" class="preview">
         </a>
@@ -14,7 +14,7 @@
         {{ ch_currency($item->product->price) }}
     </td>
     <td class="text-right">
-        <a href="product.html" class="fa fa-edit"></a>
+        <a href="{{ route('product-detail', ['product' => $item->product]) }}" class="fa fa-edit"></a>
     </td>
     <td class="text-right">
         <a onclick="cart.remove('{{ $item->product_id }}', '{{ $item->user_id }}')" class="fa fa-times fa-delete"></a>
