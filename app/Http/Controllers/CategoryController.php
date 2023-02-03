@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         $data = [
             'title' => 'Categories | Urban Adventure',
-            'categories' => Category::latest()->filter(request(['search']))->paginate(10),
+            'categories' => Category::latest()->filter(request(['search']))->paginate(10)->withQueryString(),
         ];
         return view('dashboard.admin.categories.category-all', $data);
     }

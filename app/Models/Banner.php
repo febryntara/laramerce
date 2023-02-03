@@ -17,6 +17,13 @@ class Banner extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('title', 'like', '%' . $search . '%');
+        });
+    }
+
     public static function boot()
     {
         parent::boot();
