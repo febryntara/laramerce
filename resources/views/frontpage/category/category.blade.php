@@ -188,28 +188,12 @@
                                     <div class="product-layout col-lg-3 col-md-4 col-sm-4 col-xxs-6 col-xs-12">
                                         <div class="product-item-container">
                                             <div class="left-block left-b">
-                                                {{-- <div class="product-card__gallery product-card__left">
-                                                    <div class="item-img thumb-active"
-                                                        data-src="/image/catalog/demo/product/electronic/600x600/3-1.jpg">
-                                                        <img src="/image/catalog/demo/product/electronic/90x90/3-1.jpg"
-                                                            alt="image">
-                                                    </div>
-                                                    <div class="item-img"
-                                                        data-src="/image/catalog/demo/product/electronic/600x600/3-2.jpg">
-                                                        <img src="/image/catalog/demo/product/electronic/90x90/3-2.jpg"
-                                                            alt="image">
-                                                    </div>
-                                                    <div class="item-img"
-                                                        data-src="/image/catalog/demo/product/electronic/600x600/3.jpg">
-                                                        <img src="/image/catalog/demo/product/electronic/90x90/3.jpg"
-                                                            alt="image">
-                                                    </div>
-                                                </div> --}}
                                                 <div class="product-image-container">
                                                     <a href="{{ route('product-detail', ['product' => $item]) }}"
                                                         target="_self" title="{{ $item->name }}">
                                                         <img src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'dist/images/default.jpg') }}"
-                                                            class="img-1 img-responsive" alt="image">
+                                                            class="img-1 img-responsive" alt="image"
+                                                            style="width: 200px; height: 200px;object-fit: fill;object-position: center;">
                                                     </a>
                                                 </div>
 

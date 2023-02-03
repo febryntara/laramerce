@@ -17,7 +17,7 @@
                                     <div class="yt-content-slide" style="width: 100%;">
                                         <a title="{{ $item->title }}" href=""><img
                                                 src="{{ asset('storage/' . $item->image->src) }}" class="responsive"
-                                                style="width: 1920px; height: 500px;object-fit: cover;object-position: center;"></a>
+                                                style="width: 1920px; height: 500px;object-fit: fill;object-position: center;"></a>
                                     </div>
                                 @endforeach
                             </div>
@@ -75,7 +75,7 @@
                                                                                 target="_self" title="{{ $item->name }}">
                                                                                 <img src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
                                                                                     class="img-1 img-responsive img-mobile"
-                                                                                    style="width: 400px; height: 250px; object-fit: cover; object-position: center;"
+                                                                                    style="width: 400px; height: 250px; object-fit: fill; object-position: center;"
                                                                                     alt="{{ $item->name }}">
                                                                             </a>
                                                                         </div>
@@ -131,7 +131,7 @@
                                                                 <img src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
                                                                     class="img-1 img-responsive img-mobile"
                                                                     alt="{{ $item->name }}"
-                                                                    style="width: 100px; height: 100px; object-fit: cover; object-position: center;">
+                                                                    style="width: 100px; height: 100px; object-fit: fill; object-position: center;">
                                                                 {{-- <div class="box-label">
                                                                     <span class="label-product label-sale">-20%</span>
                                                                 </div> --}}
@@ -175,7 +175,7 @@
                                                                                         <img src="{{ asset($product->images->count() ? 'storage/' . $product->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
                                                                                             alt="{{ $product->name }}"
                                                                                             class="img-mobile"
-                                                                                            style="width: 90px; height: 90px; object-fit: cover; object-position: center;">
+                                                                                            style="width: 90px; height: 90px; object-fit: fill; object-position: center;">
                                                                                     </a>
                                                                                 </div>
                                                                             </div>
@@ -300,7 +300,7 @@
                                                                                                     title="{{ $brand->products[$ip]->name }}">
                                                                                                     <img src="{{ asset($brand->products[$ip]->images->count() ? 'storage/' . $brand->products[$ip]->images->first()->src : 'dist/images/default.jpg') }}"
                                                                                                         class="img-responsive img-mobile"
-                                                                                                        style="width: 194.8px; height: 194.8px; object-fit: cover; object-position: center;"
+                                                                                                        style="width: 194.8px; height: 194.8px; object-fit: fill; object-position: center;"
                                                                                                         alt="image">
                                                                                                 </a>
                                                                                             </div>
@@ -362,7 +362,7 @@
                                                                                                     title="{{ $brand->products[$ip + 1]->name }}">
                                                                                                     <img src="{{ asset($brand->products[$ip + 1]->images->count() ? 'storage/' . $brand->products[$ip + 1]->images->first()->src : 'dist/images/default.jpg') }}"
                                                                                                         class="img-responsive img-mobile"
-                                                                                                        style="width: 194.8px; height: 194.8px; object-fit: cover; object-position: center;"
+                                                                                                        style="width: 194.8px; height: 194.8px; object-fit: fill; object-position: center;"
                                                                                                         alt="image">
                                                                                                 </a>
                                                                                             </div>

@@ -148,7 +148,7 @@
                                                     <div class="swiper-slide"
                                                         style="display: flex; justify-content: center; align-items: center;">
                                                         <img itemprop="image" class=""
-                                                            style="width: 150px;height: 100px;object-fit: cover;object-position: center;"
+                                                            style="width: 150px;height: 100px;object-fit: fill;object-position: center;"
                                                             src="{{ asset('storage/' . $img->src) }}"
                                                             alt="{{ $img->name }}">
                                                     </div>
