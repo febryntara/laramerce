@@ -33,28 +33,40 @@ class GeneralController extends Controller
 
         return view('frontpage.main.main', $data);
     }
-    public function category(Category $category)
+    // public function category(Category $category)
+    // {
+    //     $data = [
+    //         'title' => 'Category | Urban Adventure',
+    //         'products' => Product::where('category_id', $category->id)->paginate(8)->withQueryString(),
+    //         'name' => $category->name,
+    //         'categories' => Category::get(),
+    //         'brands' => Brand::with(['products'])->get()
+    //     ];
+    //     return view('frontpage.category.category', $data);
+    // }
+    // public function brand(Brand $brand)
+    // {
+    //     $data = [
+    //         'title' => 'Category | Urban Adventure',
+    //         'products' => Product::where('brand_id', $brand->id)->paginate(8)->withQueryString(),
+    //         'name' => $brand->name,
+    //         'categories' => Category::get(),
+    //         'brands' => Brand::with(['products'])->latest()->get()
+    //     ];
+    //     return view('frontpage.category.category', $data);
+    // }
+    public function products()
     {
         $data = [
-            'title' => 'Category | Urban Adventure',
-            'products' => $category->products,
-            'name' => $category,
+            'title' => 'Products | Urban Adventure',
+            'products' => Product::filter(request(['search', 'category', 'brand']))->paginate(8)->withQueryString(),
+            'name' => 'All Products',
             'categories' => Category::get(),
-            'brands' => Brand::with(['products'])->latest()->get()
+            'brands' => Brand::with(['products'])->get()
         ];
         return view('frontpage.category.category', $data);
     }
-    public function brand(Brand $brand)
-    {
-        $data = [
-            'title' => 'Category | Urban Adventure',
-            'products' => $brand->products,
-            'name' => $brand,
-            'categories' => Category::get(),
-            'brands' => Brand::with(['products'])->latest()->get()
-        ];
-        return view('frontpage.category.category', $data);
-    }
+
     public function quickview(Product $product)
     {
         // return dd($product->brand);

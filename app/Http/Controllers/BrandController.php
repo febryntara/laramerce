@@ -12,7 +12,7 @@ class BrandController extends Controller
     {
         $data = [
             'title' => 'Brands | Urban Adventure',
-            'brand' => Brand::latest()->filter(request(['search']))->paginate(10),
+            'brand' => Brand::latest()->filter(request(['search']))->paginate(10)->withQueryString(),
         ];
         return view('dashboard.admin.brand.brand-all', $data);
     }

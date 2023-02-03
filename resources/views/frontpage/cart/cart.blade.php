@@ -229,9 +229,7 @@
                         </div>
 
                         <div class="buttons">
-                            <div class="pull-left"><a href="{{ route('main') }}" class="btn btn-primary">Continue
-                                    Shopping</a>
-                            </div>
+
                             <div class="pull-right"><button type="submit" class="btn btn-primary">Checkout</button>
                             </div>
                         </div>

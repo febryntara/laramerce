@@ -6,8 +6,10 @@
             <!-- Main Container  -->
             <div class="main-container container">
                 <ul class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-home"></i></a></li>
-                    <li><a href="#">Site Map</a></li>
+                    <li><a href="{{ route('main') }}"><i class="fa fa-home"></i></a></li>
+                    <li>
+                        <p>Site Map</p>
+                    </li>
                 </ul>
 
                 <div class="row">
@@ -36,6 +38,10 @@
                                             @endforeach
                                         </ul>
                                     </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-5 col-sm-6">
+                                <ul class="simple-list bold-list">
                                     <li>
                                         <h2>Brands</h2>
                                         <ul class="arrow-list">

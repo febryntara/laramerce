@@ -36,13 +36,16 @@
                                         @forelse ($wishlist as $item)
                                             <tr data-product_code="{{ $item->product_code }}">
                                                 <td class="text-center">
-                                                    <a href="product.html"><img width="70px"
+                                                    <a href="{{ route('product-detail', ['product' => $item->product]) }}"><img
+                                                            width="70px"
                                                             src="{{ asset($item->product->images->count() ? 'storage/' . $item->product->images->first()->src : '/image/catalog/demo/product/80/2.jpg') }}"
-                                                            alt="Aspire Ultrabook Laptop" title="Aspire Ultrabook Laptop">
+                                                            alt="{{ $item->product->name }}"
+                                                            title="{{ $item->product->name }}">
                                                     </a>
                                                 </td>
-                                                <td class="text-left"><a
-                                                        href="product.html">{{ Str::words($item->product->name, 6, '...') }}</a>
+                                                <td class="text-left">
+                                                    <a href="{{ route('product-detail', ['product' => $item->product]) }}">{{ Str::words($item->product->name, 6, '...') }}
+                                                    </a>
                                                 </td>
                                                 <td class="text-left">{{ $item->product->brand->name }}</td>
                                                 <td class="text-right">
@@ -84,31 +87,11 @@
                         <h2 class="subtitle">Account</h2>
                         <div class="list-group">
                             <ul class="list-item">
-                                <li><a href="login.html">Login</a>
+                                <li><a href="{{ route('my-account') }}">My Account</a>
                                 </li>
-                                <li><a href="register.html">Register</a>
+                                <li><a href="{{ route('cart') }}">Cart</a>
                                 </li>
-                                <li><a href="#">Forgotten Password</a>
-                                </li>
-                                <li><a href="#">My Account</a>
-                                </li>
-                                <li><a href="#">Address Books</a>
-                                </li>
-                                <li><a href="wishlist.html">Wish List</a>
-                                </li>
-                                <li><a href="#">Order History</a>
-                                </li>
-                                <li><a href="#">Downloads</a>
-                                </li>
-                                <li><a href="#">Reward Points</a>
-                                </li>
-                                <li><a href="#">Returns</a>
-                                </li>
-                                <li><a href="#">Transactions</a>
-                                </li>
-                                <li><a href="#">Newsletter</a>
-                                </li>
-                                <li><a href="#">Recurring payments</a>
+                                <li><a href="{{ route('order-history') }}">Order History</a>
                                 </li>
                             </ul>
                         </div>
