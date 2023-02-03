@@ -337,20 +337,23 @@
                                     class="fa fa-search" aria-hidden="true"></i></button>
                             <div class="dropdown-menu dropdown-menu-search">
                                 <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
-                                    <form method="GET" action="index.html">
+                                    <form method="GET" action="{{ route('products') }}">
+                                        @if (request('category'))
+                                        <input type="hidden" name="category" value="{{ request('category') }}"> 
+                                        @elseif(request('brand'))
+                                        <input type="hidden" name="brand" value="{{ request('brand') }}"> 
+                                        @endif
                                         <div id="search0" class="search input-group form-group">
                                             <input class="autosearch-input form-control" type="text"
-                                                value="" size="25" autocomplete="off"
+                                                size="25" autocomplete="off"
                                                 placeholder="Keyword here..." name="search">
                                             <span class="input-group-btn">
                                                 <button type="submit" class="button-search btn btn-primary"
-                                                    style="border-top-right-radius: 4px!important;
-                                                border-bottom-right-radius: 4px!important;"
-                                                    style="" name="submit_search"><i
-                                                        class="fa fa-search"></i></button>
+                                                    style="border-top-right-radius: 4px!important;border-bottom-right-radius: 4px!important;">
+                                                    <i class="fa fa-search"></i></button>
                                             </span>
                                         </div>
-                                        <input type="hidden" name="route" value="product/search" />
+                                        {{-- <input type="hidden" name="route" value="product/search" /> --}}
                                     </form>
                                 </div>
                             </div>

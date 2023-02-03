@@ -58,6 +58,13 @@ class Product extends Model
                 $query->where('name', $category);
             });
         });
+
+        $query->when($filters['brand'] ?? false, function ($query, $brand) {
+            return $query->whereHas('brand', function ($query) use ($brand) {
+                $query->where('name', $brand);
+            });
+        });
+        
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where('name', 'like', '%' . $search . '%')->orWhere('product_code', $search)->WhereHas('brand', function ($query) use ($search) {
                 $query->orWhere('name', 'like', '%' . $search . '%');
