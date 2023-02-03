@@ -8,29 +8,33 @@ use Illuminate\Support\Facades\Validator;
 
 class BannerController extends Controller
 {
-    public function allBanner(){
+    public function allBanner()
+    {
         $data = [
             'title' => 'All Banners | Urban Adventure',
-            'banners'=>Banner::latest()->filter(request(['search']))->paginate(10)->withQueryString()
+            'banners' => Banner::latest()->filter(request(['search']))->paginate(10)->withQueryString()
         ];
-        return view('dashboard.admin.banners.banner-all',$data);
+        return view('dashboard.admin.banners.banner-all', $data);
     }
-    public function createBanner(){
+    public function createBanner()
+    {
         $data = [
             'title' => 'Create Banner | Urban Adventure',
         ];
-        return view('dashboard.admin.banners.banner-add',$data);
+        return view('dashboard.admin.banners.banner-add', $data);
     }
 
-    public function detailBanner(Banner $banner){
+    public function detailBanner(Banner $banner)
+    {
         $data = [
             'title' => 'All Banners | Urban Adventure',
-            'banner'=>$banner,
+            'banner' => $banner,
         ];
         return view('dashboard.admin.banners.banner-detail', $data);
     }
-    public function storeBanner(Request $request){
-        $validator=Validator::make($request->all(), [
+    public function storeBanner(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string',
         ]);
 
@@ -43,14 +47,13 @@ class BannerController extends Controller
             return redirect()->route('manage_banner.all')->with('success', 'New Banner successfully created');
         }
         return redirect()->back()->with('error', 'Something Error! <br> Try Again!');
-
     }
 
-    public function deleteBanner(Banner $banner){
+    public function deleteBanner(Banner $banner)
+    {
         if ($banner->delete()) {
-            return redirect()->route('manage_banner.all')->with('success', $banner->title. "successfully deleted");
+            return redirect()->route('manage_banner.all')->with('success', $banner->title . "successfully deleted");
         }
-        return redirect()->back()->with('error', $banner->title. "delete failed");
-
+        return redirect()->route('manage_banner.all')->with('error', $banner->title . "delete failed");
     }
 }

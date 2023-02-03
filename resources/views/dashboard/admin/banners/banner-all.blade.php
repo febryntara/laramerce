@@ -9,12 +9,16 @@
             <div class="hidden md:block mx-auto text-slate-500"></div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                   <form action="{{ route('manage_banner.all') }}" method="get" id="form-search-banner">
+                    <form action="{{ route('manage_banner.all') }}" method="get" id="form-search-banner">
                         <div class="flex justify-between align-center">
-                            <input type="text" name="search" class="form-control w-56 box pr-10" style="border-top-right-radius: 0!important;
-                             border-bottom-right-radius: 0!important;" placeholder="Search...">
-                            <button type="submit" class="bg-[#2d2d2d]" style="border-top-right-radius: 0.25rem!important;
-                             border-bottom-right-radius: 0.25rem!important;"><i class="w-4 h-4 mx-3 text-white rounded-sm"  data-lucide="search"></i>
+                            <input type="text" name="search" class="form-control w-56 box pr-10"
+                                style="border-top-right-radius: 0!important;
+                             border-bottom-right-radius: 0!important;"
+                                placeholder="Search...">
+                            <button type="submit" class="bg-[#2d2d2d]"
+                                style="border-top-right-radius: 0.25rem!important;
+                             border-bottom-right-radius: 0.25rem!important;"><i
+                                    class="w-4 h-4 mx-3 text-white rounded-sm" data-lucide="search"></i>
                             </button>
                         </div>
                     </form>
@@ -38,12 +42,14 @@
                             <td class="text-center w-40"> {{ $loop->iteration }} </td>
                             <td class="text-center">{{ $item->title }}
                             </td>
-                            <td class="flex justify-center"><img class="w-56" src="{{ asset($item->image->count() ? 'storage/' . $item->image->src : 'dist/images/default.jpg') }}" alt="{{ $item->title }}" srcset=""></td>
+                            <td class="flex justify-center"><img class="w-56"
+                                    src="{{ asset($item->image->count() ? 'storage/' . $item->image->src : 'dist/images/default.jpg') }}"
+                                    alt="{{ $item->title }}" srcset=""></td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
                                     <a class="flex items-center mr-3"
-                                        href="{{ route('manage_banner.detail', ['banner' => $item]) }}"> <i data-lucide="eye"
-                                            class="w-4 h-4 mr-1"></i> Detail </a>
+                                        href="{{ route('manage_banner.detail', ['banner' => $item]) }}"> <i
+                                            data-lucide="eye" class="w-4 h-4 mr-1"></i> Detail </a>
                                     <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
                                         data-tw-target="#delete-confirmation-modal"
                                         onclick="deleteModalHandler({{ $index }})"> <i data-lucide="trash-2"
@@ -51,7 +57,7 @@
                                     <input type="hidden" id="delete_route_{{ $index }}"
                                         value="{{ route('manage_banner.delete', ['banner' => $item]) }}">
                                 </div>
-                                    
+
                             </td>
                         </tr>
                     @empty
