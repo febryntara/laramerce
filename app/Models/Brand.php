@@ -64,15 +64,12 @@ class Brand extends Model
         });
 
         self::deleting(function ($brand) {
-            $image = $brand->logo;
-            $image->delete();
+            $brand->logo()->delete();
         });
 
         self::deleted(function ($brand) {
             foreach ($brand->products as $index => $product) {
-                $product->update([
-                    'brand_id' => NULL
-                ]);
+                $product->delete();
             }
         });
     }
