@@ -99,6 +99,7 @@ Route::controller(GeneralController::class)->group(function () {
     Route::get('/order-history', 'order_history')->name('order-history')->middleware('auth');
     Route::get('/my-account', 'my_account')->name('my-account')->middleware('auth');
     Route::get('/wishlist', 'wishlist')->name('wishlist')->middleware('auth');
+    Route::get('/sitemap', 'sitemap')->name('sitemap');
 });
 
 Route::get('/test', function () {

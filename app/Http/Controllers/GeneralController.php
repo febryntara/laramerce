@@ -299,4 +299,51 @@ class GeneralController extends Controller
         ];
         return view('frontpage.thankyou.thankyou', $data);
     }
+
+    public function sitemap()
+    {
+        $data = [
+            'title' => "Site Map | Urban Adventure",
+            'pages' => [
+                [
+                    'name' => 'Home',
+                    'route' => route('main')
+                ],
+                [
+                    'name' => 'Login',
+                    'route' => route('login')
+                ],
+                [
+                    'name' => 'Register',
+                    'route' => route('register')
+                ],
+                [
+                    'name' => 'My Account',
+                    'route' => route('my-account')
+                ],
+                [
+                    'name' => 'Wishlist',
+                    'route' => route('wishlist')
+                ],
+                [
+                    'name' => 'Order History',
+                    'route' => route('order-history')
+                ],
+                [
+                    'name' => 'Cart',
+                    'route' => route('cart')
+                ],
+                [
+                    'name' => 'Checkout',
+                    'route' => route('checkout')
+                ]
+            ],
+            'categories' => Category::get()->each(fn ($item) => $item->route = route('category', ['category' => $item])),
+            'brands' => Brand::get()->each(fn ($item) => $item->route = route('brand', ['brand' => $item])),
+            'products' => Product::get()->each(fn ($item) => $item->route = route('product-detail', ['product' => $item])),
+
+        ];
+
+        return view('frontpage.sitemap.sitemap', $data);
+    }
 }
