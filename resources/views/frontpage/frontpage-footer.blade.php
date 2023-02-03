@@ -65,7 +65,8 @@
                             <h3 class="footertitle">Our Brands</h3>
                             <ul id="menu-our-shops" class="menu">
                                 @foreach ($brands as $item)
-                                    <li class="menu-product-support"><a class="item-link" href="#"><span
+                                    <li class="menu-product-support"><a class="item-link"
+                                            href="{{ route('brand', ['brand' => $item]) }}"><span
                                                 class="menu-title">{{ $item->name }}</span></a></li>
                                 @endforeach
                             </ul>
@@ -80,9 +81,9 @@
                             </div>
                             <div class="footer-block-content">
                                 <ul class="links-footer">
-                                    <li><a title="Account" href="my-account.html">My Account</a></li>
-                                    <li><a title="Checkout" href="checkout.html">Checkout</a></li>
-                                    <li><a title="History" href="order-history.html">Order History</a></li>
+                                    <li><a title="Account" href="{{ route('my-account') }}">My Account</a></li>
+                                    <li><a title="Checkout" href="{{ route('checkout') }}">Checkout</a></li>
+                                    <li><a title="History" href="{{ route('order-history') }}">Order History</a></li>
                                     <li><a title="Help Center" href="#">Help Center</a></li>
                                     <li><a title="Privacy Policy" href="#">Privacy Policy</a></li>
                                 </ul>
@@ -97,8 +98,8 @@
                             <h3 class="footertitle">Services</h3>
                             <div class="modcontent">
                                 <ul class="menu">
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    {{-- <li><a href="about-us.html">About Us</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li> --}}
                                     <li><a href="sitemap.html">Sitemap</a></li>
                                 </ul>
                             </div>

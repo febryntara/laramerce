@@ -38,7 +38,7 @@ class GeneralController extends Controller
         $data = [
             'title' => 'Category | Urban Adventure',
             'products' => $category->products,
-            'name' => $category,
+            'name' => $category->name,
             'categories' => Category::get(),
             'brands' => Brand::with(['products'])->latest()->get()
         ];
@@ -49,12 +49,24 @@ class GeneralController extends Controller
         $data = [
             'title' => 'Category | Urban Adventure',
             'products' => $brand->products,
-            'name' => $brand,
+            'name' => $brand->name,
             'categories' => Category::get(),
             'brands' => Brand::with(['products'])->latest()->get()
         ];
         return view('frontpage.category.category', $data);
     }
+    public function products()
+    {
+        $data = [
+            'title' => 'Products | Urban Adventure',
+            'products' => Product::all(),
+            'name' => 'All Products',
+            'categories' => Category::first()->get(),
+            'brands' => Brand::with(['products'])->latest()->get()
+        ];
+        return view('frontpage.category.category', $data);
+    }
+
     public function quickview(Product $product)
     {
         // return dd($product->brand);
