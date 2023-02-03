@@ -100,7 +100,7 @@
                                 <ul class="menu">
                                     {{-- <li><a href="about-us.html">About Us</a></li>
                                     <li><a href="contact.html">Contact Us</a></li> --}}
-                                    <li><a href="sitemap.html">Sitemap</a></li>
+                                    <li><a href="{{ route('sitemap') }}">Sitemap</a></li>
                                 </ul>
                             </div>
                         </div>
