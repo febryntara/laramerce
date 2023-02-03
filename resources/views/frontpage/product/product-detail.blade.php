@@ -60,7 +60,7 @@
                                                     <div class="item-image">
                                                         <div class="item-img-info">
                                                             <a href="{{ route('product-detail', ['product' => $item]) }}"
-                                                                target="_self" title="Mandouille short ">
+                                                                target="_self" title="{{ $item->name }}">
                                                                 <img src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'image/catalog/demo/product/80/8.jpg') }}"
                                                                     alt="{{ $item->name }}">
                                                             </a>
@@ -70,7 +70,7 @@
                                                     <div class="item-info">
                                                         <div class="item-title">
                                                             <a href="#" target="_self"
-                                                                title="Mandouille short">{{ Str::words($item->name, 3, '...') }}
+                                                                title="{{ $item->name }}">{{ Str::words($item->name, 3, '...') }}
                                                             </a>
                                                         </div>
                                                         <div class="rating">

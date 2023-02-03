@@ -207,7 +207,7 @@
                                                 </div> --}}
                                                 <div class="product-image-container">
                                                     <a href="{{ route('product-detail', ['product' => $item]) }}"
-                                                        target="_self" title="Drutick lanaeger">
+                                                        target="_self" title="{{ $item->name }}">
                                                         <img src="{{ asset($item->images->count() ? 'storage/' . $item->images->first()->src : 'dist/images/default.jpg') }}"
                                                             class="img-1 img-responsive" alt="image">
                                                     </a>
@@ -224,7 +224,8 @@
 
                                                 <div class="caption">
                                                     <h4><a href="{{ route('product-detail', ['product' => $item]) }}"
-                                                            title="Drutick lanaeger" target="_self">{{ $item->name }}</a>
+                                                            title="{{ $item->name }}"
+                                                            target="_self">{{ $item->name }}</a>
                                                     </h4>
                                                     <div class="rate-history">
                                                         <div class="ratings">
