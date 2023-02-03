@@ -286,6 +286,7 @@ class GeneralController extends Controller
     {
         $data = [
             'title' => 'Whislist | Urban Adventure',
+            'brands' => Brand::with(['products'])->latest()->get(),
             'wishlist' => auth()->user()->wishlists ?? [],
             'categories' => Category::get(),
         ];
