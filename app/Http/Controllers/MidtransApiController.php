@@ -37,12 +37,12 @@ class MidtransApiController extends Controller
         if ($request->key == env('APP_KEY')) {
             $isUpdated = $order->update([
                 'payment_type' => $request->payment_type ?? NULL,
-                'bank' => $request->va_numbers[0]['bank'] ?? NULL,
+                'bank' => $request->has('va_number') ? $request->va_numbers[0]['bank'] : NULL,
                 'settlement_time' => $request->settlement_time ?? NULL
             ]);
             if ($isUpdated) {
-                Mail::to($order->email)->send(new OrderThankMail($order));
-                return response()->json(['status' => 200, 'message' => "Order Updated", 'request' => $request->va_numbers[0]['bank'], 'order' => $order]);
+                Mail::to($order->email)->send(new OrderMail($order, $request->has('va_number') ? $request->va_numbers[0]['va_number'] : NULL));
+                return response()->json(['status' => 200, 'message' => "Order Updated"]);
             }
             return response()->json(['status' => 201, 'message' => "Order Fail To Update"]);
         }
