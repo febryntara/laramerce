@@ -78,6 +78,10 @@ Route::get('/token', function () {
 Route::get('/email', function () {
     return new OrderMail(Order::all()->first());
 });
+Route::get('/email2', function () {
+    return view('frontpage.email.email-template2');
+});
+
 Route::get('/', function () {
     return view('frontpage.main.main', ['title' => 'Homepage | Urban Adventure']);
 });
