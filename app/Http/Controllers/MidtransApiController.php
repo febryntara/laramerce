@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\OrderMail;
+use App\Mail\OrderThankMail;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -40,6 +41,7 @@ class MidtransApiController extends Controller
                 'settlement_time' => $request->settlement_time ?? NULL
             ]);
             if ($isUpdated) {
+                Mail::to($order->email)->send(new OrderThankMail($order));
                 return response()->json(['status' => 200, 'message' => "Order Updated", 'request' => $request->va_numbers[0]['bank'], 'order' => $order]);
             }
             return response()->json(['status' => 201, 'message' => "Order Fail To Update"]);
