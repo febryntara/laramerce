@@ -14,7 +14,7 @@ class Order extends Model
     use HasFactory;
     protected $keyType = 'string';
     public $incrementing = false;
-    protected $fillable = ['transaction_id', 'payment_token', 'payment_type', 'transaction_status'];
+    protected $fillable = ['transaction_id', 'payment_token', 'payment_type', 'transaction_status', 'bank', 'settlement_time'];
 
     // instant value
 

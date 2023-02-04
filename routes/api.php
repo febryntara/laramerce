@@ -38,4 +38,5 @@ Route::controller(AjaxController::class)->group(function () {
 
 Route::controller(MidtransApiController::class)->group(function () {
     Route::post('/payment-notification', 'paymentNotif')->name('payment_notif');
+    Route::post('/order/update/{order}', 'updateOrder')->name('api.midtrans.update_order');
 });

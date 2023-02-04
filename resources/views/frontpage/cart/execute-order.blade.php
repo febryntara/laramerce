@@ -314,17 +314,17 @@
             window.snap.pay('{{ $snap }}', {
                 onSuccess: function(result) {
                     /* You may add your own implementation here */
-
+                    updateOrder(result)
                     console.log(result);
                 },
                 onPending: function(result) {
                     /* You may add your own implementation here */
-
+                    updateOrder(result)
                     console.log(result);
                 },
                 onError: function(result) {
                     /* You may add your own implementation here */
-
+                    updateOrder(result)
                     console.log(result);
                 },
                 onClose: function() {
@@ -332,6 +332,23 @@
                 }
             })
         });
+
+        function updateOrder(result) {
+            $.ajax({
+                url: "/api/order/update/" + result.order_id,
+                type: "POST",
+                data: {
+                    key: "{{ env('APP_KEY') }}",
+                    order_id: result.order_id,
+                    va_numbers: result.va_numbers,
+                    payment_type: result.payment_type,
+                    settlement_time: result.settlement_time,
+                },
+                success: (result) => {
+                    console.log(result);
+                }
+            })
+        }
     </script>
     {{-- midtrans script --}}
 @endsection
