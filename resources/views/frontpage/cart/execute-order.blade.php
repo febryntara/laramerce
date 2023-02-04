@@ -315,17 +315,20 @@
                 onSuccess: function(result) {
                     /* You may add your own implementation here */
                     updateOrder(result)
-                    console.log(result);
+                    setTimeout(() => {
+                        window.location.href = "/thankyou"
+                    }, 1500);
+                    // console.log(result);
                 },
                 onPending: function(result) {
                     /* You may add your own implementation here */
                     updateOrder(result)
-                    console.log(result);
+                    // console.log(result);
                 },
                 onError: function(result) {
                     /* You may add your own implementation here */
                     updateOrder(result)
-                    console.log(result);
+                    // console.log(result);
                 },
                 onClose: function() {
                     /* You may add your own implementation here */
