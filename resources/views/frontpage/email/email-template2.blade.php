@@ -91,7 +91,7 @@
     </style>
 </head>
 
-<body>
+<body style="background:#f7f7f7;background-color:#f7f7f7;">
     <div>
         <table align='center' background='#2d2d2d' border='0' cellpadding='0' cellspacing='0' role='presentation'
             style='background:#2d2d2d;background-color:#2d2d2d;width:100%;'>
@@ -125,7 +125,8 @@
                                                                                     width='100%'>
                                                                                     <tr>
                                                                                         <td align='left'>
-                                                                                            <a href='#'>
+                                                                                            <a
+                                                                                                href='{{ route('main') }}'>
                                                                                                 <img align='left'
                                                                                                     alt='Logo'
                                                                                                     height='33'
@@ -175,41 +176,121 @@
             </tbody>
         </table>
         <div>
-            <table align='center' border='0' cellpadding='0' cellspacing='0' role='presentation' style='background:#f7f7f7;background-color:#f7f7f7;width:100%;'>
+            <table align='center' border='0' cellpadding='0' cellspacing='0' role='presentation'
+                style='width:100%;'>
                 <tbody>
                     <tr>
                         <td>
                             <div style='margin:0px auto;max-width:600px;'>
-                                <table align='center' border='0' cellpadding='0' cellspacing='0' role='presentation' style='width:100%;'>
+                                <table align='center' border='0' cellpadding='0' cellspacing='0' role='presentation'
+                                    style='width:100%;'>
                                     <tbody>
-                                    <tr>
-                                        <td style='direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;'>
-                                            <div class='dys-column-per-100 outlook-group-fix' style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
-                                                <table border='0' cellpadding='0' cellspacing='0' role='presentation' style='vertical-align:top;' width='100%'>
-                                                    <tr>
-                                                        <td align='center' style='font-size:0px;padding:10px 25px;word-break:break-word;'>
-                                                            <div style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:32px;font-weight:700;line-height:37px;text-align:center;'>
-                                                                Thank You For Your Order
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <table border='0' cellpadding='0' cellspacing='0' role='presentation' style='border-collapse:separate;line-height:100%;' align='center'>
-                                                            <tr>
-                                                                <td align='center' bgcolor='#ff6f6f' role='presentation' style='background-color:#ff6f6f;border:none;border-radius:5px;cursor:auto;padding:10px 25px;' valign='middle'>
-                                                                    <a href='#' style='background:#ff6f6f;color:#ffffff;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;font-weight:400;line-height:21px;margin:0;text-decoration:none;text-transform:none;' target='_blank'>
-                                                                        Button Text
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                        <tr>
+                                            <td
+                                                style='direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;'>
+                                                <div class='dys-column-per-100 outlook-group-fix'
+                                                    style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
+                                                    <table border='0' cellpadding='0' cellspacing='0'
+                                                        role='presentation' style='vertical-align:top;' width='100%'>
+                                                        <tr>
+                                                            <td align='center'
+                                                                style='font-size:0px;padding:10px 25px;word-break:break-word;'>
+                                                                <div
+                                                                    style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:32px;font-weight:700;line-height:37px;text-align:center;'>
+                                                                    <br><br><br>
+                                                                    <br><br>
+                                                                    <span>Thank You For Your Order</span>
+                                                                    <p style="font-size: 12px">Hello
+                                                                        {{ $order->name }}, we have received your order
+                                                                        and we will process it. To get an invoice,
+                                                                        immediately click "pay now" on order page and
+                                                                        select a payment method. Once again,
+                                                                        thank you for purchasing at Urban Adventure.
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <table border='0' cellpadding='0' cellspacing='0'
+                                                                role='presentation'
+                                                                style='border-collapse:separate;line-height:100%;'
+                                                                align='center'>
+                                                                <tr>
+                                                                    <td align='center' bgcolor='#ff6f6f'
+                                                                        role='presentation'
+                                                                        style='background-color:#ff6f6f;border:none;border-radius:5px;cursor:auto;padding:10px 25px;'
+                                                                        valign='middle'>
+                                                                        <a href='{{ route('order_detail', ['order' => $order]) }}'
+                                                                            style='background:#ff6f6f;color:#ffffff;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;font-weight:400;line-height:21px;margin:0;text-decoration:none;text-transform:none;'
+                                                                            target='_blank'>
+                                                                            Check Order
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table><br><br><br><br><br><br><br>
+            <table align='center' border='0' cellpadding='0' cellspacing='0' role='presentation'
+                style='background:#2d2d2d;background-color:#2d2d2d;width:100%;'>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div style='margin:0px auto;max-width:600px;'>
+                                <table align='center' border='0' cellpadding='0' cellspacing='0'
+                                    role='presentation' style='width:100%;'>
+                                    <tbody>
+                                        <tr>
+                                            <td
+                                                style='direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;'>
+                                                <div class='dys-column-per-100 outlook-group-fix'
+                                                    style='direction:ltr;display:inline-block;font-size:13px;text-align:left;vertical-align:top;width:100%;'>
+                                                    <table border='0' cellpadding='0' cellspacing='0'
+                                                        role='presentation' style='vertical-align:top;'
+                                                        width='100%'>
+                                                        <tr>
+                                                            <td align='center'
+                                                                style='font-size:0px;padding:5px 25px;word-break:break-word;'>
+                                                                <div
+                                                                    style='color:#ffff;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;font-style:bold;font-weight:700;line-height:21px;text-align:center;'>
+                                                                    URBAN ADVENTURE
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align='center'
+                                                                style='font-size:0px;padding:5px 25px;word-break:break-word;'>
+                                                                <div
+                                                                    style='color:#ffff;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;font-style:bold;line-height:1;text-align:center;'>
+                                                                    Jl. Bypass Ngurah Rai No.90, Sanur, Denpasar
+                                                                    Selatan, Kota Denpasar
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align='center'
+                                                                style='font-size:0px;padding:5px 25px;word-break:break-word;'>
+                                                                <div
+                                                                    style='color:#ffff;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;font-style:bold;line-height:1;text-align:center;'>
+                                                                    Bali 80228
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </td>
                     </tr>

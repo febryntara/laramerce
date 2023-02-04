@@ -126,7 +126,8 @@
                                                                                     width='100%'>
                                                                                     <tr>
                                                                                         <td align='left'>
-                                                                                            <a href='#'>
+                                                                                            <a
+                                                                                                href='{{ route('main') }}'>
                                                                                                 <img align='left'
                                                                                                     alt='Logo'
                                                                                                     height='33'
@@ -174,7 +175,7 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table><br><br>
         <table
             style="font-family:'Oxygen', 'Helvetica Neue', helvetica, sans-serif;max-width:670px;margin:10px auto 10px;background-color:#fff;padding:10px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);-moz-box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);">
             <tbody>
@@ -192,13 +193,18 @@
                             @else
                                 <b style="color:Red;font-weight:normal;margin:0">Failed</b>
                             @endif
-                        </p>
+                        </p><br>
                         <p style="font-size:14px;margin:0 0 6px 0;"><span
                                 style="font-weight:bold;display:inline-block;min-width:146px">Transaction ID</span>
-                            {{ $order->transaction_id }}</p>
+                            {{ $order->transaction_id }}</p><br>
                         <p style="font-size:14px;margin:0 0 0 0;"><span
                                 style="font-weight:bold;display:inline-block;min-width:146px">Order amount</span>
-                            {{ ch_currency($order->gross_amount) }}</p>
+                            {{ ch_currency($order->gross_amount) }}</p><br>
+                        @if ($va_number != null)
+                            <p style="font-size:14px;margin:0 0 0 0;"><span
+                                    style="font-weight:bold;display:inline-block;min-width:146px">Virtual Number</span>
+                                {{ $order->bank . ' - ' . $va_number }}</p>
+                        @endif
                     </td>
                 </tr>
                 <tr>
@@ -223,10 +229,15 @@
                         <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span
                                 style="display:block;font-weight:bold;font-size:13px;">Order Created</span>
                             {{ $order->created_at }}</p>
+                        @if ($order->settlement_time != null)
+                            <p style="margin:0 0 10px 0;padding:0;font-size:14px;"><span
+                                    style="display:block;font-weight:bold;font-size:13px;">Order Payed</span>
+                                {{ $order->settlement_time }}</p>
+                        @endif
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table><br>
         <div style='background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-width:600px;'>
             <table align='center' border='0' cellpadding='0' cellspacing='0' role='presentation'
                 style='background:#FFFFFF;background-color:#FFFFFF;width:100%;'>
@@ -356,7 +367,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div><br><br><br>
         <table align='center' border='0' cellpadding='0' cellspacing='0' role='presentation'
             style='background:#2d2d2d;background-color:#2d2d2d;width:100%;'>
             <tbody>
@@ -387,7 +398,8 @@
                                                             style='font-size:0px;padding:5px 25px;word-break:break-word;'>
                                                             <div
                                                                 style='color:#ffff;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;font-style:bold;line-height:1;text-align:center;'>
-                                                                1234 Awesome St
+                                                                Jl. Bypass Ngurah Rai No.90, Sanur, Denpasar Selatan,
+                                                                Kota Denpasar
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -396,7 +408,7 @@
                                                             style='font-size:0px;padding:5px 25px;word-break:break-word;'>
                                                             <div
                                                                 style='color:#ffff;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;font-style:bold;line-height:1;text-align:center;'>
-                                                                Bali
+                                                                Bali 80228
                                                             </div>
                                                         </td>
                                                     </tr>

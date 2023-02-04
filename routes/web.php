@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewTemplateController;
 use App\Mail\OrderMail;
+use App\Mail\OrderThankMail;
 use App\Models\Brand;
 use App\Models\Order;
 use App\Models\Product;
@@ -76,12 +77,8 @@ Route::get('/token', function () {
 });
 
 Route::get('/email', function () {
-    return new OrderMail(Order::all()->first());
+    return new OrderMail(Order::find('ve75HPcJmHVi'), 39482039483323);
 });
-Route::get('/email2', function () {
-    return view('frontpage.email.email-template2');
-});
-
 Route::get('/', function () {
     return view('frontpage.main.main', ['title' => 'Homepage | Urban Adventure']);
 });

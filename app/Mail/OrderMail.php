@@ -15,15 +15,17 @@ class OrderMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
+    public $va_number;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Order $order)
+    public function __construct(Order $order, $va_number = NULL)
     {
         $this->order = $order;
+        $this->va_number = $va_number;
     }
 
     /**
